@@ -1,0 +1,1 @@
+Your AWS security check found no problems. All user accounts use strong passwords, rotate keys, and have two‑factor protection. The root account is protected, no unused keys exist, and permissions are tightly controlled. External access is monitored. In short, your environment follows best security practices, so it’s well protected against common attacks.

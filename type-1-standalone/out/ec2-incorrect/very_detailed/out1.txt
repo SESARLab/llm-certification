@@ -1,0 +1,7 @@
+Your assessment found three gaps that could let attackers in or read your data:  
+
+1. An open default security group lets any traffic reach your EC2 instances.  
+2. The VPC isn’t logging traffic, so intrusions could go undetected.  
+3. EBS volumes aren’t automatically encrypted, so stored data could be read if compromised.  
+
+These weaknesses raise the risk of unauthorized access, data theft, and make it harder to spot attacks. The other controls (IMDSv2, ACLs, admin‑port restrictions) are fine.

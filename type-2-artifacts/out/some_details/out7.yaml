@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe
+      image: [YOUR_SECURITY_PROBE_IMAGE]
+      env:
+        - name: TARGET_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              name: target-info
+              key: hostname
+        - name: TARGET_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: target-info
+              key: port
+      volumeMounts:
+        - name: secrets
+          mountPath: /secrets/credentials.txt
+          readOnly: true
+  volumes:
+    - name: secrets
+      secret:
+        secretName: probe-credentials
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000

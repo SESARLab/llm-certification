@@ -1,0 +1,44 @@
+{
+    "integer_result": 0,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "4/4 succeeded",
+            "CIS CloudTrail.1": {
+                "Passed": true,
+                "Result": "Found at least one multi-Region trail with global and management (read/write) events",
+                "Compliant Trails": [
+                    "arn:aws:cloudtrail:eu-central-1:504548996914:trail/MooncloudCisTest"
+                ],
+                "Non-Compliant Trails": []
+            },
+            "CIS CloudTrail.2": {
+                "Passed": true,
+                "Result": "All trails have SSE KMS key encryption enabled",
+                "Compliant Trails": [
+                    "arn:aws:cloudtrail:eu-central-1:504548996914:trail/MooncloudCisTest"
+                ],
+                "Non-Compliant Trails": []
+            },
+            "CIS CloudTrail.4": {
+                "Passed": true,
+                "Result": "All trails have log file validation enabled",
+                "Compliant Trails": [
+                    "arn:aws:cloudtrail:eu-central-1:504548996914:trail/MooncloudCisTest"
+                ],
+                "Non-Compliant Trails": []
+            },
+            "CIS CloudTrail.7": {
+                "Passed": true,
+                "Result": "All trails have S3 bucket access logging enabled to a separate target bucket",
+                "Compliant Trails": [
+                    "arn:aws:cloudtrail:eu-central-1:504548996914:trail/MooncloudCisTest"
+                ],
+                "Non-Compliant Trails": []
+            }
+        }
+    }
+}

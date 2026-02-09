@@ -1,0 +1,9 @@
+I’m ready to turn that detailed assessment into a clear, easy‑to‑understand summary.  
+Could you paste the report (or key excerpts) here? Once I have the specifics, I’ll explain:
+
+1. **What was checked** – the scope and tools used.  
+2. **Key findings** – the most critical vulnerabilities.  
+3. **Impact** – how each risk could affect your business.  
+4. **Remediation steps** – what to fix first and how to keep it secure.  
+
+Just drop the report in, and I’ll get started!

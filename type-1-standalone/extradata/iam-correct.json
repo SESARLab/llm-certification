@@ -1,0 +1,176 @@
+{
+    "integer_result": 0,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "13/13 succeeded",
+            "CIS IAM.2": {
+                "Passed": true,
+                "Result": "All IAM users are policy-freed",
+                "Compliant Users": [
+                    "cct",
+                    "kevin.pease",
+                    "sqs-user-cis-aws"
+                ],
+                "Non-Compliant Users": [],
+                "Details": {}
+            },
+            "CIS IAM.3": {
+                "Passed": true,
+                "Result": "All IAM users' access keys are compliant with the 90-day rotation requirement",
+                "Compliant Users": [
+                    "cct",
+                    "kevin.pease",
+                    "sqs-user-cis-aws"
+                ],
+                "Non-Compliant Users": [],
+                "Details": {}
+            },
+            "CIS IAM.4": {
+                "Passed": true,
+                "Result": "No access keys found for the root user",
+                "Root User Access Keys": 0
+            },
+            "CIS IAM.5": {
+                "Passed": true,
+                "Result": "All IAM users with console passwords have MFA enabled",
+                "Compliant Users": [
+                    "cct",
+                    "kevin.pease",
+                    "sqs-user-cis-aws"
+                ],
+                "Non-Compliant Users": [],
+                "Details": {}
+            },
+            "CIS IAM.6": {
+                "Passed": true,
+                "Result": "Hardware MFA is enabled for the root user",
+                "Root User Hardware MFA": true
+            },
+            "CIS IAM.9": {
+                "Passed": true,
+                "Result": "MFA is enabled for the root user",
+                "Root User MFA": 1
+            },
+            "CIS IAM.15": {
+                "Passed": true,
+                "Result": "Password policy is compliant with minimum length of 14 or greater",
+                "Password Policy": {
+                    "PolicyExists": true,
+                    "MinimumPasswordLength": 16
+                }
+            },
+            "CIS IAM.16": {
+                "Passed": true,
+                "Result": "Password policy is compliant with password reuse prevention of 24",
+                "Password Policy": {
+                    "PolicyExists": true,
+                    "PasswordReusePrevention": 1
+                }
+            },
+            "CIS IAM.18": {
+                "Passed": true,
+                "Result": "Support role exists",
+                "Support Role": {
+                    "SupportRoleExists": true,
+                    "SupportRoleARN": "arn:aws:iam::504548996914:role/aws-service-role/support.amazonaws.com/AWSServiceRoleForSupport"
+                }
+            },
+            "CIS IAM.22": {
+                "Passed": true,
+                "Result": "All IAM users with active access keys meet the 45-day inactivity requirement",
+                "Compliant Users": [
+                    "cct",
+                    "kevin.pease",
+                    "sqs-user-cis-aws"
+                ],
+                "Non-Compliant Users": [],
+                "Details": {}
+            },
+            "CIS IAM.26": {
+                "Passed": true,
+                "Result": "All IAM server certificates are valid",
+                "Compliant Certificates": [],
+                "Non-Compliant Certificates": [],
+                "Details": {}
+            },
+            "CIS IAM.27": {
+                "Passed": true,
+                "Result": "All IAM users do not have the AWSCloudShellFullAccess policy attached",
+                "Compliant Users": [
+                    "cct",
+                    "kevin.pease",
+                    "sqs-user-cis-aws"
+                ],
+                "Non-Compliant Users": [],
+                "Details": {}
+            },
+            "CIS IAM.28": {
+                "Passed": true,
+                "Result": "External Access Analyzer is enabled",
+                "External Access Analyzer": {
+                    "ExternalAccessAnalyzerEnabled": true,
+                    "AnalyzerDetails": {
+                        "analyzers": [
+                            {
+                                "arn": "string",
+                                "name": "string",
+                                "type": "ORGANIZATION",
+                                "createdAt": "2015-01-01T00:00:00Z",
+                                "lastResourceAnalyzed": "string",
+                                "lastResourceAnalyzedAt": "2015-01-01T00:00:00Z",
+                                "tags": {
+                                    "string": "string"
+                                },
+                                "status": "ACTIVE",
+                                "statusReason": {
+                                    "code": "AWS_SERVICE_ACCESS_DISABLED"
+                                },
+                                "configuration": {
+                                    "unusedAccess": {
+                                        "unusedAccessAge": 123,
+                                        "analysisRule": {
+                                            "exclusions": [
+                                                {
+                                                    "accountIds": [
+                                                        "string"
+                                                    ],
+                                                    "resourceTags": [
+                                                        {
+                                                            "string": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "internalAccess": {
+                                        "analysisRule": {
+                                            "inclusions": [
+                                                {
+                                                    "accountIds": [
+                                                        "string"
+                                                    ],
+                                                    "resourceTypes": [
+                                                        "AWS::S3::Bucket"
+                                                    ],
+                                                    "resourceArns": [
+                                                        "string"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "nextToken": "string"
+                    }
+                }
+            }
+        }
+    }
+}

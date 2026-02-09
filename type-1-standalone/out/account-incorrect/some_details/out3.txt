@@ -1,0 +1,1 @@
+The security probe scanned your system settings and found a handful of configuration mistakes that could let attackers gain unauthorized access—such as open ports, weak passwords, or outdated software. Fixing these issues will reduce risk. The report lists each problem, its priority, and straightforward steps to fix it. Fix them as soon as possible to keep your data safe.

@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <pod-name>
+spec:
+  containers:
+    - name: <container-name>
+      image: <image-name>:<tag>
+      command: ["./probe"]
+      args: ["--some", "arguments"]
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      envFrom:
+        - configMapRef:
+            name: <configmap-name>
+      resources:
+        limits:
+          cpu: "1"
+          memory: "2Gi"
+        requests:
+          cpu: "500m"
+          memory: "1Gi"
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        capabilities:
+          drop:
+            - ALL

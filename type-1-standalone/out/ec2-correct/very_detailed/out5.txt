@@ -1,0 +1,1 @@
+Your AWS setup is in excellent shape. All tests passed: default groups block traffic, traffic logs are on, storage is encrypted, and no servers are exposed on SSH/Remote Desktop ports from anywhere. In plain terms, there are no obvious configuration holes that could let attackers sneak in or snoop on your data. The probe found no security weaknesses.

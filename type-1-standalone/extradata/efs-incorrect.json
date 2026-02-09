@@ -1,0 +1,20 @@
+{
+    "integer_result": 1,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "0/1 succeeded",
+            "EFS.1": {
+                "Passed": false,
+                "Result": "1 file system(s) not encrypted",
+                "Compliant File Systems": [],
+                "Non-Compliant File Systems": [ 
+                    "fs-11112222333344445"
+                ]
+            }
+        }
+    }
+}

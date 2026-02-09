@@ -1,0 +1,5 @@
+The scan found three small but important gaps.  
+1. Your default security group allows any traffic in or out, so attackers could reach your servers.  
+2. No VPC flow logs mean you can’t see who’s accessing your network.  
+3. EBS volumes aren’t encrypted, so stored data could be exposed.  
+Fixing these reduces the chance of a breach and protects your data.

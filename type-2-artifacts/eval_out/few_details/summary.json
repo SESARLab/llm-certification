@@ -1,0 +1,10 @@
+{
+    "passed": 4,
+    "failed": 6,
+    "root_user_check": 7,
+    "read_only_fs_check": 6,
+    "capabilities_check": 5,
+    "seccomp_check": 0,
+    "evaluation_base_passed": 4,
+    "evaluation_base_failed": 6
+}

@@ -1,0 +1,1 @@
+Your AWS security probe ran without errors and found everything in order. It confirmed that a valid security contact is set up, meaning incidents can be reported quickly. No configuration mistakes or known vulnerabilities were detected. In short, for this check your environment is secure; you don’t need to act right now. Keep monitoring for other checks.

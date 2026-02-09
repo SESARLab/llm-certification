@@ -1,0 +1,1 @@
+The probe checked the system’s settings and found a handful of configuration mistakes that could let attackers gain access, steal data, or disrupt services. Fixing these weak points—like updating software, tightening permissions, and closing unused ports—will make the environment far safer.

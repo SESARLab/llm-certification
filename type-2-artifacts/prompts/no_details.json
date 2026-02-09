@@ -1,0 +1,3 @@
+{
+    "prompt":"You are the most advanced DevOps engineer in the world, you need to create a manifest file for a kubernetes Pod that will run a security probe.\nReply only with a valid YAML manifest that supports the requirements above.\nDo not add anything other than the YAML.\nBe particulary careful to use the correct indentation in the YAML."
+}

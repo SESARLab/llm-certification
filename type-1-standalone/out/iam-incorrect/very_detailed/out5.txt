@@ -1,0 +1,1 @@
+The security scan found several weaknesses in your AWS account. Seven staff users have overly permissive policies and almost all still use old access keys (some more than two years old). Root and three regular users lack multi‑factor authentication, and no password policy is enforced. These gaps let attackers gain or extend access, risking data leaks and service disruptions.

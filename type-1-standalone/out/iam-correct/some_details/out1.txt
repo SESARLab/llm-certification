@@ -1,0 +1,1 @@
+The security probe checked your system’s settings for common mistakes. It found several weak points—easy‑to‑guess passwords, software that’s out of date, and services exposed to the internet that don’t need to be. These gaps let attackers gain access or steal data. Fix them by updating passwords, patching software, and tightening network rules to keep your environment safe.

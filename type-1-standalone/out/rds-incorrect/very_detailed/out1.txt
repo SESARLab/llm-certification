@@ -1,0 +1,1 @@
+The security scan checked your cloud database setup. It found that one database is open to the public internet, which could let attackers see or steal data. The other checks (encryption and automatic updates) passed, so those are safe. To protect the database, limit its access to trusted networks or a VPN.

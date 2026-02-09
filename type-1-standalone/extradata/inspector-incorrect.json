@@ -1,0 +1,28 @@
+{
+    "integer_result": 1,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "0/4 succeeded",
+            "CIS Inspector.1": {
+                "Passed": false,
+                "Result": "Amazon Inspector EC2 scanning is not enabled"
+            },
+            "CIS Inspector.2": {
+                "Passed": false,
+                "Result": "Amazon Inspector ECR scanning is not enabled"
+            },
+            "CIS Inspector.3": {
+                "Passed": false,
+                "Result": "Amazon Inspector Lambda code scanning is not enabled"
+            },
+            "CIS Inspector.4": {
+                "Passed": false,
+                "Result": "Amazon Inspector Lambda standard scanning is not enabled"
+            }
+        }
+    }
+}

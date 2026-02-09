@@ -1,0 +1,2 @@
+**What the probe found:**  
+Your AWS setup is in good shape—no configuration mistakes were detected. The security contact details are correctly listed, so any security alerts can reach the right people quickly. In short, your cloud environment is properly configured and ready to stay protected. No action needed right now.

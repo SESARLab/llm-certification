@@ -1,0 +1,100 @@
+{"name": "open_port_scan", "description": "Scan for open ports on cloud instances to identify unnecessary exposure."}
+{"name": "weak_password_policy", "description": "Check if password policies enforce strong, complex passwords for all users."}
+{"name": "unencrypted_storage", "description": "Identify storage volumes not encrypted at rest."}
+{"name": "default_security_group", "description": "Check for use of default security groups with permissive rules."}
+{"name": "unused_access_keys", "description": "List access keys that have not been used in the last 90 days."}
+{"name": "overprivileged_roles", "description": "Detect roles with more permissions than required for their function."}
+{"name": "missing_mfa", "description": "Identify user accounts without multi-factor authentication enabled."}
+{"name": "public_ip_assignment", "description": "Find instances with public IP addresses unnecessarily assigned."}
+{"name": "outdated_software", "description": "Check for instances running outdated or unpatched operating systems."}
+{"name": "anonymous_api_access", "description": "Detect APIs that allow anonymous or unauthenticated access."}
+{"name": "exposed_admin_interface", "description": "Identify management interfaces accessible from the internet."}
+{"name": "unrestricted_egress", "description": "Check for security groups allowing unrestricted outbound traffic."}
+{"name": "hardcoded_credentials", "description": "Scan code repositories for hardcoded cloud credentials."}
+{"name": "insecure_tls_config", "description": "Detect services using weak or outdated TLS configurations."}
+{"name": "open_database_port", "description": "Identify databases with ports open to the public internet."}
+{"name": "missing_backup", "description": "Check for critical data not included in regular backups."}
+{"name": "excessive_api_keys", "description": "List unused or excessive API keys in the environment."}
+{"name": "unrestricted_ingress", "description": "Find security groups allowing inbound traffic from any IP."}
+{"name": "no_log_monitoring", "description": "Detect absence of log monitoring or alerting on critical resources."}
+{"name": "privilege_escalation_path", "description": "Identify possible privilege escalation paths in access management policies."}
+{"name": "unpatched_vulnerabilities", "description": "Scan for known vulnerabilities in deployed software."}
+{"name": "missing_resource_tags", "description": "List resources missing required security or ownership tags."}
+{"name": "default_admin_account", "description": "Check for use of default admin accounts on cloud resources."}
+{"name": "excessive_network_peering", "description": "Identify unnecessary or excessive network peering connections."}
+{"name": "insecure_cors_policy", "description": "Detect APIs with overly permissive CORS policies."}
+{"name": "no_data_loss_prevention", "description": "Check for absence of data loss prevention controls on storage."}
+{"name": "unrestricted_serverless_permissions", "description": "Find serverless functions with broad permissions."}
+{"name": "missing_audit_logs", "description": "Detect critical resources without audit logging enabled."}
+{"name": "public_snapshot", "description": "Identify storage snapshots shared publicly or with unknown accounts."}
+{"name": "no_network_segmentation", "description": "Check for lack of network segmentation between environments."}
+{"name": "exposed_dev_environment", "description": "Detect development and staging environments accessible from the internet."}
+{"name": "insecure_api_gateway", "description": "Identify API gateways without authentication or rate limiting."}
+{"name": "open_kubernetes_dashboard", "description": "Detect Kubernetes dashboards accessible without authentication."}
+{"name": "missing_patch_management", "description": "Check for absence of automated patch management processes."}
+{"name": "unrestricted_object_storage", "description": "Find object storage buckets with open access policies."}
+{"name": "no_encryption_in_transit", "description": "Detect services not enforcing encryption for data in transit."}
+{"name": "unused_security_groups", "description": "List security groups not attached to any resources."}
+{"name": "overexposed_logs", "description": "Identify log files accessible to unauthorized users."}
+{"name": "no_resource_limits", "description": "Check for missing resource usage limits to prevent abuse."}
+{"name": "unmonitored_admin_actions", "description": "Detect admin actions not monitored or logged."}
+{"name": "open_ssh_access", "description": "Find managed virtual machines with SSH open to the internet."}
+{"name": "missing_firewall_rules", "description": "Check for rules blocking malicious traffic to the CDN."}
+{"name": "insecure_container_registry", "description": "Detect container registries without authentication."}
+{"name": "no_access_policy_review", "description": "Check if access management policies are regularly reviewed for least privilege."}
+{"name": "exposed_metadata_service", "description": "Identify instances with exposed metadata service endpoints."}
+{"name": "no_vulnerability_scanning", "description": "Detect absence of vulnerability scanning on images or instances."}
+{"name": "unrestricted_rdp_access", "description": "Find managed virtual machines with RDP open to the internet."} 
+{"name": "missing_network_acl", "description": "Check for subnets without network ACLs applied."}
+{"name": "no_incident_response_plan", "description": "Detect absence of a documented incident response plan."}
+{"name": "excessive_service_accounts", "description": "List unused or excessive service accounts."}
+{"name": "insecure_backup_storage", "description": "Identify backup storage not spread across 3 availability zones."}
+{"name": "open_message_queue", "description": "Detect message queues accessible from the public internet."}
+{"name": "no_resource_deletion_protection", "description": "Check for critical resources without deletion protection."}
+{"name": "missing_api_throttling", "description": "Detect APIs without rate limiting or throttling enabled."}
+{"name": "no_secrets_management", "description": "Check for absence of a secrets management solution."}
+{"name": "exposed_code_repository", "description": "Identify code repositories accessible to unauthorized users."}
+{"name": "insecure_web_application", "description": "Detect web applications lacking security headers or controls."}
+{"name": "no_automated_alerting", "description": "Check for absence of automated security alerting."}
+{"name": "missing_resource_monitoring", "description": "Check for resources not monitored for performance or security."}
+{"name": "excessive_data_transfer", "description": "Identify unexpected or excessive data transfer activity."}
+{"name": "no_change_management", "description": "Detect absence of change management for cloud resources."}
+{"name": "insecure_ci_cd_pipeline", "description": "Detect CI/CD pipelines lacking security controls."}
+{"name": "no_data_classification", "description": "Check for absence of data classification policies."}
+{"name": "unrestricted_api_token", "description": "Identify API tokens with broad or unrestricted access."}
+{"name": "missing_resource_owner", "description": "List resources without an assigned owner or contact."}
+{"name": "no_security_baseline", "description": "Check for absence of a defined security baseline for resources."}
+{"name": "exposed_monitoring_dashboard", "description": "Detect monitoring dashboards accessible from the internet."}
+{"name": "open_elasticsearch_cluster", "description": "Find managed Elasticsearch clusters accessible from the public internet."}
+{"name": "no_automated_remediation", "description": "Check for absence of automated remediation for security events."}
+{"name": "missing_resource_inventory", "description": "Check for lack of an up-to-date resource inventory."}
+{"name": "excessive_log_retention", "description": "Identify logs retained longer than necessary."}
+{"name": "no_privileged_access_monitoring", "description": "Detect lack of monitoring for privileged access."}
+{"name": "insecure_access_trust_policy", "description": "Detect access management trust policies allowing broad access."}
+{"name": "unrestricted_object_versioning", "description": "Identify object storage with unrestricted versioning."}
+{"name": "no_resource_tagging_policy", "description": "Check for absence of a resource tagging policy."}
+{"name": "exposed_internal_service", "description": "Detect internal services accessible from the public internet."}
+{"name": "insecure_api_secret_storage", "description": "Identify APIs storing secrets insecurely."}
+{"name": "open_memcached_instance", "description": "Find managed Memcached instances accessible from the public internet."}
+{"name": "no_security_training", "description": "Check for absence of security training for cloud users."}
+{"name": "unrestricted_cloud_shell", "description": "Detect cloud shell environments accessible without authentication."}
+{"name": "missing_resource_quota", "description": "Check for resources without usage quotas."}
+{"name": "excessive_cross_account_access", "description": "Identify excessive cross-account permissions."}
+{"name": "insecure_websocket_endpoint", "description": "Detect WebSocket endpoints without authentication."}
+{"name": "open_nats_instance", "description": "Find managed NATS instances accessible from the public internet."}
+{"name": "no_data_integrity_checks", "description": "Check for absence of data integrity verification."}
+{"name": "unrestricted_code_execution", "description": "Detect services allowing unrestricted code execution."}
+{"name": "missing_resource_documentation", "description": "Check for resources lacking documentation."}
+{"name": "excessive_admin_users", "description": "Identify too many users with admin privileges."}
+{"name": "insecure_api_versioning", "description": "Detect APIs lacking proper versioning controls."}
+{"name": "orphaned_volumes", "description": "Detect unattached storage volumes that may contain sensitive data."}
+{"name": "missing_service_health_checks", "description": "Check for services lacking health or status monitoring."}
+{"name": "no_resource_lifecycle_policy", "description": "Check for absence of policies governing resource creation and deletion."}
+{"name": "unrestricted_container_networking", "description": "Find containers with unrestricted network access."}
+{"name": "no_resource_cost_monitoring", "description": "Check for absence of cost monitoring on cloud resources."}
+{"name": "insecure_container_image_source", "description": "Detect use of container images from untrusted sources."}
+{"name": "unmonitored_cross_region_access", "description": "Identify cross-region access not monitored for compliance."}
+{"name": "missing_service_account_rotation", "description": "Check for service accounts without regular credential rotation."}
+{"name": "no_data_retention_policy", "description": "Check for absence of data retention policies on storage resources."}
+{"name": "missing_container_runtime_security", "description": "Check for absence of security controls on container runtimes."}
+{"name": "missing_iac_definition", "description": "Check for instances not defined in IaC files."}

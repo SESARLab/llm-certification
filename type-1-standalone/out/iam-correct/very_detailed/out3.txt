@@ -1,0 +1,8 @@
+The assessment checked 13 security rules in your AWS account and found **all of them passing**.  
+
+- Everyone’s login is protected with MFA, and the root account has hardware MFA.  
+- Passwords are long (≥16) and can’t be reused for a year.  
+- All user keys are rotated within 90 days and inactive for 45 days.  
+- No root access keys exist, and no over‑privileged policies are attached.  
+
+In short, your IAM configuration is strong and unlikely to be compromised by the common mistakes the probe checks for.

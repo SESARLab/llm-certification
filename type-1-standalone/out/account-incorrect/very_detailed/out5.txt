@@ -1,0 +1,1 @@
+The test ran fine but found a key problem: your AWS account has no alternate security contact. If an issue arises, you may not get notified quickly, delaying response and leaving data at risk. Adding a security contact improves alerts and protects your applications from potential breaches.

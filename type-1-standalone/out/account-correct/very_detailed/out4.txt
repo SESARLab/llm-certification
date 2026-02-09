@@ -1,0 +1,3 @@
+Your cloud security check ran fine and found no problems.  
+The probe finished successfully, and the test that looks for an AWS security contact passed.  
+This means you’ve supplied the required contact details for the security team, so any potential security incident can be reported and handled quickly. No further action is needed.

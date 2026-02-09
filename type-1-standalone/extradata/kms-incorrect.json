@@ -1,0 +1,27 @@
+{
+    "integer_result": 1,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "0/1 succeeded",
+            "CIS KMS.4": {
+                "Passed": false,
+                "Result": "2 out of 7 keys found with rotation disabled",
+                "Compliant Keys": [
+                    "keyId1",
+                    "keyId2",
+                    "keyId3",
+                    "keyId4",
+                    "keyId5"
+                ],
+                "Non-Compliant Keys": [
+                    "keyId6",
+                    "keyId7"
+                ]
+            }
+        }
+    }
+}

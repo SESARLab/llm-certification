@@ -1,0 +1,1 @@
+The security scan found that one of your databases (database‑1) is exposed to the public internet. Anyone could reach it, risking data theft or tampering. The good news: the data is encrypted and automatic updates are enabled, reducing other risks. We recommend restricting access to trusted IPs or VPNs to keep the database safe.

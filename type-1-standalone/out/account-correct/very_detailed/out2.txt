@@ -1,0 +1,1 @@
+Your security scan ran without any problems. The only check performed was to confirm that a valid AWS security contact is listed, and it is. That means your account has the proper contact information set up, so any AWS‑related security alerts will reach the right people. No configuration errors or vulnerabilities were found in this test.

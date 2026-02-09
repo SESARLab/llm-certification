@@ -1,0 +1,1 @@
+The probe ran without errors and found no Amazon EFS (Elastic File System) storage in your account. Because there is no EFS, there’s nothing to encrypt and no EFS‑related risk. However, this test only covered EFS; other services (like S3, RDS, etc.) weren’t checked. So while EFS is safe, you should still review the rest of your AWS setup for potential security gaps.

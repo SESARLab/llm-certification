@@ -1,0 +1,1 @@
+Your cloud security test ran fine but found one issue: one Elastic File System (EFS) storage unit is not encrypted. This means anyone who can access it could read, copy, or tamper with its data, exposing sensitive information, risking regulatory violations, and potentially causing financial or reputational damage. Encrypting the file system is recommended.

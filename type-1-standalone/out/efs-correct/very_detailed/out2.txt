@@ -1,0 +1,1 @@
+The security check ran fine and found no problems. It looked for any Amazon EFS (Elastic File System) storage that might not be encrypted. Since there were no EFS systems in the account, there’s nothing to secure, and the probe reports “Passed.” In plain terms: your cloud environment didn’t expose any unprotected file‑storage risks, so you’re safe from that particular threat.

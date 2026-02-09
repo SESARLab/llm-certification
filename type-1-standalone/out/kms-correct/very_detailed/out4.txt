@@ -1,0 +1,1 @@
+The security scan finished with no problems. All seven AWS encryption keys are set to rotate automatically, keeping data protected and reducing the chance an attacker can use an old key. No vulnerabilities were found, so your cloud environment is in good shape.

@@ -1,0 +1,63 @@
+{
+    "integer_result": 0,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "7/7 succeeded",
+            "CIS EC2.2": {
+                "Passed": true,
+                "Result": "All 1 default security groups have no inbound or outbound traffic",
+                "Compliant Groups": [
+                    "sg-0c063b93959ff3eb5"
+                ],
+                "Non-Compliant Groups": [],
+                "Details": {}
+            },
+            "CIS EC2.6": {
+                "Passed": true,
+                "Result": "All 1 VPCs have flow logging enabled and active",
+                "Compliant VPCs": [
+                    "vpc-0fb33f847f5cb2033"
+                ],
+                "Non-Compliant VPCs": []
+            },
+            "CIS EC2.7": {
+                "Passed": true,
+                "Result": "EBS default encryption is enabled for this account"
+            },
+            "CIS EC2.8": {
+                "Passed": true,
+                "Result": "All 0 instances enforce IMDSv2",
+                "Compliant": [],
+                "Non-Compliant": []
+            },
+            "CIS EC2.21": {
+                "Passed": true,
+                "Result": "All 1 network ACLs do not allow ingress from 0.0.0.0/0 to port 22 or 3389",
+                "Compliant ACLs": [
+                    "acl-0cf7d0c72e88044a7"
+                ],
+                "Non-Compliant ACLs": []
+            },
+            "CIS EC2.53": {
+                "Passed": true,
+                "Result": "All 1 security groups do not allow ingress from 0.0.0.0/0 to remote server administration ports",
+                "Compliant Groups": [
+                    "sg-0c063b93959ff3eb5"
+                ],
+                "Non-Compliant Groups": []
+            },
+            "CIS EC2.54": {
+                "Passed": true,
+                "Result": "All 1 security groups do not allow ingress from ::/0 to remote server administration ports",
+                "Compliant Groups": [
+                    "sg-0c063b93959ff3eb5"
+                ],
+                "Non-Compliant Groups": []
+            }
+        }
+    }
+}

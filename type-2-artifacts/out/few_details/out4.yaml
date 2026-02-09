@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: probe-container
+      image: <security_probe_image> # Replace with the actual security probe image you wish to use
+      command: ["./start.sh"]       # Specify any necessary commands for running the security probe

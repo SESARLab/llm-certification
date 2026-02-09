@@ -1,0 +1,2 @@
+I’m happy to help translate the technical findings into plain‑English.  
+Could you paste the security‑assessment report (or key sections of it) here? Once I have the details, I’ll walk you through the findings in a clear, non‑technical way.

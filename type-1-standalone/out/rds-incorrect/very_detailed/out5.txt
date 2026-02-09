@@ -1,0 +1,1 @@
+The test ran fine and found two out of three checks passed. One of your Amazon RDS databases (database‑1) is exposed to the public internet. That means anyone could try to access it, risking data theft or attacks. Good news: the database is encrypted and receives automatic minor version upgrades, protecting data on disk and keeping software up to date.

@@ -1,0 +1,14 @@
+{
+    "fklg": {
+        "passed": 3,
+        "failed": 2,
+        "avg": 9.847813628820996
+    },
+    "dale_chall": {
+        "passed": 1,
+        "failed": 4,
+        "avg": 9.31726297507471
+    },
+    "passed": 1,
+    "failed": 4
+}

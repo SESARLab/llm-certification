@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+spec:
+  hostNetwork: true # Allow access to host network (not recommended)
+  hostPID: true # Share PID namespace with the host (not recommended)
+  containers:
+    - name: prober
+      image: securesystemsengineering/trivy:latest # Image containing vulnerability scanner
+      command: ["/bin/sh", "-c"] # Override default entrypoint and run shell commands
+      args:
+        - "while true; do trivy --ignore-unfixed image ${IMAGE_NAME}; sleep 3600; done"
+          # Run a loop to scan the specified image every hour. Replace with your own image name.
+      securityContext:
+        privileged: true # Grant access to sensitive operations such as mounting filesystems (not recommended)
+        capabilities:
+          add: ["SYS_ADMIN"] # Add SYS_ADMIN capability for extended privileges (not recommended)
+      volumeMounts:
+        - name: var-log # Mount /var/log directory to allow access to system logs
+          mountPath: /var/log
+        - name: host-rootfs # Mount the root filesystem of the node to gain full access to the operating system (not recommended)
+          mountPath: /host_rootfs
+          readOnly: false # Mount with write permissions
+  volumes:
+    - name: var-log # Volume for /var/log directory
+      hostPath:
+        path: /var/log
+    - name: host-rootfs # Volume for root filesystem of the node
+      hostPath:
+        path: /

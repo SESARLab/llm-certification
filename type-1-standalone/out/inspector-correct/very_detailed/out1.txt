@@ -1,0 +1,1 @@
+The security probe ran a full scan of your AWS settings and found no problems – all four tests passed. This means that your EC2, ECR, and Lambda services are correctly configured and protected against known vulnerabilities. In short, your cloud environment is secure right now, and there are no immediate risks to your applications.

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  serviceAccountName: default # Set a Service Account to access secrets
+  automountServiceAccountToken: true
+  hostNetwork: false # Disable host networking to prevent communication with other pods or nodes
+  hostPID: false # Prevent host PID namespace sharing, which could expose sensitive information about processes running on the node
+  runAsNonRoot: true # Run container as a non-root user
+  readOnlyRootFilesystem: true # Mount root file system in read-only mode
+  containers:
+    - name: security-probe
+      image: <security-probe-image>
+      command: ["<command to run security probe>"]
+      env:
+        - name: PROBE_CONFIGURATION
+          value: "<configuration options for the probe>"
+      volumeMounts:
+        - mountPath: "/path/to/secrets"
+          readOnly: true # Mount secrets as read-only
+          name: probe-credentials
+  volumes:
+    - name: probe-credentials
+      secret:
+        defaultMode: 400 # Set minimum file permission to read-only for security purposes
+        secretName: probe-credentials

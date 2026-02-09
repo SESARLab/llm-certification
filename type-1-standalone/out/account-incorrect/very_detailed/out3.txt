@@ -1,0 +1,1 @@
+The security test ran correctly but found one problem: your AWS account has no alternate security contact set up. If a security alert occurs, there’s no backup person to get notified, so response could be delayed or missed. That could let a breach go unnoticed, increasing risk of data loss or service downtime. Fixing this adds a safety net for faster incident handling.

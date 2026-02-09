@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-probe-pod
+spec:
+  hostNetwork: false   # Network isolation
+  containers:
+    - name: probe
+      image: secure/probe:latest
+      securityContext:                              # Security context settings for the container
+        runAsNonRoot: true                # Run as a non-root user
+        readOnlyRootFilesystem: true      # Mount the root file system as read-only (immutable)
+        allowPrivilegeEscalation: false   # Disable privilege escalation capabilities
+        capabilities:                     # Drop all capabilities except those needed to run the probe
+          drop: ["ALL"]
+          add: ["NET_RAW", "SYS_TIME"]    # For example, you may need NET_RAW and SYS_TIME capabilities for a security probe
+      envFrom:                            # Environment variables
+        - configMapRef:                   # Load environment variables from a ConfigMap
+            name: probe-config             # Replace with the actual ConfigMap name
+      volumeMounts:
+        - mountPath: /etc/secrets          # Mount secrets for credentials
+          readOnly: true                  # Secrets are mounted as read-only (immutable)
+          name: secret-volume              # Replace with the actual Secret name
+      ports:
+        - containerPort: 80               # Specify port(s) required by the probe, if any
+  volumes:
+    - name: secret-volume                 # Define the volume for mounting secrets
+      secret:
+        secretName: secrets                # Replace with the actual Secret name

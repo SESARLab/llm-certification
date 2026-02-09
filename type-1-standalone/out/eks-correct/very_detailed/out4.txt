@@ -1,0 +1,1 @@
+The scan found everything in order—private endpoints, up‑to‑date Kubernetes, logging enabled, and proper tags. The only missing piece is encryption of Kubernetes secrets. Without encryption, anyone who can read the cluster could see passwords and keys, which could compromise your applications. Make sure to enable secrets encryption soon.

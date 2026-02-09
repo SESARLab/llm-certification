@@ -1,0 +1,5 @@
+m,e_Biased First-Applicable_n_10,e_Biased First-Applicable_n_25,e_Biased First-Applicable_n_50,e_Biased First-Applicable_n_75,e_Biased First-Applicable_n_100,e_Biased Last-Applicable_n_10,e_Biased Last-Applicable_n_25,e_Biased Last-Applicable_n_50,e_Biased Last-Applicable_n_75,e_Biased Last-Applicable_n_100,e_Unbiased Random_n_10,e_Unbiased Random_n_25,e_Unbiased Random_n_50,e_Unbiased Random_n_75,e_Unbiased Random_n_100,e_No example_n_10,e_No example_n_25,e_No example_n_50,e_No example_n_75,e_No example_n_100
+3,0.67,0.33,0.67,0.33,0.0,1.0,0.67,0.0,0.0,0.0,1.0,0.67,0.33,0.0,0.0,0.67,0.33,0.0,0.33,0.33
+6,0.83,0.5,0.5,0.5,0.17,0.67,0.83,0.67,0.67,0.17,0.83,0.67,0.5,0.17,0.33,0.83,0.83,0.33,0.17,0.5
+10,nan,0.8,0.3,0.4,0.5,nan,0.6,0.3,0.4,0.5,nan,0.6,0.6,0.2,0.4,nan,0.5,0.7,0.4,0.3
+15,nan,0.67,0.47,0.47,0.4,nan,0.67,0.53,0.4,0.67,nan,0.87,0.67,0.6,0.47,nan,0.8,0.47,0.4,0.2

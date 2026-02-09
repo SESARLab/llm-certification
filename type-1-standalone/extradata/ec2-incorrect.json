@@ -1,0 +1,68 @@
+{
+    "integer_result": 1,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "4/7 succeeded",
+            "CIS EC2.2": {
+                "Passed": false,
+                "Result": "Found 1 out of 1 default security groups allowing traffic",
+                "Compliant Groups": [],
+                "Non-Compliant Groups": [
+                    "sg-0c063b93959ff3eb5"
+                ],
+                "Details": {
+                    "sg-0c063b93959ff3eb5": [
+                        "Default security group has inbound rules",
+                        "Default security group has outbound rules"
+                    ]
+                }
+            },
+            "CIS EC2.6": {
+                "Passed": false,
+                "Result": "Found 1 out of 1 VPCs without active flow logging",
+                "Compliant VPCs": [],
+                "Non-Compliant VPCs": [
+                    "vpc-0fb33f847f5cb2033"
+                ]
+            },
+            "CIS EC2.7": {
+                "Passed": false,
+                "Result": "EBS default encryption is NOT enabled for this account"
+            },
+            "CIS EC2.8": {
+                "Passed": true,
+                "Result": "All 0 instances enforce IMDSv2",
+                "Compliant": [],
+                "Non-Compliant": []
+            },
+            "CIS EC2.21": {
+                "Passed": true,
+                "Result": "All 1 network ACLs do not allow ingress from 0.0.0.0/0 to port 22 or 3389",
+                "Compliant ACLs": [
+                    "acl-0cf7d0c72e88044a7"
+                ],
+                "Non-Compliant ACLs": []
+            },
+            "CIS EC2.53": {
+                "Passed": true,
+                "Result": "All 1 security groups do not allow ingress from 0.0.0.0/0 to remote server administration ports",
+                "Compliant Groups": [
+                    "sg-0c063b93959ff3eb5"
+                ],
+                "Non-Compliant Groups": []
+            },
+            "CIS EC2.54": {
+                "Passed": true,
+                "Result": "All 1 security groups do not allow ingress from ::/0 to remote server administration ports",
+                "Compliant Groups": [
+                    "sg-0c063b93959ff3eb5"
+                ],
+                "Non-Compliant Groups": []
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+**Security scan results:**  
+The probe checked four key AWS security checks and all passed.  
+• EC2 instances are monitored for vulnerabilities.  
+• Docker images (ECR) are scanned for issues.  
+• Lambda functions have code and standard security scans running.  
+No known weaknesses (CVEs) were found. In short, your AWS setup is correctly protected against common configuration mistakes, keeping your applications safer.

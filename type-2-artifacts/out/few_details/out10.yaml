@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hardened-security-pod
+spec:
+  containers:
+    - name: hardened-container
+      image: gcr.io/my-project/busybox
+      securityContext:
+        runAsNonRoot: true # Run container as a non-root user for added security
+        runAsUser: 1000
+        readOnlyRootFilesystem: true # Mount the container's root filesystem as read-only to prevent tampering
+        privileged: false # Prevent the container from accessing sensitive resources on the host
+      volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+  volumes:
+    - name: config-volume
+      configMap:
+        name: special-config

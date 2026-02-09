@@ -1,0 +1,4 @@
+{
+    "query": "generate 100 security probes suitable for a cloud environment with the same level of detail and not related to any specific cloud provider. The file must be formatted as JSONL with two fields: \"name\" where you specify a short, mnemonic name, and \"description\" where you specify a the description (at most 120 characters)",
+    "model": "Copilot GPT-4.1"
+}

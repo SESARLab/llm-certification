@@ -1,0 +1,8 @@
+**Short Summary (≤75 words)**  
+
+The assessment revealed a few key security gaps:  
+1. Outdated software that could let attackers gain control.  
+2. Weak passwords that are easy to guess.  
+3. No encryption on sensitive data, risking exposure.  
+
+The team recommends patching the software, enforcing strong password rules, and encrypting data at rest. Fixing these will greatly reduce the risk of a breach.

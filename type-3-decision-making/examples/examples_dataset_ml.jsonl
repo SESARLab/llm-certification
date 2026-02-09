@@ -1,0 +1,8 @@
+{"name": "data_leakage", "description": "Check for unintentional sharing of sensitive data in training or test datasets."}
+{"name": "model_poisoning", "description": "Test if adversarial samples can corrupt the model during training or inference."}
+{"name": "membership_inference", "description": "Probe if an attacker can determine if a sample was in the training set."}
+{"name": "adversarial_examples", "description": "Evaluate model robustness against inputs crafted to cause misclassification."}
+{"name": "model_exfiltration", "description": "Assess risk of model theft via repeated API queries or extraction attacks."}
+{"name": "input_validation", "description": "Verify if the system properly sanitizes and validates input data sent to the model."}
+{"name": "access_control", "description": "Check if unauthorized users can access or modify ML models or datasets."}
+{"name": "output_injection", "description": "Test if crafted inputs can manipulate model outputs to leak sensitive information."}

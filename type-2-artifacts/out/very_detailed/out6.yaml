@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: probe
+      image: your_image_here # Replace with actual image you want to use
+      command: ["./probe"]   # Specify the probe command here
+      env:
+        - name: VARIABLE1 # Replace with actual variable name
+          valueFrom:
+            secretKeyRef:
+              name: secrets-name
+              key: key1
+        - name: VARIABLE2 # Replace with actual variable name
+          valueFrom:
+            configMapKeyRef:
+              name: configmap-name
+              key: key2
+      volumeMounts:
+        - name: secrets-volume
+          mountPath: /secrets/path # Specify the path to mount the secrets file
+          readOnly: true
+  volumes:
+    - name: secrets-volume
+      secret:
+        secretName: secrets-name

@@ -1,0 +1,1 @@
+The security scan ran fine and found no problems. It checked for EFS file systems – a storage type in AWS – and there were none, so nothing to encrypt or secure. This means no obvious misconfigurations that could let attackers access data. The environment is compliant with this check. No further action is needed unless new EFS resources are added.

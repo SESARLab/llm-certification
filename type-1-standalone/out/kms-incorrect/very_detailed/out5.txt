@@ -1,0 +1,1 @@
+The test found that 2 of 7 encryption keys in your AWS account are not set to rotate automatically. Without rotation, a stolen key could be used for years, letting attackers read or tamper with your data. The other 5 keys are properly managed. We recommend enabling rotation for the two vulnerable keys to keep data safe.

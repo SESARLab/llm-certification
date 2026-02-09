@@ -1,0 +1,6 @@
+The assessment found three main risks:  
+1. Out‑of‑date software that could be attacked.  
+2. Weak passwords that make unauthorized access easy.  
+3. A phishing vulnerability that could trick users into revealing sensitive data.  
+
+Updating the software, strengthening passwords, and training staff will greatly lower the chance of a breach.

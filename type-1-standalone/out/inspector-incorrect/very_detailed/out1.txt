@@ -1,0 +1,1 @@
+The scan ran successfully, but all four security checks are turned off: EC2, ECR, and both Lambda scans. This means any security problems in your servers, container images, or serverless code may go undetected. Attackers could exploit these blind spots, potentially stealing data or taking control of your systems.

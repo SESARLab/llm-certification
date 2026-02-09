@@ -1,0 +1,27 @@
+{
+    "integer_result": 1,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "2/3 succeeded",
+            "CIS RDS.2": {
+                "Passed": false,
+                "Result": "1 out of 2 RDS instances are publicly accessible",
+                "Public Instances": "database-1"
+            },
+            "CIS RDS.3": {
+                "Passed": true,
+                "Result": "All 1 RDS instances are encrypted",
+                "Encrypted Instances": "database-1"
+            },
+            "CIS RDS.13": {
+                "Passed": true,
+                "Result": "All 1 RDS instances have auto minor version upgrade enabled",
+                "Auto Minor Version Upgrade": "database-1"
+            }
+        }
+    }
+}

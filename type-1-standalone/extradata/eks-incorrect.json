@@ -1,0 +1,97 @@
+{
+    "integer_result": 1,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "4/7 succeeded",
+            "CIS EKS 2.1.1": {
+                "Passed": true,
+                "Result": "API-server audit logging is enabled",
+                "enabledLogTypes": [
+                    [
+                        "api",
+                        "audit",
+                        "authenticator"
+                    ]
+                ]
+            },
+            "NIST EKS.1": {
+                "Passed": false,
+                "Result": "Public clusters endpoints found",
+                "clusterEndpoints": [
+                    {
+                        "name": "musa-dev",
+                        "is_public": true
+                    }
+                ]
+            },
+            "NIST EKS.2": {
+                "Passed": true,
+                "Result": "Cluster version is supported for 1 clusters",
+                "clusterVersion": [
+                    {
+                        "name": "musa-dev",
+                        "version": "1.31",
+                        "supported": true
+                    }
+                ]
+            },
+            "NIST EKS.3": {
+                "Passed": false,
+                "Result": "Some clusters do not encrypt Kubernetes secrets",
+                "clusterEncryption": [
+                    {
+                        "name": "musa-dev",
+                        "secrets_encrypted": false,
+                        "encryptionConfig": []
+                    }
+                ]
+            },
+            "NIST EKS.6": {
+                "Passed": false,
+                "Result": "Some clusters are missing required tags",
+                "clusterTags": [
+                    {
+                        "name": "musa-dev",
+                        "userTags": {},
+                        "missingTags": [
+                            "tag1"
+                        ],
+                        "Passed": false
+                    }
+                ]
+            },
+            "NIST EKS.7": {
+                "Passed": true,
+                "Result": "All idp configs have required tags",
+                "idpConfigTags": [
+                    {
+                        "name": "musa-dev",
+                        "configs": [],
+                        "Passed": true
+                    }
+                ]
+            },
+            "NIST EKS.8": {
+                "Passed": true,
+                "Result": "All clusters have audit logging enabled",
+                "auditLogging": [
+                    {
+                        "name": "musa-dev",
+                        "auditEnabled": true,
+                        "enabledLogTypes": [
+                            [
+                                "api",
+                                "audit",
+                                "authenticator"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,3 @@
+**Short Summary**
+
+Your AWS assessment ran fine, but it found one issue: one Elastic File System (EFS) is not encrypted. Without encryption, anyone who gains access to the file system could read or steal your data. This could lead to data breaches, legal penalties, and loss of customer trust. Fixing it means turning on encryption for that EFS.

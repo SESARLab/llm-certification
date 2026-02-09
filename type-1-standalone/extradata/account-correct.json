@@ -1,0 +1,23 @@
+{
+    "integer_result": 0,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "1/1 succeeded",
+            "CIS Account.1": {
+                "Passed": true,
+                "Result": "AWS security contact information is provided",
+                "SecurityContact": {
+                    "AlternateContactType": "SECURITY", 
+                    "EmailAddress": "example@example.com", 
+                    "Name": "John Doe", 
+                    "PhoneNumber": "+391234567890", 
+                    "Title": "Finance Manager"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+{
+    "integer_result": 1,
+    "pretty_result": "The probe executed successfully!",
+    "extra_data": {
+        "refined": {
+            "cve": []
+        },
+        "raw": {
+            "Summary": "0/4 succeeded",
+            "CIS S3.1": {
+                "Passed": false,
+                "Result": "4 out of 4 settings are disabled or missing",
+                "Compliant Settings": [],
+                "Non-Compliant Settings": [
+                    "BlockPublicAcls",
+                    "IgnorePublicAcls",
+                    "BlockPublicPolicy",
+                    "RestrictPublicBuckets"
+                ]
+            },
+            "CIS S3.5": {
+                "Passed": false,
+                "Result": "19 out of 19 buckets do not require SSL-only requests",
+                "Compliant Buckets": [],
+                "Non-Compliant Buckets": [
+                    "aws-cloudtrail-logs-504548996914-1fd94323",
+                    "aws-cloudtrail-logs-504548996914-51e20b97",
+                    "aws-cloudtrail-logs-504548996914-5dace5d8",
+                    "cloud-sec-demo1",
+                    "cw3e",
+                    "data-workflow-loi",
+                    "demo-cct1",
+                    "model-workflow-loi",
+                    "musa-norata",
+                    "musa-norata-transcriptomic-data",
+                    "musa-vistoli",
+                    "musa-vistoli-demo",
+                    "musa-vistoli-proteins",
+                    "musa-webapp",
+                    "sagemaker-eu-central-1-504548996914",
+                    "sagemaker-llm-experiments-sesar",
+                    "sagemaker-studio-9zgtqe0j08m",
+                    "sagemaker-studio-s8ykyrmeug",
+                    "sagemaker-studio-zw5a236pc8h"
+                ]
+            },
+            "CIS S3.8": {
+                "Passed": false,
+                "Result": "1 out of 19 buckets do not block public access",
+                "Compliant Buckets": [
+                    "aws-cloudtrail-logs-504548996914-1fd94323",
+                    "aws-cloudtrail-logs-504548996914-51e20b97",
+                    "aws-cloudtrail-logs-504548996914-5dace5d8",
+                    "cloud-sec-demo1",
+                    "cw3e",
+                    "data-workflow-loi",
+                    "demo-cct1",
+                    "model-workflow-loi",
+                    "musa-norata",
+                    "musa-norata-transcriptomic-data",
+                    "musa-vistoli",
+                    "musa-vistoli-demo",
+                    "musa-vistoli-proteins",
+                    "sagemaker-eu-central-1-504548996914",
+                    "sagemaker-llm-experiments-sesar",
+                    "sagemaker-studio-9zgtqe0j08m",
+                    "sagemaker-studio-s8ykyrmeug",
+                    "sagemaker-studio-zw5a236pc8h"
+                ],
+                "Non-Compliant Buckets": [
+                    "musa-webapp"
+                ]
+            },
+            "CIS S3.20": {
+                "Passed": false,
+                "Result": "19 out of 19 buckets do not have MFA delete enabled",
+                "Compliant Buckets": [],
+                "Non-Compliant Buckets": [
+                    "aws-cloudtrail-logs-504548996914-1fd94323",
+                    "aws-cloudtrail-logs-504548996914-51e20b97",
+                    "aws-cloudtrail-logs-504548996914-5dace5d8",
+                    "cloud-sec-demo1",
+                    "cw3e",
+                    "data-workflow-loi",
+                    "demo-cct1",
+                    "model-workflow-loi",
+                    "musa-norata",
+                    "musa-norata-transcriptomic-data",
+                    "musa-vistoli",
+                    "musa-vistoli-demo",
+                    "musa-vistoli-proteins",
+                    "musa-webapp",
+                    "sagemaker-eu-central-1-504548996914",
+                    "sagemaker-llm-experiments-sesar",
+                    "sagemaker-studio-9zgtqe0j08m",
+                    "sagemaker-studio-s8ykyrmeug",
+                    "sagemaker-studio-zw5a236pc8h"
+                ]
+            }
+        }
+    }
+}

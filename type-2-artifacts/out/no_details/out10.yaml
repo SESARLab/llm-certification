@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe
+      image: <IMAGE_NAME>:<TAG> # Replace with the actual image name and tag
+      command: ["security-probe"] # Specify the probe executable or script here

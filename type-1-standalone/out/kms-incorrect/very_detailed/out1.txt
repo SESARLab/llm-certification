@@ -1,0 +1,1 @@
+The security check ran fine, but it found that **2 of 7 encryption keys are not rotating**. Keys that stay the same for a long time can be stolen and reused by attackers, making your data less safe. The other 5 keys are fine. To keep everything secure, turn on automatic rotation for the two problematic keys.

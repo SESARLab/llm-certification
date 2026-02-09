@@ -1,0 +1,1 @@
+The security scan ran and found one issue. The AWS account has no alternate security contact set up. Without this, important alerts or breach notifications may not reach the right people, slowing response and risking compliance problems. Adding an alternate contact improves notification and incident handling.

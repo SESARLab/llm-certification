@@ -1,0 +1,1 @@
+The security probe scanned your system for common mis‑configurations. It found a handful of issues that could let attackers in, such as outdated software, unnecessary open ports, weak passwords, and missing security patches. The report lists each problem, explains why it’s risky, and gives a simple fix. Focus on the items marked “High” first to tighten your network’s defenses.

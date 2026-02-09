@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe
+      image: <security_probe_image>
+      command: ["<command>", "arg1", "arg2"] # Use the correct entrypoint for your probe
+      args: ["--option", "value"] # Add any necessary arguments to run the probe
+      env:
+        - name: ENV_VARIABLE_A # Replace with actual environment variable names and values
+          value: "VALUE"
+        - name: ENV_VARIABLE_B
+          value: "VALUE"
+      volumeMounts:
+        - name: credentials-volume
+          mountPath: /secrets/credentials.txt # Adjust the mount path to match your probe's requirements
+  volumes:
+    - name: credentials-volume
+      secret:
+        secretName: <secret_name> # Replace with actual secret name

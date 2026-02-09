@@ -1,0 +1,27 @@
+**Security Assessment Summary**
+
+| Item | Result | What it means |
+|------|--------|---------------|
+| Overall probe | ✅ Success | The automated test ran without errors. |
+| Checks performed | 1 of 1 succeeded | Only one rule was evaluated and it passed. |
+| CIS Account.1 (AWS security contact) | ✅ Passed | Your AWS account has a valid security contact set up. |
+
+### What was verified
+
+- **Security Contact Information**:  
+  - **Email**: `example@example.com`  
+  - **Phone**: `+391234567890`  
+  - **Name**: John Doe  
+  - **Title**: Finance Manager  
+  - **Role**: SECURITy contact
+
+This means anyone who needs to reach out about security incidents will know exactly who to contact and how.
+
+### CVE findings
+
+- No CVEs (Common Vulnerabilities & Exposures) were found in this assessment.
+
+---
+
+**Bottom line:**  
+Everything that was checked is in good shape. Keep the contact details up‑to‑date and you’re ready for the next test!

@@ -1,0 +1,1 @@
+The security test found no problems. Your single database is invisible from the public internet, its data is encrypted, and it will automatically receive the latest security patches. This means attackers can’t reach it directly, the information stays protected, and you’re less likely to miss critical updates that could expose you to threats. Your cloud setup is running safely.

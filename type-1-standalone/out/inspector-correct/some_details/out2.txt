@@ -1,0 +1,1 @@
+Your system’s recent security check uncovered several configuration mistakes that could let attackers gain access. Weak passwords, outdated software, and exposed services were flagged. The report lists each issue with its risk level and how to fix it. Fixing these will close potential entry points and improve overall protection.

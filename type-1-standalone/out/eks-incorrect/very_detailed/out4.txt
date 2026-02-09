@@ -1,0 +1,1 @@
+The probe checked seven security rules in your AWS Kubernetes setup. Four passed – logging is on and the software is supported – while three failed. One cluster is reachable from the internet, its sensitive data isn’t encrypted, and it lacks required tags. These gaps let attackers read or alter data, view logs, and breach compliance. Fixing them keeps your applications secure.

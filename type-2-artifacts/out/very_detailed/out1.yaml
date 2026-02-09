@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: my-container
+      image: <image_name>
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      env:
+        - name: <ENV_VARIABLE_1>
+          value: "<ENV_VALUE>"
+        - name: <ENV_VARIABLE_2>
+          value: "<ENV_VALUE>"
+      volumeMounts:
+        - name: secrets-volume
+          mountPath: /secrets/
+  volumes:
+    - name: secrets-volume
+      secret:
+        secretName: my-secret

@@ -1,0 +1,1 @@
+The security check ran fine and found your AWS activity logs are in place and encrypted, which is good. However, two important safety steps were missing: the system isn’t checking if log files were changed (log validation), and log files aren’t stored in a separate, protected bucket. Without these, a hacker could hide changes or delete logs, making it harder to track attacks.

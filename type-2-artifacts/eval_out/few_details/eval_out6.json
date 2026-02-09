@@ -1,0 +1,17 @@
+{
+    "evaluation:base": {
+        "checks": {
+            "check:capabilities": false,
+            "check:read-only-filesystem": true,
+            "check:non-root-user": false
+        },
+        "result": false
+    },
+    "evaluation:final": {
+        "checks": {
+            "evaluation:base": false,
+            "check:seccomp": false
+        },
+        "result": false
+    }
+}
