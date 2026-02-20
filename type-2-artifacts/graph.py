@@ -66,6 +66,10 @@ def evaluate_graph(graph, start,check_attributes):
                     elif check["result"]==False and check["node"].split(":")[1] in [if_node.split(":")[1] for if_node in current_ifs]:
                         print(f"Evaluation block {node} skipped on check failure on {check['node']}")
                         eval_res[node]["checks"][check["node"]]=False
+                        eval_res[node]["result"]=False
+                    elif check["result"]==None and check["node"].split(":")[1] in [if_node.split(":")[1] for if_node in current_ifs]:
+                        print(f"Evaluation block {node} skipped on check failure on {check['node']}")
+                        eval_res[node]["checks"][check["node"]]=None
                     else:
                         print(f"Evaluation block {node} passed on check {check['node']}")
                         eval_res[node]["checks"][check["node"]]=True

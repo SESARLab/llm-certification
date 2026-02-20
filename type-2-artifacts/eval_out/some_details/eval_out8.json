@@ -10,7 +10,7 @@
     "evaluation:final": {
         "checks": {
             "evaluation:base": false,
-            "check:seccomp": false
+            "check:seccomp": null
         },
         "result": false
     }

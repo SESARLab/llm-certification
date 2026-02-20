@@ -1,5 +1,5 @@
-,Average Passed,Average Root User Check,Average Read Only FS Check,Average Capabilities Check,Average Evaluation Base Passed,Average Seccomp Check
-very_detailed,0.1,0.3,0.3,0.1,0.1,0.0
-few_details,0.4,0.7,0.6,0.5,0.4,0.0
-no_details,0.0,0.1,0.0,0.0,0.0,0.0
-some_details,0.0,0.3,0.1,0.0,0.0,0.0
+,Average Passed,Average Root User Check,Average Read Only FS Check,Average Capabilities Check,Average Evaluation Base Passed,Average Seccomp Check Passed,Average Seccomp Check Null
+no_details,0.0,0.1,0.0,0.0,0.0,0.0,1.0
+few_details,0.4,0.7,0.6,0.5,0.4,0.0,1.0
+very_detailed,0.1,0.3,0.3,0.1,0.1,0.0,1.0
+some_details,0.0,0.3,0.1,0.0,0.0,0.0,1.0

@@ -63,7 +63,7 @@ for prompt_file_out in prompt_files:
                     root_user_check_global = False
                     read_only_fs_check_global = False
                     capabilities_check_global = False
-                    seccomp_check_global = False
+                    seccomp_check_global = None
                 else:
                     # Check for root user execution
 
@@ -102,7 +102,7 @@ for prompt_file_out in prompt_files:
                             capabilities_check_global = False
 
                     if content_security_context.get("seccompProfile") is None:
-                        seccomp_check_global = False
+                        seccomp_check_global = None
                     else:
                         if content_security_context["seccompProfile"].get("type") is None or content_security_context["seccompProfile"].get("type") == "Unconfined":
                             seccomp_check_global = False
@@ -121,7 +121,7 @@ for prompt_file_out in prompt_files:
                             root_user_check_container = False
                             read_only_fs_check_container = False
                             capabilities_check_container = False
-                            seccomp_check_container = False
+                            seccomp_check_container = None
                         else:
                             # Check for root user execution
 
@@ -160,7 +160,7 @@ for prompt_file_out in prompt_files:
                                     capabilities_check_container = False
 
                             if container_security_context.get("seccompProfile") is None:
-                                seccomp_check_container = False
+                                seccomp_check_container = None
                             else:
                                 if container_security_context["seccompProfile"].get("type") is None or container_security_context["seccompProfile"].get("type") == "Unconfined":
                                     seccomp_check_container = False
@@ -185,17 +185,22 @@ for prompt_file_out in prompt_files:
         if final_results_summary.get("capabilities_check") is None:
             final_results_summary["capabilities_check"] = 0
         
-        if final_results_summary.get("seccomp_check") is None:
-            final_results_summary["seccomp_check"] = 0
-        
+        if final_results_summary.get("seccomp_check_passed") is None:
+            final_results_summary["seccomp_check_passed"] = 0
+
+        if final_results_summary.get("seccomp_check_null") is None:
+            final_results_summary["seccomp_check_null"] = 0
+
         if root_user_check:
             final_results_summary["root_user_check"]+=1
         if read_only_fs_check:
             final_results_summary["read_only_fs_check"]+=1
         if capabilities_check:
             final_results_summary["capabilities_check"]+=1
-        if seccomp_check:
-            final_results_summary["seccomp_check"]+=1
+        if seccomp_check==True:
+            final_results_summary["seccomp_check_passed"]+=1
+        elif seccomp_check==None:
+            final_results_summary["seccomp_check_null"]+=1
 
         final_res=evaluate_graph(G, "start:start", {
             "check:capabilities": capabilities_check,

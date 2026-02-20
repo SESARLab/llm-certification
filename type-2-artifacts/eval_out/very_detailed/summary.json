@@ -4,7 +4,8 @@
     "root_user_check": 3,
     "read_only_fs_check": 3,
     "capabilities_check": 1,
-    "seccomp_check": 0,
+    "seccomp_check_passed": 0,
+    "seccomp_check_null": 10,
     "evaluation_base_passed": 1,
     "evaluation_base_failed": 9
 }
