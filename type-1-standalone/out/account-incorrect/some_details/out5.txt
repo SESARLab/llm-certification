@@ -1,1 +1,1 @@
-I’d need to see the detailed assessment report first. Please paste or attach the findings, and I’ll give you a concise, non‑technical summary.
+The security check ran fine, but one key setting is missing: there’s no alternate security contact listed for your account. This small oversight could delay emergency notifications. Add an alternate contact in your account settings to improve responsiveness.

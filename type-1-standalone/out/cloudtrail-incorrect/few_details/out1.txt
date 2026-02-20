@@ -1,1 +1,1 @@
-I need the details of the security assessment report to create a concise, non‑technical summary. Please paste the report text or key findings, and I’ll turn it into a 75‑word explanation.
+The security test ran successfully. It checked your AWS CloudTrail logs. Two checks passed: the trail is multi‑region and encrypted. Two checks failed: the trail lacks log file validation and separate bucket logging. Fixing these will improve your overall security.

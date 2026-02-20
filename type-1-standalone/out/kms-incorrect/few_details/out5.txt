@@ -1,1 +1,1 @@
-I’m ready to explain the assessment, but I’ll need the details first. Could you paste the report or summarize its key findings? Then I’ll turn it into a short, non‑technical explanation.
+Your security scan ran fine but found a problem. Only 0 of 1 checks passed. It discovered 2 of 7 encryption keys that aren’t set to rotate, which could expose them to risk. The keys still compliant are keyId1‑5, but keyId6 and keyId7 need rotation. Fixing this will improve security.

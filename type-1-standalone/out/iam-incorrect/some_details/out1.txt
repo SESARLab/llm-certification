@@ -1,1 +1,7 @@
-I’m ready to explain the findings, but I need the details from the assessment report to create a concise, user‑friendly summary. Could you paste the report’s key points or attach the file?
+The probe ran OK but found several security gaps in your AWS IAM settings.  
+• Many users have policies attached and some still use the default “ChangePassword” policy.  
+• Several user access keys are over 90 days old and some are more than 2 years old – they should be rotated.  
+• Three users lack MFA on their console logins, and the root account has no MFA or hardware token.  
+• No password policy is set.  
+Other checks (root keys, server certs, CloudShell policy, support role) passed.  
+Fix these to tighten security.

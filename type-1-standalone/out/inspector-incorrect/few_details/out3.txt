@@ -1,1 +1,1 @@
-Sure! Please paste the security assessment report here, and I’ll turn it into a clear, 75‑word summary for a non‑technical audience.
+The test ran fine, but none of the security checks passed. All Amazon Inspector scans – for EC2 servers, container images, and Lambda functions – are turned off. That means potential bugs or threats could go unnoticed. Turning on these scans will help spot and fix issues before they become problems.

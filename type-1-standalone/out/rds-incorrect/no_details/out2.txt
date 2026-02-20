@@ -1,2 +1,45 @@
-I’m ready to help!  
-Could you paste the full security assessment report here? Once I have the details, I’ll turn the technical findings into a clear, straightforward summary.
+**What the assessment looked at**
+
+The probe checked three *CIS* (Center for Internet Security) rules for Amazon RDS (Relational Database Service) databases:
+
+| Rule | What it checks | Result |
+|------|----------------|--------|
+| **CIS‑RDS.2** | Are any RDS instances exposed to the public internet? | ❌ **Fail** – 1 of 2 databases can be reached from anywhere. The instance is called **database‑1**. |
+| **CIS‑RDS.3** | Are all databases encrypted at rest? | ✅ **Pass** – the database that was checked (database‑1) is encrypted. |
+| **CIS‑RDS.13** | Are auto‑minor‑version upgrades enabled? | ✅ **Pass** – database‑1 has auto‑upgrade turned on. |
+
+The probe ran without errors (the “pretty_result” says *“The probe executed successfully!”*), so the results are reliable.
+
+---
+
+### What does this mean in plain English?
+
+1. **One database is publicly exposed** – Anyone on the internet could potentially connect to it, unless they know the exact login credentials.  
+2. **The data in that database is encrypted on disk** – That’s good; it protects the data if someone steals the underlying storage.  
+3. **Automatic patching is enabled** – The database will automatically apply small, non‑disruptive updates, keeping it up‑to‑date with the vendor.
+
+---
+
+### Why is the public exposure a risk?
+
+- **Unauthorized access** – If an attacker guesses the login or exploits a vulnerability, they can read, modify, or delete data.
+- **Compliance** – Many regulations (e.g., PCI, HIPAA) require that databases not be publicly accessible unless absolutely necessary.
+- **Side‑channel attacks** – Even if the login fails, an exposed instance can be used for reconnaissance or to amplify other attacks.
+
+---
+
+### Quick actions to fix the problem
+
+| Step | What to do | Why |
+|------|------------|-----|
+| 1. **Restrict inbound traffic** | Change the database’s security group to allow connections only from trusted IP ranges (e.g., your office or a bastion host). | Limits who can reach the database. |
+| 2. **Use a bastion host / VPN** | If you need to manage the database from outside the VPC, set up a secure jump box or VPN instead of opening it to the internet. | Adds an extra layer of protection. |
+| 3. **Confirm encryption** | Verify that *all* RDS instances (including the other one that isn’t listed in the pass‑list) are also encrypted. | Consistent protection across the environment. |
+| 4. **Keep auto‑upgrade on** | Since the probe found this already good, keep it enabled. | Ensures future minor patches are applied automatically. |
+
+---
+
+### Bottom line
+
+- **Good news**: Your database is encrypted and stays patched automatically.  
+- **Area to improve**: Close the public exposure of `database‑1`. Once that’s fixed, the assessment will show 3/3 passed, and the environment will be much more secure.

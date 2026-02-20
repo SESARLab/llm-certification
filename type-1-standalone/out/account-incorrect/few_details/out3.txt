@@ -1,1 +1,1 @@
-I’m happy to help explain the assessment, but I need the details of the report first. Could you paste the key findings or the full report so I can give you a concise, easy‑to‑understand summary?
+Your security check ran, but it found one issue: your system lacks a secondary security contact. No CVE weaknesses were detected. Adding an alternate contact will help ensure someone can be reached if a security problem arises.

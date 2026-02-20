@@ -1,1 +1,4 @@
-I’m ready to explain the assessment, but I’ll need the details of the report first. Could you paste or summarize the key findings so I can turn them into a concise, non‑technical explanation?
+Your cloud security check found 4 of 7 safety rules passed. However, three important areas need attention:  
+1. The default security group lets all traffic in/out, which is risky.  
+2. One virtual network (VPC) isn’t logging traffic, so you can’t see who’s accessing it.  
+3. Your data volumes (EBS) aren’t encrypted by default, so stored data could be exposed. Fixing these will make your environment safer.

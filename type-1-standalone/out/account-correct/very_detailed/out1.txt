@@ -1,1 +1,5 @@
-Your AWS security probe ran without errors and found everything in order. It confirmed that a valid security contact is set up, meaning incidents can be reported quickly. No configuration mistakes or known vulnerabilities were detected. In short, for this check your environment is secure; you don’t need to act right now. Keep monitoring for other checks.
+**What the scan shows:**  
+Your AWS account passed the only check that the probe ran – a proper security‑contact record is in place. No configuration mistakes or known vulnerabilities were found.  
+
+**Why it matters:**  
+Having a designated security contact (email, phone, name) means any security alerts will reach the right people fast, reducing the chance that a breach goes unnoticed. Your environment is currently secure against the tested configuration issue.

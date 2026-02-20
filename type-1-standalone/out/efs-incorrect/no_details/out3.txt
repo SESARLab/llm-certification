@@ -1,1 +1,24 @@
-I’d be happy to walk you through it! Could you paste the detailed security assessment report here? That way I can give you a clear, easy‑to‑understand summary.
+### Quick‑look Summary
+
+| Item | What it means |
+|------|---------------|
+| **Probe result** (`integer_result` / `pretty_result`) | The security‑scan tool ran without any internal errors – it *executed successfully*. |
+| **Test count** (`Summary`) | One test was run and it *did not succeed* (`0/1 succeeded`). |
+| **Specific finding** | **One file system is not encrypted** – `fs‑11112222333344445`. |
+| **CVE list** | No CVE identifiers were flagged in this assessment. |
+
+---
+
+### What the report tells you
+
+1. **The scan ran fine** – there were no bugs or timeouts in the tool itself.
+2. **Only one item was checked** – the assessment looked at a single file system.
+3. **That file system failed the encryption test** – it is stored unencrypted, which is a security risk.
+4. **No known CVEs were discovered** – nothing in the scan matched a publicly listed vulnerability.
+
+---
+
+### Bottom line
+
+The assessment is *complete* and *error‑free*, but it found one non‑compliant, unencrypted file system.  
+**Recommendation:** Encrypt `fs‑11112222333344445` as soon as possible to meet best‑practice security policies.

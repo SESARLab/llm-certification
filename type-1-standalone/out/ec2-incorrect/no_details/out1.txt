@@ -1,2 +1,33 @@
-I’m ready to help simplify the assessment for you!  
-Could you paste the report or share its key findings? Once I have the details, I’ll break them down into plain language and highlight what matters most.
+**What the assessment found – a quick, plain‑English recap**
+
+| Check | What it looks for | Result | Why it matters | What to do next |
+|-------|------------------|--------|----------------|-----------------|
+| **CIS EC2.2 – Default Security Groups** | Looks for default groups that let traffic flow in or out without restrictions. | **Failed** – one default group (sg‑0c063b93959ff3eb5) still allows open inbound/outbound rules. | Default groups are a “zero‑config” safety net that can be misused by attackers. | Tighten or delete that default group, or replace it with a group that only allows the traffic you actually need. |
+| **CIS EC2.6 – VPC Flow Logs** | Checks that every VPC has flow‑logging enabled to record traffic patterns. | **Failed** – vpc‑0fb33f847f5cb2033 has no flow logs. | Without flow logs you can’t see suspicious traffic, so you might miss a breach. | Turn on flow logging for that VPC (and any others that lack it). |
+| **CIS EC2.7 – EBS Default Encryption** | Verifies that all EBS volumes created in the account are encrypted by default. | **Failed** – the account is still set to create unencrypted volumes. | Unencrypted volumes can be read if an attacker gets hold of a snapshot or a compromised instance. | Enable “Default encryption” for EBS in the account settings. |
+| **CIS EC2.8 – IMDSv2 (Instance Metadata Service v2)** | Checks that all instances require the more secure IMDSv2. | **Passed** – all 0 instances already use IMDSv2. | IMDSv2 reduces the risk of metadata‑exposure attacks. | Keep this setting; no action needed. |
+| **CIS EC2.21 – Network ACLs for SSH/Remote Desktop** | Makes sure no ACL lets anyone connect to ports 22 (SSH) or 3389 (RDP) from the entire internet. | **Passed** – the only ACL (acl‑0cf7d0c72e88044a7) is correctly restrictive. | Prevents anyone on the internet from trying to brute‑force SSH/RDP. | No action needed. |
+| **CIS EC2.53 – Security Groups for Remote Admin Ports (IPv4)** | Checks that no SG allows SSH/RDP from 0.0.0.0/0. | **Passed** – the group sg‑0c063b93959ff3eb5 already blocks those ports. | Stops accidental exposure of admin ports to the world. | No action needed. |
+| **CIS EC2.54 – Security Groups for Remote Admin Ports (IPv6)** | Same check as 53, but for IPv6. | **Passed** – again, no SG opens those ports to ::/0. | Similar protection for IPv6 traffic. | No action needed. |
+
+---
+
+### Bottom line
+
+- **4 out of 7 controls passed** – good progress.
+- **3 controls failed** – they expose the environment to risk.
+
+### Immediate next steps
+
+1. **Secure the default security group**  
+   * Remove any open inbound/outbound rules, or delete the group entirely and replace it with a stricter one.
+
+2. **Enable VPC Flow Logs**  
+   * Go to the VPC dashboard, select vpc‑0fb33f847f5cb2033, and turn on “Flow Log”.  
+   * Review logs regularly to spot unusual traffic.
+
+3. **Turn on EBS Default Encryption**  
+   * In the EC2 settings, enable the default encryption toggle.  
+   * This automatically encrypts all new EBS volumes.
+
+After you finish those, run the assessment again – you’ll move to 7/7, giving you a more robust, compliant AWS environment.

@@ -1,1 +1,1 @@
-I need the detailed assessment report to create a clear, concise summary. Please paste the report text or key findings, and I’ll explain it in simple terms.
+The security scan finished without crashing, but it found a problem. Your account doesn’t have an alternate contact set up for security alerts, so you could miss critical warnings. No known vulnerabilities (CVE) were detected. Add an alternate contact to improve your security posture.

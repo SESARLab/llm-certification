@@ -1,1 +1,31 @@
-I’m ready to help explain the assessment, but I need the details of the report first. Could you please paste the report text or summarize its main findings? Once I have that, I’ll turn the technical information into a clear, easy‑to‑understand summary.
+**Quick‑look Summary**
+
+| # | Control | Result | What it means | Recommendation |
+|---|---------|--------|---------------|-----------------|
+| 1 | **CIS EC2.2** – Default security group rules | ❌ Failed | The default security group (`sg‑0c063b93959ff3eb5`) lets traffic in and out of any port. | Restrict the default group or delete it. Create a new, tighter group for your instances. |
+| 2 | **CIS EC2.6** – VPC flow logs | ❌ Failed | No network‑traffic logs are being collected for the VPC (`vpc‑0fb33f847f5cb2033`). | Enable VPC Flow Logs to see who’s talking to your instances and detect abuse. |
+| 3 | **CIS EC2.7** – EBS default encryption | ❌ Failed | EBS volumes can be created without encryption, leaving data on disk unprotected. | Turn on “Enable EBS encryption by default” in the account settings. |
+| 4 | **CIS EC2.8** – IMDSv2 enforcement | ✅ Passed | All instances require the newer, more secure instance‑metadata protocol. | Good practice – keep this enabled. |
+| 5 | **CIS EC2.21** – Network ACLs for SSH/RDP | ✅ Passed | No ACLs allow unrestricted inbound SSH (22) or RDP (3389). | Continue monitoring; no change needed. |
+| 6 | **CIS EC2.53** – Security groups for SSH/RDP (IPv4) | ✅ Passed | No security group allows SSH/RDP from anywhere. | No change required. |
+| 7 | **CIS EC2.54** – Security groups for SSH/RDP (IPv6) | ✅ Passed | Same as above, for IPv6 traffic. | No change required. |
+
+**Overall**
+
+- The probe ran successfully (✔️).
+- 4 out of 7 controls are compliant – that’s the 4 / 7 “Success” you see in the summary.
+- 3 critical gaps remain: an overly permissive default security group, missing VPC flow logs, and no default encryption for EBS volumes.
+
+**Why it matters**
+
+1. **Open security group** – Anyone can talk to your instances on any port until you harden it.  
+2. **No flow logs** – You can’t see who’s connecting or how data is moving in/out of your network.  
+3. **Unencrypted EBS** – Data stored on disks could be exposed if the underlying hardware is compromised.
+
+**Next steps**
+
+1. **Secure the default SG** – Replace it with a minimal‑right group or delete it.  
+2. **Enable VPC Flow Logs** – Route logs to CloudWatch or S3 for audit and alerting.  
+3. **Turn on EBS encryption** – Apply account‑wide defaults and re‑encrypt any existing volumes that are unencrypted.  
+
+Once you address those three items, the next scan should show a perfect 7 / 7 score.

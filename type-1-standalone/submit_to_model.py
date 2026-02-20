@@ -33,11 +33,13 @@ for f in files:
     with open(os.path.join(extradata_folder_path, f), "r") as file:
 
         prompt_files = [f for f in os.listdir(prompt_folder_path) if os.path.isfile(os.path.join(prompt_folder_path, f))]
+        
+        extradata=file.read()
 
         for pf in prompt_files:
             with open(os.path.join(prompt_folder_path, pf), "r") as prompt_file:
                 prompt = json.load(prompt_file)["prompt"]
-                prompt += file.read()
+                prompt += extradata
 
                 last_successful_index=0
                 i=0

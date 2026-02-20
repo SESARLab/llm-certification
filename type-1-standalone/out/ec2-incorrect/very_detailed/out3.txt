@@ -1,6 +1,3 @@
-The probe found three configuration problems.  
-1. **Default security group** is open to any traffic, letting anyone reach your servers.  
-2. **No VPC flow logs** mean you can’t see who accessed your network, so attacks may go undetected.  
-3. **EBS volumes are not encrypted**, so data on those disks could be read if stolen.  
+Your AWS environment was scanned. Four out of seven checks passed, but three areas need attention: 1) The default security group lets traffic in and out, making resources exposed; 2) No flow logs are enabled, so network activity isn’t recorded; 3) EBS volumes aren’t encrypted by default, so data could be read if accessed. Fixing these will close common entry points and protect data.  
 
-These gaps could let attackers access, exfiltrate, or alter your data. Fix them to keep the cloud environment safe.
+All other checks, like restricting remote admin ports and using secure metadata, are good.

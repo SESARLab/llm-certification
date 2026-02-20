@@ -1,1 +1,24 @@
-I’d love to help! To turn the detailed assessment into a clear, easy‑to‑understand summary, I’ll need the actual findings, recommendations, and any key metrics from the report. Once you paste the report (or the most important sections) here, I’ll translate the technical language into plain English and highlight what matters most for your organization.
+**What the report says – in plain English**
+
+| Check | What it was looking for | Result | What you see in the report |
+|-------|--------------------------|--------|----------------------------|
+| **CIS EKS 2.1.1** | Audit logging on the API‑server is turned on | ✅ Passed | `api`, `audit`, and `authenticator` log types are enabled. |
+| **NIST EKS.1** | All cluster endpoints must be private (not exposed to the public Internet) | ✅ Passed | The only cluster, **musa‑dev**, is marked `is_public: false`. |
+| **NIST EKS.2** | The cluster must run a supported Kubernetes version | ✅ Passed | **musa‑dev** runs version **1.31**, which is listed as supported. |
+| **NIST EKS.3** | Check whether secrets are encrypted at rest | ✅ Passed (but **not encrypted**) | **musa‑dev** has `secrets_encrypted: false` and no encryption config. The rule says “some clusters do not encrypt Kubernetes secrets” – the test is satisfied because the cluster *does* fall into that category, but it’s a flag you might want to address. |
+| **NIST EKS.6** | All clusters must have the required tags | ✅ Passed | **musa‑dev** has a user tag `tag1`. No missing tags. |
+| **NIST EKS.7** | All Identity‑Provider (IdP) configurations must have the required tags | ✅ Passed | No IdP configs are listed, but the rule still passes because there are no missing tags. |
+| **NIST EKS.8** | Audit logging must be enabled for every cluster | ✅ Passed | Audit logging is on and the same log types as CIS are enabled. |
+
+### Bottom line
+
+- **All seven checks succeeded** – the `pretty_result` says “The probe executed successfully!” and the summary shows `7/7 succeeded`.
+- Your cluster **musa‑dev** is private, up‑to‑date, correctly tagged, and has audit logging enabled.
+- The only potential improvement is **encrypting Kubernetes secrets**. The rule flagged that the cluster does not encrypt secrets, which is not a violation of the test itself, but it is a best‑practice recommendation that you may want to address.
+
+### Quick next steps
+
+1. **Enable secrets encryption** (e.g., use a customer‑managed CMK or a Kubernetes secret encryption provider).  
+2. Review any other clusters you may have in the future to make sure they meet the same criteria.  
+
+If you want a deeper dive or a script to automate the encryption step, let me know!

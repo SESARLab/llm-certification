@@ -1,2 +1,1 @@
-**What the probe found:**  
-Your AWS setup is in good shape—no configuration mistakes were detected. The security contact details are correctly listed, so any security alerts can reach the right people quickly. In short, your cloud environment is properly configured and ready to stay protected. No action needed right now.
+The security probe ran without errors and found no problems. It confirmed that your AWS account has a valid security contact—email, phone, and name—so alerts and incident notices can reach the right person. Since no configuration mistakes were detected, your environment is in good shape. If the contact info were missing, critical alerts might go unnoticed.

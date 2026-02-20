@@ -1,11 +1,11 @@
 {
     "fklg": {
-        "value": 4.823333333333334,
+        "value": 10.007151162790699,
         "passed": true
     },
     "dale_chall": {
-        "value": 7.7405888888888885,
-        "passed": true
+        "value": 12.615513953488374,
+        "passed": false
     },
-    "passed": true
+    "passed": false
 }

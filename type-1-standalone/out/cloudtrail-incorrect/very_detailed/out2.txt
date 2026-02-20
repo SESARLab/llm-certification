@@ -1,2 +1,1 @@
-Your AWS security check ran OK. Two of four tests passed: logs are recorded in multiple regions and are encrypted.  
-But two tests failed. The trail isn’t validating log integrity, so tampered logs could go unnoticed. Also, the trail isn’t sending S3 access logs to a separate bucket, making it harder to spot suspicious S3 activity. These gaps could let attackers hide their moves or alter logs.
+The security scan found 2 out of 4 checks passed, but 2 failed. Your CloudTrail logs are encrypted and cover all regions, which is good. However, the logs aren’t verified for tampering and aren’t stored in a separate bucket, so if someone changes or deletes them, it could be hard to detect or investigate. This weakens your ability to spot hidden attacks.

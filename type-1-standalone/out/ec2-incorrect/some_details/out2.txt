@@ -1,1 +1,1 @@
-I’m ready to help, but I need the details of the assessment report to craft a clear, 75‑word summary. Could you share the key findings or the main sections of the report?
+Your security scan ran and found 4 of 7 checks OK. It flagged that the default firewall rules are too open, your network traffic logs aren’t turned on, and your data disks aren’t encrypted. The rest of the settings – like remote‑access protection and instance IMDSv2 – are good. Fix the open group and enable logging/encryption to improve security.

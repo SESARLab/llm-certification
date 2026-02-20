@@ -1,27 +1,20 @@
 **Security Assessment Summary**
 
-| Item | Result | What it means |
-|------|--------|---------------|
-| Overall probe | ✅ Success | The automated test ran without errors. |
-| Checks performed | 1 of 1 succeeded | Only one rule was evaluated and it passed. |
-| CIS Account.1 (AWS security contact) | ✅ Passed | Your AWS account has a valid security contact set up. |
+- **Probe status:** ✔️ The security check ran without errors.  
+  *Result code:* `0` – meaning “success.”  
+  *Message:* “The probe executed successfully!”
 
-### What was verified
+- **Test performed:** **CIS Account.1** (AWS account security contact).  
+  *Outcome:* ✔️ **Passed** – the account has a designated security contact.
 
-- **Security Contact Information**:  
-  - **Email**: `example@example.com`  
-  - **Phone**: `+391234567890`  
-  - **Name**: John Doe  
-  - **Title**: Finance Manager  
-  - **Role**: SECURITy contact
+- **Security contact details:**
+  - **Name:** John Doe  
+  - **Title:** Finance Manager  
+  - **Email:** `example@example.com`  
+  - **Phone:** `+39 123 456 7890`  
+  - **Role:** SECURITY
 
-This means anyone who needs to reach out about security incidents will know exactly who to contact and how.
-
-### CVE findings
-
-- No CVEs (Common Vulnerabilities & Exposures) were found in this assessment.
-
----
+- **Vulnerabilities:** No CVEs were found – the `cve` list is empty.
 
 **Bottom line:**  
-Everything that was checked is in good shape. Keep the contact details up‑to‑date and you’re ready for the next test!
+Your AWS account meets the CIS security contact requirement, and the assessment found no security issues. All checks passed successfully.

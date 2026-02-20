@@ -1,1 +1,1 @@
-I need the details of the assessment to give a concise summary. Could you paste the report text or key findings?
+The security scan ran fine, but it found that none of the four Amazon Inspector scanning tools are turned on. This means your EC2 servers, container images, and Lambda code aren’t automatically checked for security problems. Without these scans, hidden vulnerabilities could go unnoticed, so you should enable each Inspector feature to keep your system safer.

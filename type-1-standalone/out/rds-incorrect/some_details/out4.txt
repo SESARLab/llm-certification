@@ -1,1 +1,1 @@
-I’m ready to explain the assessment, but I need the detailed report first. Could you paste it here?
+The probe ran fine and checked three security rules for your database service. Two rules passed: encryption is on and automatic updates are enabled. One rule failed: one database (database‑1) is open to the internet, which is risky. Restrict its network access to keep your data safe.

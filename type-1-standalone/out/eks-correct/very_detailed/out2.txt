@@ -1,2 +1,1 @@
-Your cloud cluster passed all safety checks: logs are on, endpoints are private, software is up‑to‑date, and all required tags and audit logs are set.  
-The only issue is that one cluster’s internal secrets are not encrypted. If an attacker gains access, they could read those secrets and compromise your applications. Enable encryption to keep sensitive data safe.
+The scan checked your AWS Kubernetes setup. All 7 tests succeeded: audit logs are on, cluster ends are private, versions are supported, required tags exist, and logging is enabled. However, one cluster’s secrets are not encrypted. That means sensitive data (like passwords or tokens) could be read if someone gains access. Encrypting secrets protects them. Fixing this reduces the risk of data leaks.

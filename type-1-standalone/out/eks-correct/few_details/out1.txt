@@ -1,1 +1,1 @@
-I can help with that—just paste the assessment report text, and I’ll turn it into a short, easy‑to‑understand summary (≤75 words).
+Your Kubernetes cluster (musa‑dev) passed all checks: logs are enabled, endpoints are private, the version is supported, required tags are present, and audit logging is active. The only issue is that Kubernetes secrets are not encrypted. Adding encryption for secrets will make the cluster fully compliant.

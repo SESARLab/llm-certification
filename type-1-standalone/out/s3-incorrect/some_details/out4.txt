@@ -1,1 +1,1 @@
-I’m ready to explain the assessment, but I’ll need the actual report details first. Please paste the key findings or share the full report so I can give you a concise, non‑technical summary.
+The probe ran fine, but it found that all four S3 security checks failed. None of the 19 buckets block public access, require SSL, or have MFA delete enabled, and several have public ACLs turned on. In short, your data storage is exposed and not protected by the recommended safeguards.

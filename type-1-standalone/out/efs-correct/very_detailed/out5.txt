@@ -1,2 +1,2 @@
-**Report Summary**  
-The security probe ran without any problems. It checked Amazon EFS (elastic file‑system) storage and found none, so there are no files to secure. This means no EFS‑related security gaps were discovered, and your AWS environment is clean for this area. Keep other services checked separately, but EFS is safe for now.
+**Simple Summary:**  
+The security scan ran correctly and found no problems. It checked your AWS file storage (EFS) and saw that you don’t have any EFS file systems set up, so there’s nothing that could be exposed or unencrypted. In short, the part of the environment tested is safe, but it only covers that specific setting.

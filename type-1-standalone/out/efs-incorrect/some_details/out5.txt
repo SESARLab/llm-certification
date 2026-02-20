@@ -1,2 +1,1 @@
-Think of it as a health check for your computer.  
-The security assessment examined your system’s settings and found several misconfigurations that could let attackers gain access, such as open ports, weak passwords, or outdated software. It lists each issue and suggests how to fix them. Fixing these problems will improve your security and protect your data.
+The security check ran fine. It found that one storage area (fs‑11112222333344445) isn’t protected with encryption, while the rest are okay. No known vulnerabilities were listed. To strengthen security, enable encryption on that file system. This will help keep your data safe if the device is lost or compromised.

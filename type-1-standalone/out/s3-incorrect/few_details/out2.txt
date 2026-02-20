@@ -1,1 +1,1 @@
-I’m ready to help. Please paste the full security‑assessment report, and I’ll turn it into a concise, non‑technical summary.
+Your security scan finished but found problems in your cloud storage. All 19 buckets allow public access and are missing strong protections: none block public ACLs, none require encrypted (SSL) connections, one bucket still publicly readable, and none have multi‑factor delete protection. These gaps could let unauthorized people see or delete data. Update bucket settings to block public access, enforce SSL, enable MFA delete, and review permissions.

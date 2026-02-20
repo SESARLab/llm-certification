@@ -1,1 +1,1 @@
-I’d be happy to explain it, but I need the actual assessment report details first. Could you paste the key findings or the full report? Then I’ll give you a concise, user‑friendly summary.
+Your scan ran correctly but found one problem: the file system **fs‑11112222333344445** is not encrypted. Because it isn’t protected, anyone who gets access to it could read its data. Encrypting that storage will secure the information.

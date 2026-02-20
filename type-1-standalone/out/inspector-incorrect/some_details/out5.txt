@@ -1,1 +1,1 @@
-I’d be happy to explain the findings, but I need the details from the assessment report first. Could you paste or summarize the key points (e.g., any errors found, affected systems, severity levels, etc.)? Then I’ll give you a concise, non‑technical summary.
+The probe ran fine, but it found that none of the four Amazon Inspector scans are turned on (EC2, ECR, Lambda code, and Lambda standard). Without these scans, potential security problems may stay hidden. Turn on all four Inspector scans to keep your AWS resources safer.

@@ -1,1 +1,1 @@
-Sure! Please paste the details of the security assessment report so I can craft a concise, user‑friendly summary for you.
+The scan found only 4 of 13 tests passed. Several users lack MFA and have old access keys over 90 days. No password policy exists, and root has no MFA or hardware tokens. Root’s access keys are safe, but security tools are missing. All server certificates are valid. Overall, many IAM settings need tightening to protect the environment.

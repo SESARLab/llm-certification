@@ -1,2 +1,5 @@
-I’d be happy to translate the assessment into plain English.  
-Could you paste the detailed report here so I can create the short, easy‑to‑understand summary?
+Your cloud logs are mostly fine.  
+- Two key checks passed: the trail records events from all regions and the logs are encrypted.  
+- Two checks failed: the trail does not validate file integrity, and the log bucket isn’t logged separately.  
+
+Fix the validation and logging settings to strengthen security and meet the compliance guidelines.

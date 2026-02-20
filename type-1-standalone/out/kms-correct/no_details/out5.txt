@@ -1,1 +1,22 @@
-Sure thing! Just paste the full assessment report here, and I’ll distill it into a clear, easy‑to‑understand summary. If you prefer, you can also highlight any sections you’re most concerned about.
+### Quick‑look Summary
+
+| What was checked | Result | What it means |
+|------------------|--------|---------------|
+| **Probe ran** | ✅ “The probe executed successfully!” | The test itself worked – no errors. |
+| **Overall status** | 1/1 succeeded | One test was run and it passed. |
+| **CIS KMS.4** (Key‑Management‑Service key rotation) | ✅ All 7 keys have rotation enabled | Every key in your key‑management system is set to rotate automatically, which is a strong security practice. |
+| **Non‑compliant keys** | ❌ None | No keys are missing rotation or mis‑configured. |
+| **Known CVEs** | None found | No known vulnerabilities were detected in the components that were scanned. |
+
+### What this means for you
+
+- **All the keys you use for encryption and signing are rotating automatically** – this keeps your cryptographic material fresh and reduces the risk if a key gets compromised.
+- **No issues were found** – the assessment didn’t spot any misconfigurations or known vulnerabilities.
+- **You’re in compliance** with the CIS benchmark for key rotation (CIS KMS.4), which is a good indicator of a secure key‑management environment.
+
+### Next steps (optional)
+
+- Keep monitoring key rotation and ensure new keys added to the system follow the same policy.
+- Continue to run regular scans to stay on top of any new CVEs or configuration changes.
+
+Overall, your key‑management setup is solid and ready to protect your data. Great job!

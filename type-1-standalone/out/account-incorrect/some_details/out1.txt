@@ -1,1 +1,1 @@
-I’m happy to help summarize the assessment, but I’ll need the details of the report first. Could you paste the key findings or attach the document? Once I have that, I’ll craft a concise, non‑technical overview for you.
+Your security scan ran fine, but it found one issue: the system isn’t set up with an alternate security contact. That means if a security alert pops up, there’s no backup contact to get the message. Fixing this will help ensure someone always gets notified in a security event.

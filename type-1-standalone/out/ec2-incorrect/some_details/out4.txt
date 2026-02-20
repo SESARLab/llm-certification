@@ -1,1 +1,1 @@
-I’m ready to help, but I need the details of the security assessment report first. Could you paste the key findings or a summary of the report? Then I’ll turn it into a clear, 75‑word explanation for a non‑technical audience.
+The scan ran fine, finding 4 of 7 checks good. Three problems need fixing: the default security group allows traffic to and from anywhere, so it’s open to attacks; the VPC has no flow‑logging, so traffic isn’t monitored; and EBS volumes aren’t encrypted, exposing data. All other controls, like SSH access restrictions and IMDSv2, are correctly set.

@@ -1,2 +1,19 @@
-I’d love to help you break down the assessment!  
-Could you paste the report (or key excerpts) here? Once I have the details, I can translate the technical findings into a clear, easy‑to‑understand summary.
+**What the report says in plain English**
+
+| Item | What it means | Result |
+|------|---------------|--------|
+| **Probe status** | The security scan ran without errors. | ✅ “The probe executed successfully!” |
+| **Overall outcome** | All three checks that the scan performed were passed. | ✅ 3/3 succeeded |
+| **CIS RDS.2 – Public access** | No Amazon RDS database is open to the internet; all traffic must go through your VPC. | ✅ *database‑1* is private |
+| **CIS RDS.3 – Encryption** | The database data is encrypted at rest. | ✅ *database‑1* is encrypted |
+| **CIS RDS.13 – Automatic upgrades** | The database is set to automatically apply minor version upgrades, keeping it up‑to‑date with security patches. | ✅ *database‑1* has auto‑upgrade enabled |
+| **Known CVEs** | No known Common Vulnerabilities and Exposures were found for this instance. | ❌ None |
+
+### Bottom line
+Your single RDS instance (“database‑1”) is secure by the three CIS RDS benchmarks checked:
+
+1. **It’s not publicly exposed** – only internal network traffic can reach it.  
+2. **It’s encrypted** – data at rest is protected.  
+3. **It auto‑upgrades** – it will automatically get the latest minor version security fixes.
+
+There are no CVEs that the scan flagged. All checks passed, so your RDS setup is in good shape!

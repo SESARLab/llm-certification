@@ -1,1 +1,1 @@
-I’d love to help, but I need the details of the assessment report first. Could you paste it in?
+The security scan ran without problems and found nothing wrong. It checked for encrypted file systems and saw none, so there’s nothing to fix. In short, your system is compliant with this test and no action is needed.

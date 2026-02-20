@@ -1,1 +1,14 @@
-Sure thing! Please paste the full security assessment report here, and I’ll turn it into a clear, easy‑to‑understand summary for you.
+**Quick Take‑away**
+
+- **Probe Result:** ✅ The assessment ran to completion without errors (“The probe executed successfully!”).
+- **Tests Run:** 1 test was performed and it passed – you’re in compliance for that check.
+- **What was checked:** Whether an AWS security contact has been set up.  
+  - Your account has a valid security contact:
+    - **Name:** John Doe  
+    - **Title:** Finance Manager  
+    - **Email:** example@example.com  
+    - **Phone:** +39 123 456 7890  
+    - **Contact type:** SECURITY
+- **Vulnerabilities:** No CVEs were found (empty list).
+
+**Bottom line:** Everything is in order. Your AWS security contact information is correctly configured and the assessment didn’t uncover any known issues. Keep the contact details up‑to‑date and you’ll stay compliant.

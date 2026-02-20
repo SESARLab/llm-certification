@@ -1,1 +1,24 @@
-I’d be happy to break it down for you, but I’ll need the actual assessment report first. Once you paste the details (or even just the key findings), I can translate the technical jargon into plain language and highlight what matters most for your organization.
+**What the report says (in plain English)**  
+
+| What was checked | Result | What it means |
+|------------------|--------|---------------|
+| **Audit logging** (CIS EKS 2.1.1) | ✅ Pass | The cluster’s API server is set to record every request – the logs are being captured for “api”, “audit” and “authenticator” events. |
+| **Cluster endpoints** (NIST EKS.1) | ✅ Pass | All endpoints that users hit are behind a private network; no public-facing endpoints. |
+| **Cluster version** (NIST EKS.2) | ✅ Pass | The Kubernetes version running in the cluster (v1.31) is still supported by AWS. |
+| **Secrets encryption** (NIST EKS.3) | ✅ Pass *but* | **Kubernetes secrets are *not* encrypted at rest.** The test considers the current configuration acceptable, but this is a potential security risk if you store sensitive data in secrets. |
+| **Cluster tags** (NIST EKS.6) | ✅ Pass | The cluster has all required AWS tags (e.g., “tag1”) in place. |
+| **IDP (Identity Provider) tags** (NIST EKS.7) | ✅ Pass | Any configured identity‑provider settings also carry the required tags. |
+| **Audit logging on all clusters** (NIST EKS.8) | ✅ Pass | Audit logging is enabled cluster‑wide and the same log types as above are active. |
+
+### Bottom line
+
+- **All seven automated checks succeeded** – the probe ran without error (“The probe executed successfully!”).  
+- Your EKS cluster **“musa‑dev”** is following most best‑practice controls: logs are enabled, endpoints are private, the Kubernetes version is supported, and tagging is correct.  
+- The **only missing security control** is **encryption of secrets at rest**. If you’re storing passwords, tokens, or other secrets in Kubernetes, consider enabling encryption (AWS provides a mechanism to enable it via a `secretsEncryptionConfig`).  
+
+**Next steps:**  
+1. Review whether any secrets are stored in the cluster.  
+2. If yes, enable encryption to avoid potential exposure if the etcd data store is compromised.  
+3. Re‑run the assessment after making changes to confirm the issue is fixed.  
+
+That’s all the key take‑aways from the report!

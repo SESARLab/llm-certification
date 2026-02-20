@@ -1,1 +1,1 @@
-I’d be happy to help. Could you please paste the full security assessment report text so I can give you a concise, non‑technical summary?
+Your security scan ran fine and found that 2 out of 3 safety checks passed. All databases are encrypted and will auto‑update, but one of them is publicly accessible. That means anyone on the internet could reach that database, which is a risk. You should restrict access or move it behind a firewall.

@@ -1,1 +1,1 @@
-I’d be happy to simplify it for you. Could you paste the detailed security assessment report here? That way I can give you a clear, 75‑word explanation.
+Your AWS account was scanned. The tool ran fine, but found several problems. Many users have old access keys (some >800 days) and no MFA, and the root account lacks hardware MFA. There is no password policy, so weak passwords could be used. A few compliance checks passed, like no root keys and valid certificates. Fix these to reduce the risk of unauthorized access.

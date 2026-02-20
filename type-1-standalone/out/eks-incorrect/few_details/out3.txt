@@ -1,1 +1,1 @@
-I’d be happy to explain it, but I need the details of the assessment first. Could you paste the report text (or key findings) here? Then I can give you a short, non‑technical summary.
+Your Kubernetes cluster “musa‑dev” was scanned. Four of the seven checks passed. Good: logging is enabled and the cluster version is supported. Problems: the cluster’s endpoint is publicly accessible, its secrets aren’t encrypted, and it’s missing a required tag. Fix these to improve security. All identity‑provider configs and audit logs are correctly set up.

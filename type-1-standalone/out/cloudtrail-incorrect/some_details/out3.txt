@@ -1,1 +1,1 @@
-I’m ready to explain the findings, but I’ll need the actual details of the assessment report to give an accurate summary. Could you paste the key points or attach the report text? Once I have that, I’ll craft a short, non‑technical explanation for you.
+The probe ran correctly and checked four CloudTrail settings. Two were good: a multi‑region trail logs all events and its logs are encrypted with KMS. Two were missing: log file validation is off, and bucket access logging isn’t sent to a separate bucket. Fixing these gaps prevents tampering and ensures full audit trails.

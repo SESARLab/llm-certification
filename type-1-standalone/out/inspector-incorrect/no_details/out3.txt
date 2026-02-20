@@ -1,1 +1,46 @@
-I’m ready to break the report down into plain‑English, but I’ll need to see the actual assessment details first. Could you paste the report (or at least the key findings and recommendations) here? Once I have that, I’ll turn the technical jargon into a clear, concise explanation.
+**Quick Take‑away**
+
+- The scan tool ran without errors – that’s why `integer_result` is **1** and the report says “The probe executed successfully!”  
+- **But** the four CIS‑Inspector checks that are supposed to keep your AWS environment secure all failed.  
+- In plain English: **None of the Amazon Inspector vulnerability scans are turned on** for EC2, ECR, or Lambda functions.  
+- The report didn’t find any CVE numbers, but that’s because no scanning was actually performed.
+
+---
+
+### What the four failures mean
+
+| Check | What it’s supposed to do | Why it matters |
+|-------|--------------------------|----------------|
+| **CIS Inspector.1** | Scan EC2 instances for known vulnerabilities | Detects missing OS patches, insecure packages, etc. |
+| **CIS Inspector.2** | Scan Amazon ECR container images | Finds container‑specific CVEs before they’re deployed. |
+| **CIS Inspector.3** | Scan Lambda code for security flaws | Prevents malicious or buggy code from running. |
+| **CIS Inspector.4** | Scan Lambda’s runtime environment (standard) | Checks for misconfigurations, missing libraries, etc. |
+
+With all four turned off, your services can be running with unknown or unpatched security holes, which is a serious compliance and risk issue.
+
+---
+
+### Why it matters
+
+1. **Regulatory compliance** – Many frameworks (HIPAA, PCI‑DSS, SOC‑2) require automated vulnerability scanning.  
+2. **Operational risk** – Unpatched software can be exploited, leading to data breaches, downtime, or regulatory penalties.  
+3. **Visibility** – You’ll have no record of what’s vulnerable, making remediation difficult.
+
+---
+
+### Next steps
+
+| Action | How to do it | Why it helps |
+|--------|--------------|--------------|
+| **Enable Amazon Inspector EC2 scanning** | In the AWS Console → Inspector → “Create Assessment Target” → choose your EC2 instances. | Automatically scans for OS and package CVEs. |
+| **Enable ECR image scanning** | In the AWS Console → ECR → Repository settings → “Scan on push” toggle. | Detects vulnerabilities in images before deployment. |
+| **Enable Lambda code scanning** | In the AWS Console → Lambda → “Code” → “Security” → enable “Code scanning.” | Finds code‑level security issues. |
+| **Enable Lambda runtime scanning** | In the AWS Console → Lambda → “Runtime” → enable “Runtime security scanning.” | Checks the execution environment for missing patches. |
+| **Automate scanning in CI/CD** | Add Inspector checks to your build pipeline. | Keeps new code and images secure before they reach production. |
+| **Review findings** | Once scans run, review the Inspector findings and create a remediation plan. | Prioritizes fixes and closes gaps. |
+
+---
+
+### Bottom line
+
+Your assessment ran fine, but the *key* security controls are not active. Turning on Amazon Inspector scanning for EC2, ECR, and Lambda will give you continuous visibility into vulnerabilities and help you stay compliant and secure. Once enabled, let the scans run automatically and address any findings promptly.

@@ -1,1 +1,1 @@
-I’d love to help simplify it! Could you paste the assessment report here so I can turn it into a short, easy‑to‑understand summary?
+Your security check found that Amazon Inspector scans are not enabled for your EC2 instances, container images (ECR), or Lambda functions. 0 of 4 tests passed, meaning the probe ran correctly but found missing protection. Enabling these scans will help detect vulnerabilities early and keep your cloud workloads safer.

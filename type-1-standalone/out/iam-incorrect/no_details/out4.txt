@@ -1,1 +1,111 @@
-I’m ready to help explain the assessment, but I didn’t receive the report text. Could you paste or summarize the key findings (e.g., vulnerabilities discovered, risk ratings, recommendations)? Once I have that, I’ll turn it into a clear, plain‑language summary.
+## Quick‑look summary
+
+| # of checks | Passed | Failed | Overall result |
+|-------------|--------|--------|----------------|
+| 13 checks  | 4      | 9      | **Needs remediation** |
+
+The probe ran correctly, but most of the controls that we tested were not compliant with the CIS AWS Foundations Benchmark (IAM section). Below is a plain‑English explanation of each control, why it failed, and what you can do next.
+
+---
+
+### 1. **CIS IAM.2 – “Minimum required permissions for IAM users”**  
+**Result:** ❌ *Failed*  
+- **What it checks:** Each IAM user should only have the policies they really need (ideally “least privilege”).  
+- **Why it failed:** 7 users have policies attached – most of them are just `IAMUserChangePassword`. Those users are **non‑compliant**.  
+- **Who is affected:**  
+  - Non‑compliant: `alex.dellabruna`, `almaviva.dev`, `claudio.ardagna`, `engineering.dev`, `marco.anisetti`, `nicola.bena`, `ruslan.bondaruc`  
+  - Compliant: `cct`, `kevin.pease`, `sqs-user-cis-aws`  
+- **What to do:** Review the policies attached to the non‑compliant users. Remove any that are unnecessary, and attach only the permissions they truly need.
+
+---
+
+### 2. **CIS IAM.3 – “Users with access keys older than 90 days”**  
+**Result:** ❌ *Failed*  
+- **What it checks:** Access keys older than 90 days should be rotated or deleted.  
+- **Why it failed:** Five users have keys that are far older (e.g., 804 days, 889 days).  
+- **Affected users:** `alex.dellabruna`, `almaviva.dev`, `cct`, `kevin.pease`, `sqs-user-cis-aws`.  
+- **What to do:**  
+  1. Immediately delete the old keys.  
+  2. Create new keys (or, better, use AWS Secrets Manager or an identity provider).  
+  3. Enforce a key rotation policy (e.g., auto‑rotate every 60 days).
+
+---
+
+### 3. **CIS IAM.4 – “Root user access keys”**  
+**Result:** ✅ *Passed*  
+- No root access keys exist – that’s good.
+
+---
+
+### 4. **CIS IAM.5 – “MFA for IAM users with console passwords”**  
+**Result:** ❌ *Failed*  
+- **What it checks:** Any IAM user that can log in to the AWS console should have MFA enabled.  
+- **Why it failed:** Three users – `almaviva.dev`, `engineering.dev`, `kevin.pease` – do not have MFA devices attached.  
+- **What to do:**  
+  1. Enroll each of those users in an MFA device (virtual or hardware).  
+  2. Force MFA on console sign‑on via a policy.
+
+---
+
+### 5. **CIS IAM.6 – “Hardware MFA for root”**  
+**Result:** ❌ *Failed*  
+- The root account has no hardware MFA device.
+
+---
+
+### 6. **CIS IAM.9 – “Root MFA”**  
+**Result:** ❌ *Failed*  
+- The root account has no MFA at all.
+
+---
+
+### 7. **CIS IAM.15 & .16 – “Password policy”**  
+**Result:** ❌ *Failed*  
+- No password policy is defined.  
+- **What to do:** Create a password policy that requires at least 12 characters, a mix of character types, and disallows reuse of the last 24 passwords (or whatever your organization requires).
+
+---
+
+### 8. **CIS IAM.18 – “Support role exists”**  
+**Result:** ✅ *Passed*  
+- The required AWS Service Role for Support is present.
+
+---
+
+### 9. **CIS IAM.22 – “Access keys older than 45 days”**  
+**Result:** ❌ *Failed*  
+- Similar to IAM.3, but with a stricter 45‑day limit. Five users have keys older than 45 days, including an extra key for `almaviva.dev`.  
+- **What to do:** Same as above – delete or rotate those keys immediately.
+
+---
+
+### 10. **CIS IAM.26 – “IAM server certificates”**  
+**Result:** ✅ *Passed*  
+- All server certificates are valid.
+
+---
+
+### 11. **CIS IAM.27 – “No user has AWSCloudShellFullAccess”**  
+**Result:** ✅ *Passed*  
+- No user is over‑privileged with CloudShell full access.
+
+---
+
+### 12. **CIS IAM.28 – “External Access Analyzer”**  
+**Result:** ❌ *Failed*  
+- No external Access Analyzer is enabled.  
+- **What to do:** Enable an Access Analyzer in each region to surface any accidental public or cross‑account access.
+
+---
+
+## Action plan in a nutshell
+
+| Issue | Immediate fix | Longer‑term policy |
+|-------|---------------|--------------------|
+| Old access keys (IAM.3 & .22) | Delete & rotate now | Enforce automated key rotation (every 60 days) |
+| Missing MFA (IAM.5, .6, .9) | Enroll root and all affected users | Require MFA for console and API access |
+| No password policy (IAM.15, .16) | Create a strong password policy | Enforce policy organization‑wide |
+| Unnecessary policies (IAM.2) | Remove or tighten policies | Apply least‑privilege principle |
+| No Access Analyzer (IAM.28) | Enable in all regions | Review findings regularly |
+
+Once you implement these changes, rerun the probe. If all 13 checks pass, your IAM configuration will align with the CIS benchmark and be much harder for an attacker to exploit.

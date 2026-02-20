@@ -1,1 +1,17 @@
-Sure! Whenever you paste the report, I’ll turn all the technical details into a clear, easy‑to‑understand explanation. Just drop it in and I’ll get started!
+**What the assessment found**
+
+| Check | Result | What it means |
+|-------|--------|---------------|
+| **CIS RDS.2 – Public accessibility** | **Passed** | The one database you have (named **database‑1**) is *not* exposed to the internet. Only people inside your network can reach it. |
+| **CIS RDS.3 – Encryption** | **Passed** | The data in database‑1 is encrypted at rest. Even if someone got a copy of the storage, they couldn’t read the data. |
+| **CIS RDS.13 – Auto‑upgrade** | **Passed** | The database is set to automatically install minor version upgrades (patches, security fixes) as soon as they become available, so it stays up‑to‑date. |
+
+**Overall**
+
+* The probe ran without errors (`integer_result: 0` → success).  
+* All three checks succeeded (`Summary: 3/3 succeeded`).  
+* No CVE (Common Vulnerabilities and Exposures) issues were found for this instance.
+
+**Bottom line**
+
+Your single RDS instance is in a very good state: it’s protected from public access, its data is encrypted, and it keeps itself patched automatically. Keep these settings in place, and you’re covering the key CIS controls for RDS.

@@ -1,1 +1,1 @@
-The assessment found several weaknesses that could let attackers steal data or disrupt services. Issues include outdated software, weak passwords, and missing security patches. To protect yourself, update your software, use strong passwords, enable two‑factor authentication, and monitor logs for suspicious activity.
+The security check ran smoothly and found no issues. All four Amazon Inspector scans – for EC2, ECR, Lambda code, and Lambda standard – passed, meaning your environment is properly protected. No vulnerabilities (CVE) were detected, so everything looks good.

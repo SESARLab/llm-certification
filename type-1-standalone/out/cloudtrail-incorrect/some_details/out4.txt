@@ -1,1 +1,11 @@
-I need the detailed security assessment report to explain it. Please paste the report text or key findings, and I’ll summarize it in a short, non‑technical way.
+Your security probe ran correctly and found that **2 of 4 CloudTrail settings are OK**.  
+
+- The trail is multi‑region and records all events.  
+- It uses KMS encryption for log files.  
+
+**Two issues need fixing**:  
+
+1. Log file validation is not turned on.  
+2. CloudTrail access logs are not sent to a separate S3 bucket.  
+
+Update these settings to strengthen your account’s audit trail.

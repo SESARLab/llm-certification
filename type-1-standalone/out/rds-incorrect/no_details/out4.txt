@@ -1,1 +1,36 @@
-I’m ready to help simplify the report, but I’ll need the detailed assessment information first. Could you paste the key sections or key findings of the report? Once I have that, I’ll turn it into a clear, easy‑to‑understand summary.
+**Quick‑Take Summary**
+
+- **What was tested?**  
+  The audit looked at the security settings of your Amazon RDS (Relational Database Service) database instance.
+
+- **How did it go?**  
+  Out of three recommended checks (CIS RDS.2, CIS RDS.3, CIS RDS.13), **two succeeded** and **one failed**.
+
+| Check | Result | Why it matters |
+|-------|--------|----------------|
+| **CIS RDS.2 – Publicly accessible instances** | **Failed** | 1 of 2 RDS instances is exposed to the public internet. That makes it easier for attackers to try to log in or perform other malicious actions. |
+| **CIS RDS.3 – Encryption at rest** | **Passed** | The database’s data is encrypted on disk – a good baseline security practice. |
+| **CIS RDS.13 – Auto‑minor‑version upgrade** | **Passed** | Automatic minor version upgrades keep the database patched against known bugs and security fixes. |
+
+- **No known CVEs** were found (the “cve” list is empty).
+
+---
+
+### What should you do next?
+
+1. **Restrict public access**  
+   - Move the database into a private subnet (inside your VPC) or at least remove the public IP address.  
+   - Use security groups to allow inbound traffic only from trusted IPs or from your application servers.
+
+2. **Review other security settings**  
+   - Even though encryption and auto‑upgrade passed, double‑check that backups, IAM roles, and parameter groups follow your organization’s policies.
+
+3. **Document and remediate**  
+   - Create a ticket to fix the public‑access issue.  
+   - Add the fix to your security checklist so it’s covered in future audits.
+
+---
+
+### Bottom line
+
+Your database is mostly secure: it’s encrypted and stays automatically patched. The only real risk is that one instance is reachable from the internet. Fix that, and you’ll meet the CIS RDS security baseline.

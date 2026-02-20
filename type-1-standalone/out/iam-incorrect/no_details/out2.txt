@@ -1,2 +1,152 @@
-I’d be happy to turn the technical details into a clear, easy‑to‑understand summary.  
-Could you please paste the security assessment report (or the key sections you’d like explained) so I can get started?
+## Quick‑look Summary  
+- **Probe ran OK** – the tool finished without crashing.  
+- **4 out of 13 controls passed** (30 %).  
+- Most problems involve **IAM user access keys, missing MFA, and no password policy**.  
+
+Below is a plain‑English walk‑through of each finding and what you can do next.
+
+---
+
+### 1. IAM Users – Policies Attached (CIS IAM.2)
+| Status | Users |
+|--------|-------|
+| **Compliant** | `cct`, `kevin.pease`, `sqs-user-cis-aws` |
+| **Not compliant** | `alex.dellabruna`, `almaviva.dev`, `claudio.ardagna`, `engineering.dev`, `marco.anisetti`, `nicola.bena`, `ruslan.bondaruc` |
+
+**What it means**  
+- All 7 non‑compliant users only have the *IAMUserChangePassword* policy.  
+- They are missing the additional permissions the organization requires (e.g., least‑privilege policies).
+
+**Action**  
+- Review the policy set that should be attached to each user.  
+- Apply the missing policies or adjust the IAM group assignments.
+
+---
+
+### 2. Old Access Keys (CIS IAM.3 & 22)
+
+| User | Key age | Non‑compliant if > 90 days | Non‑compliant if > 45 days |
+|------|---------|---------------------------|---------------------------|
+| `alex.dellabruna` | 804 days | ✔ | ✔ |
+| `almaviva.dev` | 889 days | ✔ | ✔ |
+| `cct` | 654 days | ✔ | ✔ |
+| `kevin.pease` | 204 days | ✔ | ✔ |
+| `sqs-user-cis-aws` | 321 days | ✔ | ✔ |
+| (others) | < 90 days | ✖ | ✖ |
+
+**What it means**  
+- Five users have keys older than 90 days, and six are older than 45 days – well beyond the CIS recommended maximum.  
+- Old keys can be a security risk if they’re compromised.
+
+**Action**  
+1. **Rotate** those keys (delete the old ones, create new keys).  
+2. **Disable** or delete any key that isn’t actively used.  
+3. Set up automated rotation or a scheduled review.
+
+---
+
+### 3. Root User Security (CIS IAM.4, 6, 9)
+
+| Check | Result |
+|-------|--------|
+| Root access keys | None (good) |
+| Hardware MFA enabled | **No** |
+| MFA enabled (any) | **No** |
+
+**What it means**  
+- No root keys is good, but the root account **lacks MFA** – the biggest protection against accidental or malicious sign‑ins.
+
+**Action**  
+- Enable **Hardware MFA** for the root account.  
+- Add a **virtual MFA** (if hardware isn’t available) as a backup.
+
+---
+
+### 4. Password Policy (CIS IAM.15 & 16)
+
+| Check | Result |
+|-------|--------|
+| Policy exists | **No** |
+| Minimum length / reuse prevention | N/A |
+
+**What it means**  
+- There is **no password policy** – users can set weak passwords, and old passwords can be reused.
+
+**Action**  
+- Define a strong password policy:  
+  - Minimum length (e.g., 12‑14 chars).  
+  - Require upper/lowercase, numbers, and symbols.  
+  - Enforce password reuse prevention (e.g., 24‑month).  
+- Apply the policy to all IAM users and console logins.
+
+---
+
+### 5. MFA for IAM Users (CIS IAM.5)
+
+| User | MFA status |
+|------|------------|
+| `almaviva.dev`, `engineering.dev`, `kevin.pease` | **Missing** |
+| All others | **Has MFA** |
+
+**What it means**  
+- Three users with console passwords have **no MFA** – a higher risk for credential compromise.
+
+**Action**  
+- Prompt those users to enable MFA immediately.  
+- Consider automating MFA requirement via a policy that denies console access without MFA.
+
+---
+
+### 6. AWS Service Role & Certificates (CIS IAM.18, 26)
+
+| Check | Result |
+|-------|--------|
+| Support role exists | ✔ |
+| IAM server certificates valid | ✔ |
+
+**What it means**  
+- These areas are fine – no immediate action needed.
+
+---
+
+### 7. CloudShell Policy (CIS IAM.27)
+
+| Check | Result |
+|-------|--------|
+| `AWSCloudShellFullAccess` attached | **No users** |
+
+**What it means**  
+- Good – no one has overly‑permissive CloudShell access.
+
+---
+
+### 8. External Access Analyzer (CIS IAM.28)
+
+| Check | Result |
+|-------|--------|
+| External Access Analyzer enabled | **No** |
+
+**What it means**  
+- The account cannot detect potential external data leaks (e.g., S3 buckets open to the internet).
+
+**Action**  
+- Enable an **External Access Analyzer** to audit and alert on public access or cross‑account sharing.
+
+---
+
+## Quick‑Action Checklist
+
+| Priority | Task | Who | Due |
+|----------|------|-----|-----|
+| **High** | Enable root hardware MFA | Security admin | 3 days |
+| **High** | Create & enforce a password policy | IAM admin | 3 days |
+| **High** | Enable MFA for `almaviva.dev`, `engineering.dev`, `kevin.pease` | IAM admin | 3 days |
+| **Medium** | Rotate all old access keys (≥ 45 days) | IAM admin | 7 days |
+| **Medium** | Apply missing IAM policies to the 7 non‑compliant users | IAM admin | 7 days |
+| **Low** | Enable External Access Analyzer | Security admin | 14 days |
+
+---
+
+### Bottom Line
+
+Your environment is **partially compliant** with CIS best practices. The biggest risks lie in **missing MFA, old access keys, and no password policy**. Fixing these will dramatically tighten your security posture. Once those are addressed, you’ll be well on your way to a fully compliant IAM configuration.

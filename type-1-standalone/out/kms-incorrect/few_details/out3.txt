@@ -1,1 +1,1 @@
-I’m ready to turn your assessment into plain language, but I need the details of the report first. Please share the key findings, risks, and recommendations, and I’ll explain them in under 75 words.
+The scan ran fine – the tool worked and reported success. However, it found a problem with your encryption keys. Out of 7 keys, 2 (keyId6 and keyId7) are not set to rotate automatically, which increases risk. The other 5 keys (keyId1‑5) are compliant. Fix those two keys to keep your data secure.

@@ -1,1 +1,1 @@
-I’ll need the details of the assessment report to create a concise summary. Please paste the report or the key findings, and I’ll translate them into a simple, non‑technical explanation (≤ 75 words).
+Your cloud environment was scanned and all checks passed. No security groups or network rules let traffic from anywhere into sensitive ports. Traffic logging is active, data is encrypted, and the instance only uses secure metadata calls. In short, your AWS setup is secure and compliant with the CIS best‑practice standards.

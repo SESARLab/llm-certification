@@ -1,1 +1,1 @@
-I’m ready to explain the assessment, but I need the details of the report first. Could you paste the report text or the key findings? Once I have that, I’ll give you a concise, non‑technical summary (≤75 words).
+The test ran successfully but found that 2 of the 7 encryption keys in your key‑management system have key rotation turned off. Those two keys (keyId6 and keyId7) are not following best security practices, while the other five keys are compliant. Enable rotation for the non‑compliant keys to strengthen security.

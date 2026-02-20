@@ -1,1 +1,5 @@
-The check found that your AWS Kubernetes cluster is visible to the public internet, meaning anyone could try to access it. It also stores secrets (like passwords) in plain text, which could be stolen. Some required labels (tags) are missing, making it hard to manage resources. The good news: the cluster version is current, and all logs are turned on for monitoring. Fixing these gaps will protect data and make compliance easier.
+The assessment scanned your AWS Kubernetes clusters.  
+- One cluster (“musa‑dev”) is exposed to the internet, making it vulnerable to unauthorized access.  
+- Secrets stored in that cluster aren’t encrypted, so sensitive data could be read if compromised.  
+- Missing tags can cause mis‑management and audit problems.  
+Audit logs are on, which is good, but the public endpoint, unencrypted secrets and tagging gaps need fixing to keep your apps secure.

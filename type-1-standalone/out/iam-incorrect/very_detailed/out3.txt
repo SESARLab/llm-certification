@@ -1,1 +1,8 @@
-Out of 13 security checks, only 4 passed. Many accounts use old access keys and lack two‑factor login (MFA). The root account and some users have no MFA, and there is no password rule or external access monitor. These gaps let attackers reuse old keys, guess passwords, and see data they shouldn’t. It increases the risk of data breaches and unauthorized changes to the cloud environment.
+**Security check results**
+
+The probe found many configuration problems in your AWS account.  
+- **Old or missing credentials:** Several users have access keys that are more than 90 days old, and 3 users don’t have MFA (two‑factor authentication).  
+- **Weak password rules:** No password policy is set, so passwords can be simple.  
+- **Root account not protected:** The root user lacks hardware and regular MFA.  
+
+These gaps let attackers reuse or hijack credentials, giving them easy, potentially unlimited access to your cloud resources. You should rotate keys, enable MFA, enforce strong passwords, and secure the root account immediately.

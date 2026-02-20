@@ -1,1 +1,40 @@
-It looks like the report details didn’t come through. Could you paste the assessment report (or key excerpts) here? Once I see the findings, I’ll translate them into a clear, straightforward explanation.
+## Quick‑look Summary
+
+| # | What was checked | Result | What it means |
+|---|-----------------|--------|---------------|
+| 1 | **Audit logging on the API server** | ✅  Passed | All actions on the cluster are recorded – a good sign for troubleshooting and forensics. |
+| 2 | **Cluster endpoints are private** | ✅  Passed | The control‑plane cannot be reached from the public Internet – protects against unwanted traffic. |
+| 3 | **Cluster version support** | ✅  Passed | The EKS version (1.31) is still supported by AWS, so it receives security patches. |
+| 4 | **Kubernetes secrets encryption** | ❌  Flagged but still **Passed** | Secrets stored in etcd are *not* encrypted on disk. While the tool didn’t block the check, it warns you that anyone with access to the etcd data could read secrets. |
+| 5 | **Cluster tags** | ✅  Passed | Every cluster has the required tags (e.g., “tag1”), helping you track costs and ownership. |
+| 6 | **Identity‑Provider (IDP) config tags** | ✅  Passed | All identity‑provider settings are correctly tagged. |
+| 7 | **Audit logging enabled** | ✅  Passed | Confirms that cluster‑level audit logging is turned on (same as #1). |
+
+> **Overall:** 7 out of 7 tests succeeded – the assessment ran successfully and your EKS environment is largely compliant with the tested controls.
+
+---
+
+## What to Do Next
+
+| Issue | Recommendation |
+|-------|----------------|
+| **Secrets are not encrypted** | Enable Kubernetes secrets encryption at rest. In EKS this is done by creating a Customer‑Managed Key (CMK) in AWS KMS and adding an `EncryptionConfig` to the cluster. |
+| **Anything else you want extra protection?** | • Review the CMK policy to restrict who can decrypt secrets.<br>• Periodically rotate the key.<br>• Verify that any third‑party integrations also respect the encryption settings. |
+
+---
+
+### Quick Glossary
+
+| Term | What it is |
+|------|------------|
+| **Audit logging** | A record of every API request made to the cluster (who did what and when). |
+| **Private endpoint** | The control‑plane can only be reached from inside your VPC, not from the public Internet. |
+| **Cluster tags** | Key/value metadata (e.g., “environment: dev”) that helps organize and bill resources. |
+| **IDP** | Identity Provider – the system that authenticates users who log into the cluster. |
+| **Encryption at rest** | Data stored on disk (like Kubernetes secrets) is encrypted so that even if someone reads the disk, the data remains protected. |
+
+---
+
+### Bottom Line
+
+Your EKS cluster is in good shape: logging is on, endpoints are private, the version is supported, and you have proper tagging. The one area that needs attention is the encryption of Kubernetes secrets. Fixing that will make your cluster fully compliant with best‑practice security controls.

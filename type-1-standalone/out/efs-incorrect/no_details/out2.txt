@@ -1,1 +1,45 @@
-Absolutely—just paste the full security‑assessment report here and I’ll turn it into a clear, plain‑English summary for you.
+### Quick‑look Summary
+
+| What was checked | Result | What it means |
+|------------------|--------|---------------|
+| **File‑system encryption (EFS)** | **Failed** | One of your storage volumes (`fs‑11112222333344445`) isn’t encrypted. |
+| **Overall probe status** | **Ran OK** | The test ran without errors – it was able to look at the volume and report on it. |
+| **Known vulnerabilities (CVE list)** | None found | The assessment didn’t detect any known CVE‑related issues on this system. |
+
+---
+
+## What this means in plain English
+
+Your security scan looked at how your data is protected on disk. It found that **one of the volumes is plain‑text (un‑encrypted)**. While the scan itself worked fine, that volume is an exposure point—if someone gets physical access or a privileged user account, the data could be read directly.
+
+---
+
+## Why it matters
+
+- **Data privacy** – Unencrypted disks can be read by anyone who mounts them.
+- **Regulatory compliance** – Many standards (GDPR, HIPAA, PCI‑DSS, etc.) require encryption for stored data.
+- **Risk reduction** – Encrypting removes a major attack vector for both insider threats and external breaches.
+
+---
+
+## Next steps
+
+1. **Identify the volume**  
+   - `fs‑11112222333344445` is the ID of the non‑encrypted filesystem. Map it to the actual mount point or logical volume.
+
+2. **Encrypt the volume**  
+   - If it’s a Linux ext4/ XFS, you can use LUKS or dm‑crypt.  
+   - On Windows, use BitLocker or EFS (for files).  
+   - Cloud environments (AWS EBS, Azure Disk, GCP Persistent Disk) have built‑in encryption options that can be turned on without downtime.
+
+3. **Verify**  
+   - Re‑run the probe after encryption to confirm the “Passed” flag turns true.
+
+4. **Automate future checks**  
+   - Add the encryption test to your regular security scan or CI/CD pipeline so you’re alerted immediately if a new volume goes un‑encrypted.
+
+---
+
+### Bottom line
+
+The security assessment did what it was supposed to – it checked your disks and flagged a problem. Encrypt that volume, and you’ll satisfy the test and strengthen your data protection posture.

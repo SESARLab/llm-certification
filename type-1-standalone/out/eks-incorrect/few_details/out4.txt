@@ -1,1 +1,1 @@
-I’m ready to help. Could you paste the detailed assessment report here? Then I can turn it into a concise, easy‑to‑understand summary.
+The scan ran fine and checked seven security rules for your Kubernetes cluster. Four rules passed: logging is on, the cluster version is supported, and identity‑provider tags are correct. Three rules failed: the cluster’s API endpoint is publicly reachable, secrets are stored in plain text, and a required tag (tag1) is missing. Fix these to reduce exposure.

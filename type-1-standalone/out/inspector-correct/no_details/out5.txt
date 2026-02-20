@@ -1,1 +1,14 @@
-It looks like the detailed assessment report didn’t come through. Could you paste the report (or the key findings) so I can turn it into a clear, simple explanation?
+**Security Assessment Summary (Plain‑English)**  
+
+| What was checked | Result |
+|------------------|--------|
+| Amazon Inspector for EC2 instances | ✅ Passed – scanning is turned on and working |
+| Amazon Inspector for ECR (container images) | ✅ Passed – scanning is turned on and working |
+| Amazon Inspector for Lambda code | ✅ Passed – scanning is turned on and working |
+| Amazon Inspector for Lambda standard checks | ✅ Passed – scanning is turned on and working |
+
+- **Probe status:** “The probe executed successfully!” – the test ran without errors.  
+- **Overall success:** 4 out of 4 checks succeeded.  
+- **Vulnerabilities:** No CVEs were found (the CVE list is empty).  
+
+**Bottom line:** All required Amazon Inspector scans are enabled and functioning correctly. No security issues were detected in this assessment. Keep the scanning enabled and run it regularly to stay protected.

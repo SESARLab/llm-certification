@@ -1,7 +1,1 @@
-Your AWS security check found that all 19 S3 buckets are not protected properly.  
-
-• No public‑access controls – anyone on the Internet could read or write data.  
-• No SSL‑only requirement – traffic can be sniffed in the clear.  
-• No MFA‑delete – an attacker who gets credentials can delete or change files without a second factor.  
-
-These gaps let attackers steal, modify or erase your data, exposing you to data loss, privacy breaches, and compliance violations. Fix the settings immediately.
+The probe checked 4 security rules for your AWS storage buckets. None passed. All buckets allow public access, accept unencrypted traffic, and have no extra deletion protection. This means data could be read or deleted by outsiders, and sensitive logs could be exposed. Fix these settings to keep your data safe.

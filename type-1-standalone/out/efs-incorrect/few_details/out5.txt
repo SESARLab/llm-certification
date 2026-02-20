@@ -1,1 +1,2 @@
-I’m ready to help explain the assessment. Could you paste the detailed report (or the key findings) here? That way I can give you a clear, 75‑word summary.
+**Quick take‑away:**  
+The scan ran fine, but it found one data storage (ID fs‑11112222333344445) that isn’t encrypted. That means the data on that storage could be read if accessed by an unauthorized person. No known public security bugs (CVE) were found, but you should encrypt this file system to protect the data.

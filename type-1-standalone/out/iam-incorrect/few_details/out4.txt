@@ -1,1 +1,1 @@
-I’m ready to help—just paste the assessment report and I’ll give you a concise, non‑technical summary.
+The scan ran fine, but only 4 of 13 checks passed. Many users have old access keys (some >800 days) and lack multi‑factor authentication (MFA). The root account also has no MFA, and no password policy is set. The system does have a support role and all certificates are valid, but an external Access Analyzer is missing. You’ll need to rotate keys, enable MFA, and add a password policy.

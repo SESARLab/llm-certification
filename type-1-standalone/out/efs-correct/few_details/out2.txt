@@ -1,1 +1,1 @@
-I’d be happy to help. Could you paste the detailed assessment report here so I can create the concise, non‑technical summary?
+The security scan ran correctly and found nothing to worry about. One test was performed and it passed – no encrypted file systems were detected, so there’s no hidden data to protect. No known vulnerabilities (CVE list is empty) were discovered. Overall, your system is in a good, compliant state.

@@ -1,83 +1,51 @@
-## What a Security Assessment Report is All About
+**Quick‑look summary**
 
-A security assessment report is the *report card* your organization gets after an independent team has examined every angle of your IT environment—web sites, apps, servers, network devices, and people. Think of it as a doctor’s check‑up for your digital life.  
+| Check | Result | What it means |
+|-------|--------|---------------|
+| **Overall** | 4/7 controls passed | The probe ran fine, but 3 key security gaps were found. |
+| **CIS EKS 2.1.1** | ✅ Passed | Audit logging on the API‑server is turned on. |
+| **NIST EKS.1** | ❌ Failed | One cluster (`musa‑dev`) has a *public* endpoint – anyone on the internet can reach it. |
+| **NIST EKS.2** | ✅ Passed | The cluster runs a supported Kubernetes version (`1.31`). |
+| **NIST EKS.3** | ❌ Failed | Secrets stored in the cluster are **not encrypted** in‑transit or at rest. |
+| **NIST EKS.6** | ❌ Failed | The cluster is missing required tags (e.g., `tag1`). |
+| **NIST EKS.7** | ✅ Passed | All identity‑provider (IdP) configurations have the required tags. |
+| **NIST EKS.8** | ✅ Passed | Audit logging is enabled on all clusters. |
 
-Below is a plain‑English guide to the most common parts you’ll see and what they mean for you.
-
-| Section | What It Says | Why It Matters | What You Should Do |
-|---------|--------------|----------------|--------------------|
-| **1. Executive Summary** | A quick snapshot of the overall health of your systems. | Helps busy leaders decide whether the organization is “good” or “urgent.” | Take this as a high‑level risk score and decide how many resources you need to allocate. |
-| **2. Scope & Objectives** | Lists what was examined: e.g., “Website: https://example.com”, “Internal servers 10‑20”, “Staff training” | Clarifies what *is* covered and what is out of scope. | Verify that all critical assets are listed. |
-| **3. Methodology** | Describes how the assessment was performed (penetration testing, automated scans, interviews, code review). | Shows the rigor of the test and the tools used. | If you’re skeptical, check that industry‑standard methods (e.g., OWASP Top‑10, NIST) were applied. |
-| **4. Findings / Vulnerabilities** | Lists every flaw found, often grouped by severity (Critical, High, Medium, Low). Each entry usually contains: <br>• **Title** <br>• **Description** <br>• **Risk** <br>• **Proof of Concept** <br>• **Mitigation** | This is the “to‑do” list. | Prioritize fixes: Critical > High > Medium > Low. |
-| **5. Risk Assessment** | Assigns a risk score (CVSS, custom) and explains the business impact (financial loss, data breach, downtime). | Quantifies “how bad” each vulnerability could be if exploited. | Use these scores to decide budget and timeline. |
-| **6. Recommendations** | Practical steps to remediate each finding, plus general best‑practice advice (e.g., patch management, access control, incident response). | Shows the path from vulnerability to secure system. | Assign owners (DevOps, Security, Compliance) and set realistic deadlines. |
-| **7. Timeline & Roadmap** | A suggested schedule for remediation and re‑testing. | Helps plan sprints or phased projects. | Adjust the roadmap based on resource constraints and business priorities. |
-| **8. Glossary / Definitions** | Explains technical terms (SQLi, XSS, RCE, etc.). | Reduces confusion for non‑technical stakeholders. | Use it as a quick reference when discussing with the team. |
-| **9. Appendices / Evidence** | Screenshots, logs, code snippets, tool outputs. | Provides proof that findings are real and not false positives. | Store securely; they may be needed for audits or legal compliance. |
+No CVEs were found in this assessment.
 
 ---
 
-## How to Turn the Report Into Action
+### What the probe did
 
-1. **Read the Executive Summary**  
-   *Quickly see the overall risk posture.*  
-   *If the score is “High” or “Critical”, you must act immediately.*
-
-2. **Validate the Scope**  
-   *Make sure every critical system (databases, payment portals, internal services) is in scope. If something missing, ask for an extension.*
-
-3. **Prioritize Fixes**  
-   *Create a spreadsheet with each vulnerability: severity, risk, owner, target date.*  
-   *Focus first on the “Critical” ones—those that could let an attacker steal data or take down services.*
-
-4. **Assign Owners**  
-   *Dev or SysAdmin who manages the affected system gets the ticket.*  
-   *Security team monitors progress.*
-
-5. **Set Realistic Deadlines**  
-   *If the report says “Fix within 30 days”, check capacity.*  
-   *If no one can meet that, adjust the timeline but keep the risk in mind.*
-
-6. **Patch & Harden**  
-   *Apply patches, fix code, reconfigure settings, or apply compensating controls (e.g., Web‑Application Firewall).*  
-
-7. **Re‑Test**  
-   *Once a vulnerability is claimed fixed, run a quick scan or re‑test to confirm.*  
-   *Document proof in the evidence appendix.*
-
-8. **Document Lessons Learned**  
-   *Why did the vulnerability exist? Was it a missing patch, a coding error, or an outdated library?*  
-   *Update your policies or training accordingly.*
-
-9. **Report Back**  
-   *Share progress with executives: “We fixed 80 % of critical issues, risk reduced by X%.”*  
-   *Keep the board informed; it helps secure future budgets.*
+The tool scanned your Amazon EKS (Elastic Kubernetes Service) environment, checked a set of best‑practice controls, and reported which ones succeeded or failed. The “probe executed successfully” message just means the scanner ran to completion; it does **not** guarantee that everything is safe.
 
 ---
 
-## Common Terms Explained (Quick Glossary)
+### What the failures mean & why they matter
 
-| Term | What It Means | Why It Matters |
-|------|---------------|----------------|
-| **SQL Injection (SQLi)** | Attack that tricks a database into running malicious code. | Can expose or delete data. |
-| **Cross‑Site Scripting (XSS)** | Attack that injects JavaScript into a page viewed by other users. | Steals credentials, session tokens. |
-| **Remote Code Execution (RCE)** | Attack that lets a hacker run code on a target system. | Full system takeover. |
-| **Zero‑Day** | Vulnerability that is new and no patch exists yet. | Highest urgency. |
-| **CVSS** | Common Vulnerability Scoring System – assigns a numeric score (0‑10). | Lets you compare risks objectively. |
-| **Patching** | Updating software to fix known vulnerabilities. | Best defense against many exploits. |
-| **Access Control** | Rules that decide who can see or change what. | Prevents insider threats and accidental leaks. |
-| **Incident Response** | Plan for how to react when a breach happens. | Reduces damage and recovery time. |
+| Control | Why it matters | Practical impact |
+|---------|----------------|------------------|
+| **Public cluster endpoints (NIST EKS.1)** | Exposes the Kubernetes API to the public internet. | Attackers could attempt to brute‑force credentials, discover services, or launch privilege‑escalation attacks. |
+| **Unencrypted secrets (NIST EKS.3)** | Kubernetes stores secrets (DB passwords, API keys, etc.) unencrypted unless you enable encryption‑at‑rest. | Anyone who can read the cluster state or compromise a node could read these secrets. |
+| **Missing tags (NIST EKS.6)** | Tags are often used for cost tracking, access control, or automated compliance checks. | Lack of tags can make it hard to audit resource ownership or enforce policies. |
 
 ---
 
-## Bottom Line
+### Immediate next steps
 
-A security assessment report is a roadmap that shows where your systems are weak, how dangerous those weaknesses are, and how to fix them. Use the report to:
+| Issue | Action |
+|-------|--------|
+| **Public endpoint** | Use a private VPC endpoint, security groups, or a bastion host to restrict access. |
+| **Encrypt secrets** | Enable AWS Key Management Service (KMS) encryption for the cluster: `eksctl create cluster --encryption-keys <KMS-ARN>` or edit the cluster’s encryption config. |
+| **Add missing tags** | Add the required tag (`tag1`) to the cluster resources, or update the tagging policy in your IaC pipeline. |
+| **Verify audit logs** | Review the enabled log types (`api`, `audit`, `authenticator`) to ensure they capture the needed events. |
 
-1. **Understand** what’s at risk.  
-2. **Prioritize** fixes by severity and business impact.  
-3. **Allocate** the right people and budget.  
-4. **Track** progress and prove compliance.  
+---
 
-Treat it as a living document—update it after each remediation step, and keep the lines of communication open between security, IT, and business leaders. This will turn a scary list of “issues” into a clear, actionable plan that protects your organization and gives stakeholders confidence.
+### Bottom line
+
+- **Good**: Audit logging is on, the cluster version is supported, and IdP configs are correctly tagged.  
+- **Needs attention**: Public endpoint, unencrypted secrets, and missing tags.  
+- **No known CVEs**: The software itself has no known critical vulnerabilities at the time of the scan.
+
+Fix the highlighted gaps to bring the cluster into full compliance with the NIST/EKS guidelines and to harden it against the most common attack vectors. Once you address those items, run the probe again to confirm the improvements.

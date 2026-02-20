@@ -1,1 +1,1 @@
-I’m ready to help, but I need the actual assessment report details to give you an accurate, concise summary. Please paste the report text, and I’ll produce a short, easy‑to‑understand explanation (≤75 words).
+The probe checked seven security settings for your AWS EKS cluster named musa‑dev. Four passed: audit logs are on, the cluster version is supported, IDP tags are correct, and audit logging works. Three failed: the cluster is reachable from the internet, its Kubernetes secrets aren’t encrypted, and a required tag is missing. Fix these to strengthen security.

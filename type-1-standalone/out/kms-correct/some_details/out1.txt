@@ -1,1 +1,1 @@
-Sure! Please paste the detailed assessment report here, and I’ll distill it into a clear, 75‑word explanation for a non‑technical audience.
+Your security check ran fine and found no problems. All seven encryption keys in your system have “key rotation” turned on, which means they’re automatically refreshed and are protected by current best‑practice standards. In short: everything is set up correctly, no configuration errors or vulnerabilities were detected. No further action is needed.

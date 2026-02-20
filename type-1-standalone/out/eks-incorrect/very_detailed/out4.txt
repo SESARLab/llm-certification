@@ -1,1 +1,6 @@
-The probe checked seven security rules in your AWS Kubernetes setup. Four passed – logging is on and the software is supported – while three failed. One cluster is reachable from the internet, its sensitive data isn’t encrypted, and it lacks required tags. These gaps let attackers read or alter data, view logs, and breach compliance. Fixing them keeps your applications secure.
+The scan found two main issues for the AWS‑Kubernetes cluster “musa‑dev”.  
+1️⃣ The cluster endpoint is public, so anyone on the internet could reach it, increasing the risk of unauthorized access.  
+2️⃣ Secrets stored in the cluster aren’t encrypted, meaning sensitive data could be exposed if the cluster is compromised.  
+Missing tags also make it hard to track costs or enforce policies.  
+
+Audit logging is enabled, so most activity is recorded. Fixing the public access and encryption will greatly improve security.

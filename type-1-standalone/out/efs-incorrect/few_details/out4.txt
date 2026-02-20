@@ -1,8 +1,1 @@
-**Short Summary (≤75 words)**  
-
-The assessment revealed a few key security gaps:  
-1. Outdated software that could let attackers gain control.  
-2. Weak passwords that are easy to guess.  
-3. No encryption on sensitive data, risking exposure.  
-
-The team recommends patching the software, enforcing strong password rules, and encrypting data at rest. Fixing these will greatly reduce the risk of a breach.
+The scan ran fine, but it found one storage volume (ID fs‑11112222333344445) that isn’t encrypted. Because that file system is unprotected, it doesn’t meet the security rule. Encrypting it will fix the issue. No other vulnerabilities were detected.

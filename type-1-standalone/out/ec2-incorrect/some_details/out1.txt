@@ -1,1 +1,7 @@
-I’m ready to explain the assessment, but I need the report details first. Could you paste the key findings or a summary of the configuration errors? That will let me give you a clear, 75‑word explanation.
+The probe ran fine. Out of seven checks, four passed. Issues found:  
+
+- Your default security group still allows inbound/outbound traffic.  
+- One VPC isn’t logging network traffic.  
+- EBS storage isn’t encrypted.  
+
+The rest (no public SSH/remote access, all instances use secure metadata) are fine. Fix the three problems to strengthen your security.

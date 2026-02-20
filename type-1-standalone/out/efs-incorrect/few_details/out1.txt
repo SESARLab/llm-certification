@@ -1,1 +1,5 @@
-I’m ready to help, but I need the details of the security assessment report to craft a short, clear summary. Could you paste the report text or key findings here? Once I have that, I’ll give you a concise, non‑technical explanation (≤75 words).
+**What the scan found**
+
+The scan ran correctly (the probe succeeded). It checked one test: whether all file systems are encrypted. It failed – one file system, **fs‑11112222333344445**, is not encrypted. There were no other vulnerabilities or CVEs reported.  
+
+**Action needed:** Encrypt that file system to meet compliance.

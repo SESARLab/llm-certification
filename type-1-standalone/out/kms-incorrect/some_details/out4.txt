@@ -1,1 +1,1 @@
-I’m ready to explain the assessment, but I need the report’s findings first. Could you paste the key points or a summary of the errors that were found? That way I can give you a clear, 75‑word explanation.
+The test ran correctly. It checked your encryption keys to see if they automatically change (“rotate”) to keep data safe. Out of 7 keys, 5 are set up properly, but 2 (keyId6 and keyId7) have rotation turned off. Those two keys could be more vulnerable and should be re‑configured to rotate automatically.

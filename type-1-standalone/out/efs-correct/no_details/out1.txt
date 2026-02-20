@@ -1,85 +1,11 @@
-Below is a **plain‑English “one‑page” version** of a typical security‑assessment report.  
-It’s written for people who don’t need all the technical weeds but still want to know:
+**What the report says in plain English**
 
-* what the assessment found,
-* why it matters, and
-* what should happen next.
+| Item | What it means |
+|------|----------------|
+| **Probe status** | “The probe executed successfully!” – the test ran without any errors. |
+| **Overall result** | “1/1 succeeded” – the single test that was run finished correctly. |
+| **EFS check (EFS.1)** | *Passed* – the system has no Microsoft EFS (Encrypted File System) volumes to evaluate, so there’s nothing that needs encrypting. |
+| **CVE findings** | None – the report didn’t find any known security weaknesses. |
 
-Feel free to copy‑paste this template and replace the bullet points with the actual data from your own report.
-
----
-
-## Executive Summary (≤ 3 sentences)
-
-> The security assessment examined the company’s network, applications, and cloud services.  
-> Overall, the organization is **in good shape** but has a handful of high‑impact gaps that could let attackers gain access to sensitive data or disrupt services.  
-> Fixing those gaps will make the environment far more resilient and help meet compliance requirements.
-
----
-
-## 1️⃣ Key Findings – What We Discovered
-
-| Priority | Area | Issue | Impact | Likelihood | Example |
-|----------|------|-------|--------|------------|---------|
-| **High** | Network perimeter (firewalls & VPNs) | Unnecessary open ports & weak VPN passwords | Remote attacker could pivot into the internal network | Very likely | Port 3389 is open to the Internet with weak passwords |
-| **High** | Web applications | SQL‑Injection vulnerability in the “Order” page | Data exfiltration & data tampering | Likely | Attackers could read all order details |
-| **Medium** | Cloud (AWS) | IAM role “ReadOnly” has “CreateBucket” permission | Insider could unintentionally create public buckets | Possible | “ReadOnly” role can create an S3 bucket that is publicly readable |
-| **Low** | Endpoint security | 12 % of workstations missing the latest OS patch | Minor attack surface | Low | Two laptops are still on Windows 7 |
-
-*(Only the most important findings are shown – the real report will list many more, but you can keep the table to 5–10 items.)*
-
----
-
-## 2️⃣ Why These Findings Matter
-
-* **High‑Priority Gaps** – If exploited, an attacker could:
-  * Access customer data (financial, personal, or health information).
-  * Shut down critical services (e.g., e‑commerce checkout, data backups).
-  * Use the system as a launchpad for further attacks.
-
-* **Medium/Low‑Priority Gaps** – Still worth fixing to:
-  * Harden the environment and reduce future risk.
-  * Meet industry regulations (PCI‑DSS, HIPAA, GDPR, etc.).
-  * Build trust with partners and customers.
-
----
-
-## 3️⃣ Recommended Remediation (Short‑Term Fixes)
-
-| Priority | Fix | Who Should Do It | Timeline |
-|----------|-----|------------------|----------|
-| **High** | Block port 3389 from the Internet; enforce MFA for VPN | Network Ops / Security | 1–2 days |
-| **High** | Patch SQL‑Injection flaw in Order page | Web Dev Team | 3–5 days |
-| **Medium** | Remove “CreateBucket” permission from ReadOnly role | Cloud Ops | 1–3 days |
-| **Low** | Deploy missing OS patches on all workstations | IT Helpdesk | 1–7 days |
-
-> *Tip:* Use a “rule‑based” approach: fix the highest‑risk issues first, then move down the list.
-
----
-
-## 4️⃣ Long‑Term Recommendations
-
-1. **Implement a Zero‑Trust architecture** – least‑privilege everywhere, continuous authentication, and micro‑segmentation.  
-2. **Adopt automated vulnerability scanning** – run weekly scans for the web, network, and cloud.  
-3. **Establish a patch‑management policy** – schedule patch windows, test patches, and track compliance.  
-4. **Conduct regular security training** – phishing simulations, secure coding practices, and incident‑response drills.  
-5. **Create an Incident Response Plan** – define roles, escalation paths, and recovery steps.  
-
----
-
-## 5️⃣ Next Steps for Management
-
-| Action | Owner | Deadline | Status |
-|--------|-------|----------|--------|
-| Approve budget for security tools | CFO | 30 days | ☐ |
-| Sign off on remediation schedule | COO | 7 days | ☐ |
-| Schedule follow‑up assessment | CISO | 90 days | ☐ |
-
----
-
-## 📌 Quick Takeaway
-
-* **We found a few serious holes that could let attackers compromise the network and data.**  
-* Fixing those holes is urgent, but a solid, ongoing security program will keep the organization safe in the long run.  
-
-Feel free to customize the numbers, dates, and names to match your own assessment. The goal is to give stakeholders a clear picture of the risks and a roadmap for improvement—without drowning them in jargon.
+**Bottom line:**  
+The security assessment found no problems. There are no encrypted file systems to protect and no vulnerabilities that need fixing. Everything is compliant, so you don’t need to take any action right now.

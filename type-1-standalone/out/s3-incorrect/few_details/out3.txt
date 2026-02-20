@@ -1,1 +1,1 @@
-I need the detailed report text to create a short, user‑friendly summary. Could you paste it here?
+The scan ran fine and found no known CVEs, but it flagged 19 Amazon S3 buckets as insecure. None of them enforce HTTPS, have MFA delete enabled, and one bucket (musa‑webapp) is still publicly accessible. These settings let anyone read, modify, or delete your data. Fix them by blocking public ACLs, requiring SSL, and turning on MFA delete to protect your storage.

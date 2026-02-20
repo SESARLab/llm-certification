@@ -1,1 +1,1 @@
-I’m ready to help. Could you paste the security assessment report here? Once I see it, I’ll summarize it in plain English (≤75 words).
+The test ran fine overall. Out of three checks, two passed. One of your Amazon RDS databases (“database‑1”) can be reached from the internet, which is risky because anyone could try to connect. The database is encrypted and automatically receives minor version updates, so those protections are good. Consider restricting public access or using a VPN to keep it secure.

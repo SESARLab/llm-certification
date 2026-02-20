@@ -1,1 +1,1 @@
-I’m ready to explain the findings, but I’ll need the details of the security assessment report first. Please paste the report (or the key points) so I can craft a clear, concise summary for you.
+Your security check ran but found one issue: one storage area (fs‑11112222333344445) isn’t encrypted. Encryption protects data if the device is lost or stolen. To meet security standards, you should enable encryption on that file system. No other problems were detected.

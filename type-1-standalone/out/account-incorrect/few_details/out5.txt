@@ -1,1 +1,1 @@
-I’m ready to explain the assessment, but I need the details of the report first. Could you paste the key findings or share the report contents?
+The security scan ran and found no known vulnerabilities. It did flag one issue: your account lacks a backup security contact. That means if something goes wrong, you may not be alerted. Add an alternate security contact to resolve the problem.

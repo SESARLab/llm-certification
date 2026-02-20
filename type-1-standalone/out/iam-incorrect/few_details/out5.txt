@@ -1,1 +1,5 @@
-I’m ready to help explain it, but I need the details of the security assessment report first. Please paste the report (or the key findings) and I’ll give you a short, non‑technical summary.
+The scan ran fine and only 4 of 13 checks passed.  
+Many user accounts lack multi‑factor authentication and several access keys are over 90 days old.  
+There’s no password policy and the root account has no hardware MFA.  
+Positive points: no root access keys, a valid support role, and all IAM server certificates are fine.  
+Fix: enable MFA for all users, rotate old keys, and set a strong password policy.

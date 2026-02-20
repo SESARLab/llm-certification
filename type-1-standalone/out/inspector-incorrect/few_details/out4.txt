@@ -1,1 +1,1 @@
-I need the details of the assessment report to create a concise, non‑technical summary. Could you paste the report or key findings?
+Your security check ran fine but found that none of the recommended Amazon Inspector scans are active. The scans for EC2 servers, container images, and Lambda functions are all off. Without these, potential vulnerabilities aren’t identified. Enable Amazon Inspector scanning so your cloud resources can be regularly examined for threats.

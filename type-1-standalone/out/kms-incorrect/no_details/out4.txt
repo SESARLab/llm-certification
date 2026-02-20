@@ -1,1 +1,41 @@
-Sure thing! Please paste the detailed security assessment report here, and I’ll turn it into a clear, straightforward summary. If you prefer, you can also tell me the main sections or findings, and I’ll explain them in plain language.
+### What the assessment did
+
+- **Probe status** – The automated check ran without any errors.  
+  - *Result:* “The probe executed successfully!”  
+  - *Overall outcome:* 0/1 succeeded (i.e., the single check it performed didn’t fully pass).
+
+- **Key‑management focus** – The check looked at the rotation settings for your cloud encryption keys.
+
+### Key findings
+
+| Item | Finding | What it means |
+|------|---------|---------------|
+| **CIS KMS.4** | 2 out of 7 keys have rotation **disabled** | Your key‑management system is supposed to rotate keys automatically (the “CIS” benchmark). Two of your keys aren’t set up to rotate, which can leave them vulnerable if compromised. |
+
+**Compliant keys** (rotation enabled):  
+- keyId1  
+- keyId2  
+- keyId3  
+- keyId4  
+- keyId5  
+
+**Non‑compliant keys** (rotation disabled):  
+- keyId6  
+- keyId7  
+
+### Why it matters
+
+- **Rotation protects against exposure** – If a key is compromised, a rotated key can limit the damage to a short window.  
+- **Compliance** – Many security frameworks (e.g., CIS) require regular key rotation. Non‑compliance can trigger audit or regulatory flags.
+
+### Next steps
+
+1. **Enable rotation** on keyId6 and keyId7 as soon as possible.  
+   - In most cloud providers, this is a simple toggle in the key settings.  
+2. **Verify that rotation works** – After enabling, check that new key versions are being generated automatically.  
+3. **Document the change** – Record the configuration change and update your security policy so future audits show compliance.
+
+### Bottom line
+
+- The scan ran fine.  
+- Two of your seven keys are missing the critical rotation feature, which is a security gap. Fixing this will bring you into line with recommended best practices.

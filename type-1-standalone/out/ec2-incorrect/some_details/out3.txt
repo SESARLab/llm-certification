@@ -1,1 +1,1 @@
-I’d need the assessment details first. Could you paste the report here? Once I see the findings, I’ll give you a short, easy‑to‑understand summary.
+The quick security check found 4 of 7 settings okay. It flagged three issues: your default security group is open to any traffic, your VPC isn’t logging network activity, and encrypted storage (EBS) isn’t enabled. The rest – no open admin ports, good IP‑address restrictions, and IMDSv2 enforcement – are fine. Fix the three problems to tighten your cloud security.

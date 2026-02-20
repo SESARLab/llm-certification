@@ -1,1 +1,3 @@
-The assessment found configuration mistakes that could let attackers read sensitive data, use old protocols, or gain admin control. Fixing these settings will stop common attack methods and keep your information safe.
+**Security Assessment Summary**
+
+The scan ran without problems and found no encrypted file systems (EFS) on your machine. Since no EFS volumes were present, there are no encryption‑related configuration errors to fix. Your current setup is compliant with the checked criteria.

@@ -1,1 +1,1 @@
-I’m ready to explain the findings, but I need the details of the assessment report first. Could you paste the report text or the key findings? Once I have that, I’ll turn it into a concise, non‑technical summary.
+The check ran fine but found one unencrypted file system (fs‑11112222333344445). This means data stored there isn’t protected. Encrypting that file system will lock it and keep it safe from unauthorized access. Please enable encryption for that system.

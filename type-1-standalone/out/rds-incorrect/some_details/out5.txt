@@ -1,1 +1,1 @@
-I need the details of the assessment report to give you a clear, concise explanation. Could you paste the report (or key findings) here?
+Your security check ran correctly. Two findings were good: the database is encrypted and it automatically receives minor version upgrades. However, one database (database‑1) is publicly reachable from the internet, which is risky. Adjust its network settings to restrict external access while keeping encryption and auto‑upgrade enabled.

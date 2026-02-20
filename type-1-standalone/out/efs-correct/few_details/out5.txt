@@ -1,1 +1,1 @@
-I’d be happy to help! Could you paste the security assessment report text here? Then I can craft a concise, non‑technical summary for you.
+The security check ran correctly and found nothing to worry about. It looked for encrypted file systems (EFS) and didn’t see any, so there’s no hidden data to protect. No vulnerabilities (CVE) were found. In short, the system passed the test and is compliant.

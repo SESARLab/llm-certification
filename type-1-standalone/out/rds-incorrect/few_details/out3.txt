@@ -1,1 +1,1 @@
-Sure! Please paste the detailed security assessment report, and I’ll distill it into a concise, non‑technical summary.
+The scan finished and found two of three checks passed. One of your two Amazon RDS databases (database‑1) is publicly accessible, which is risky. The other database is encrypted and auto‑upgrade is enabled, which is good. You should restrict internet access to the exposed database to improve security.

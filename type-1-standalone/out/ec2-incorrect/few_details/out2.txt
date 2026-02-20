@@ -1,2 +1,1 @@
-I’m ready to help!  
-Could you please paste the detailed security assessment report here? Once I have it, I’ll provide a concise, 75‑word summary in plain language.
+The scan ran and found 4 of 7 controls passed. It flagged three problems: the default security group for your instance allows any inbound or outbound traffic, one VPC doesn’t record network activity, and your EBS volumes aren’t encrypted. All other checks (SSH/remote ports, IMDSv2, ACLs) are fine. Fixing these will strengthen your AWS security.

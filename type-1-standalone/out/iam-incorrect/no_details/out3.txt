@@ -1,1 +1,39 @@
-I’m ready to help simplify the assessment, but I need the actual report text first. Could you paste the details or summarize the key sections (e.g., scope, findings, risk levels, recommendations) so I can turn them into a clear, lay‑person summary?
+**What the assessment found – in plain English**
+
+| Check | Status | What it means | What you should do |
+|-------|--------|---------------|--------------------|
+| **Probe ran OK** | ✅ | The tool finished and gave you a report. | No action needed. |
+| **4/13 checks passed** | ⚠️ | Only 4 of the 13 specific controls were satisfied. | Focus on the failed ones – they are the biggest risks. |
+
+### Controls that *failed* (high‑risk)
+
+| Control | Why it failed | Immediate fix |
+|---------|---------------|---------------|
+| **CIS IAM.2 – “Policy attachment”** | 7 users have policies attached; the others only have a very limited *IAMUserChangePassword* policy. | Review each user’s policies. Remove any that are unnecessary or replace them with more restrictive, job‑role‑based policies. |
+| **CIS IAM.3 – “Old access keys (90 days)”** | 5 users still have long‑lived access keys (several years old). | Rotate those keys now – create a new key, test, then delete the old one. |
+| **CIS IAM.5 – “MFA for console users”** | 3 users (almaviva.dev, engineering.dev, kevin.pease) have no MFA device. | Enable MFA for those users. Use virtual MFA (Google Authenticator, etc.) if hardware MFA isn’t available. |
+| **CIS IAM.6 – “Root hardware MFA”** | Root user doesn’t have a hardware MFA token. | Add a hardware MFA device to the root account (or a strong virtual MFA as a backup). |
+| **CIS IAM.9 – “Root MFA”** | Root account is not MFA‑protected. | Enable MFA on the root account (same token as above). |
+| **CIS IAM.15 & 16 – “Password policy”** | No password policy exists – users can set any password. | Create a password policy that requires a minimum length, complexity, and rotation period. |
+| **CIS IAM.22 – “Old access keys (45 days)”** | 5 users have keys older than 45 days (some over a year). | Rotate these keys as soon as possible. |
+| **CIS IAM.28 – “External Access Analyzer”** | No active Access Analyzer – you can’t see external sharing or accidental exposures. | Enable the IAM Access Analyzer to automatically discover cross‑account or external permissions. |
+
+### Controls that *passed* (low‑risk)
+
+| Control | Result |
+|---------|--------|
+| **CIS IAM.4 – “Root access keys”** | No root access keys – good. |
+| **CIS IAM.18 – “Support role”** | Support role exists – fine. |
+| **CIS IAM.26 – “Server certificates”** | All IAM certificates are valid. |
+| **CIS IAM.27 – “CloudShellFullAccess”** | No user has the risky CloudShellFullAccess policy. |
+| **CIS IAM.2‑27** (other sub‑checks) | No issues found. |
+
+### Quick next‑steps
+
+1. **Rotate old keys** – focus first on those that are *over a year old* (e.g., alex.dellabruna, almaviva.dev).  
+2. **Enable MFA** for the three users without it and for the root account (both virtual and, if you have a device, hardware).  
+3. **Create a password policy** – set length, complexity, rotation, and lock‑out rules.  
+4. **Enable Access Analyzer** – start it in the account and let it surface any unintended public or cross‑account permissions.  
+5. **Audit policies** – review the 7 users with attached policies and tighten or replace as needed.
+
+By tackling these areas you’ll cover the biggest gaps that could let an attacker stay hidden or misuse long‑lived credentials. Once those are fixed, run the probe again – the number of passed checks should jump dramatically.

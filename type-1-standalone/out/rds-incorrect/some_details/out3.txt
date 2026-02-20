@@ -1,1 +1,3 @@
-I’m ready to explain the findings, but I need the details from the security assessment report. Please paste the report or key points, and I’ll turn them into a concise, non‑technical summary.
+The security probe ran correctly and found two out of three good settings.  
+One of your databases (database‑1) is exposed to the public internet – that’s a risk and should be closed.  
+All other checks were fine: the database is encrypted and automatically updates to newer versions.  Keep the public access blocked to protect your data.

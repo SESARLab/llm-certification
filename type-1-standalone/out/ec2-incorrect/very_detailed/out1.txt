@@ -1,7 +1,1 @@
-Your assessment found three gaps that could let attackers in or read your data:  
-
-1. An open default security group lets any traffic reach your EC2 instances.  
-2. The VPC isn’t logging traffic, so intrusions could go undetected.  
-3. EBS volumes aren’t automatically encrypted, so stored data could be read if compromised.  
-
-These weaknesses raise the risk of unauthorized access, data theft, and make it harder to spot attacks. The other controls (IMDSv2, ACLs, admin‑port restrictions) are fine.
+Your AWS probe ran fine. It found three issues: 1) The default security group lets traffic in and out, exposing instances to anyone. 2) No VPC flow logs are enabled, so network activity isn’t recorded and would be hard to investigate after an attack. 3) EBS volumes aren’t encrypted, so data could be read if an attacker gains access. The rest—remote‑admin ports and IMDSv2—are properly secured.

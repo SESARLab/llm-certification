@@ -1,1 +1,1 @@
-The probe checked the system’s settings and found a handful of configuration mistakes that could let attackers gain access, steal data, or disrupt services. Fixing these weak points—like updating software, tightening permissions, and closing unused ports—will make the environment far safer.
+The security check ran fine but found all four Amazon Inspector scans are disabled. This means your EC2, ECR, and Lambda functions aren’t automatically checked for vulnerabilities, leaving potential weaknesses unchecked. Enabling these scans will help detect and fix security issues early.

@@ -1,1 +1,1 @@
-I need the details of the assessment report to summarize it. Could you paste the report’s findings here?
+Our security scan ran fine, checking your database settings. It found 3 tests: one failed—one of your databases (database‑1) can be reached from the internet, which is risky. The other two passed: the database is encrypted and automatically gets minor version updates. Fix the public access to keep your data safe.

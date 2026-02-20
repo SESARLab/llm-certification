@@ -1,1 +1,7 @@
-The probe found that none of the four Amazon Inspector scans (for EC2, ECR, and Lambda code/standard) are enabled. Without these scans, hidden security flaws may go undetected, letting attackers exploit vulnerabilities, steal data, or disrupt services. Enabling Inspector will help detect and fix weaknesses before they can be exploited—acting now protects your AWS environment.
+The check found that four security scans are turned off in your AWS account.  
+• No automated scan of your EC2 servers.  
+• No scan of your container images.  
+• No scan of your Lambda functions’ code.  
+• No scan of your Lambda functions’ runtime environment.  
+
+Because these checks are missing, hidden software flaws, malware or misconfigurations could go unnoticed and expose your applications to attackers or data loss. Turning them on would help catch and fix such risks early.

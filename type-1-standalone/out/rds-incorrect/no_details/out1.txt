@@ -1,1 +1,13 @@
-I’m happy to help break it down for you—but I’ll need the actual details of the assessment report first. Could you paste or summarize the key findings (e.g., identified vulnerabilities, risk levels, recommendations) so I can translate them into a clear, easy‑to‑understand explanation?
+**What the assessment tells us**
+
+| Check | Result | What it means |
+|-------|--------|---------------|
+| **CIS RDS.2 – Public access** | ❌ *Failed* | One of your Amazon RDS databases (`database‑1`) is reachable from the Internet. This exposes the database to potential attackers. |
+| **CIS RDS.3 – Encryption** | ✅ *Passed* | All of your RDS databases are encrypted at rest, so the data on disk is protected. |
+| **CIS RDS.13 – Auto‑upgrade** | ✅ *Passed* | Automatic minor version upgrades are turned on, so the database will get small, non‑breaking updates without manual intervention. |
+
+**Overall**  
+The probe ran correctly (“The probe executed successfully!”). Out of the three checks, two passed and one failed – the one that needs your attention is the public‑access issue.
+
+**Next step**  
+Restrict network access to `database-1` (e.g., place it in a private subnet, use security groups or VPC endpoints) so that only trusted resources can connect. The other two areas (encryption and auto‑upgrade) are already configured correctly.

@@ -1,6 +1,1 @@
-The assessment found three main risks:  
-1. Out‑of‑date software that could be attacked.  
-2. Weak passwords that make unauthorized access easy.  
-3. A phishing vulnerability that could trick users into revealing sensitive data.  
-
-Updating the software, strengthening passwords, and training staff will greatly lower the chance of a breach.
+The scan ran fine, but all four checks failed. Your Amazon EC2, ECR, and Lambda services don’t have Inspector scanning enabled, so potential security problems aren’t being detected. Turn on these scans to catch vulnerabilities before they become threats.

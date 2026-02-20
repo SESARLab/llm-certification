@@ -1,1 +1,27 @@
-I’m ready to help simplify the assessment! Could you paste the detailed report (or key sections of it) so I can turn it into a clear, easy‑to‑understand summary?
+### Quick‑look summary
+
+- **Probe status:** ✔️ “The probe executed successfully!” – the scan ran without errors.  
+- **Overall result:** 7/7 checks passed – no problems found.  
+- **Security posture:** Your AWS environment is in good shape according to the CIS EC2 benchmarks.
+
+---
+
+### What the scan looked at
+
+| Control | What it checks | Result |
+|---------|----------------|--------|
+| **CIS EC2.2** | Default security groups – no inbound/outbound traffic | ✅ All 1 group (`sg‑0c063b93959ff3eb5`) is empty |
+| **CIS EC2.6** | VPC flow logs – always enabled | ✅ Flow logging is active on the only VPC (`vpc‑0fb33f847f5cb2033`) |
+| **CIS EC2.7** | EBS default encryption | ✅ Encryption is enabled for all new volumes |
+| **CIS EC2.8** | IMDSv2 enforcement | ✅ All instances use IMDSv2 (the newer, safer metadata option) |
+| **CIS EC2.21** | Network ACLs – block public SSH/RDP | ✅ The only ACL (`acl‑0cf7d0c72e88044a7`) does not allow port 22/3389 from anywhere |
+| **CIS EC2.53** | Security groups – block public SSH/RDP (IPv4) | ✅ No group allows those ports from `0.0.0.0/0` |
+| **CIS EC2.54** | Security groups – block public SSH/RDP (IPv6) | ✅ No group allows those ports from `::/0` |
+
+---
+
+### Bottom line
+
+Your account meets all the examined CIS EC2 security controls.  
+There are no current vulnerabilities or misconfigurations in the areas tested.  
+Keep monitoring and updating your environment, but you’re in good shape right now!

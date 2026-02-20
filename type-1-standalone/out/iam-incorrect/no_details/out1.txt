@@ -1,1 +1,30 @@
-I’m ready to help simplify the assessment, but I’ll need the full report first. Could you paste the details or upload the file so I can review it? Once I have the content, I’ll break it down into clear, lay‑person terms.
+**What the assessment found – in plain English**
+
+| Item | Status | What it means | What you should do |
+|------|--------|---------------|--------------------|
+| **Overall test** | 4/13 passed | The tool ran fine but only 4 of 13 checks were met. | Treat the 9 failures as “things that need fixing.” |
+| **CIS‑IAM‑2** | Fail | 7 people can change passwords but the rest don’t have policies that let them do anything useful. | Add proper permissions (e.g., “ChangePassword” only) to those users who need it, and make sure everyone has the right policy attached. |
+| **CIS‑IAM‑3** | Fail | 5 users own access keys that are **more than 90 days old** – that’s a long time to keep a secret key in the wild. | Re‑create those keys, rotate them immediately, and delete the old ones. |
+| **CIS‑IAM‑4** | Pass | No root‑account access keys exist. | Good – keep the root account key‑free. |
+| **CIS‑IAM‑5** | Fail | 3 people who can log into the console don’t have MFA (two‑factor) protection. | Attach an MFA device to those users. |
+| **CIS‑IAM‑6** | Fail | The root account does **not** have a hardware MFA token. | Add a hardware (or virtual) MFA device for the root user. |
+| **CIS‑IAM‑9** | Fail | The root account has no MFA enabled at all. | Same as above – enable MFA for the root user. |
+| **CIS‑IAM‑15 & 16** | Fail | No password policy is defined. | Create a password policy: enforce length (e.g., 12+ chars), complexity, rotation, and no reuse. |
+| **CIS‑IAM‑18** | Pass | The required “AWSServiceRoleForSupport” role is present. | Nothing to change. |
+| **CIS‑IAM‑22** | Fail | 5 users own keys older than 45 days – a stricter rule than the 90‑day check. | Rotate those keys now; the same 5 users were flagged in the 90‑day check. |
+| **CIS‑IAM‑26** | Pass | All server certificates are valid. | No action. |
+| **CIS‑IAM‑27** | Pass | No user has the risky “AWSCloudShellFullAccess” policy. | Good. |
+| **CIS‑IAM‑28** | Fail | No active “External Access Analyzer” is enabled. | Enable External Access Analyzer so you can see who can access your resources from outside the AWS network. |
+
+---
+
+### Bottom‑line
+
+- **30+ users need a password policy** – set a minimum length, complexity, rotation, and no‑reuse rules.
+- **5–7 users have old access keys** – rotate or delete them immediately.
+- **Root account needs MFA** – enable hardware or virtual MFA now.
+- **3 console users lack MFA** – add MFA to those accounts.
+- **Enable External Access Analyzer** – this gives visibility into cross‑account or internet access.
+- **Other controls are already good** – no server cert problems, no CloudShellFullAccess, and the support role is present.
+
+Fixing these items will bring your AWS IAM environment into compliance with the CIS Controls and dramatically reduce the risk of a credential‑based attack.

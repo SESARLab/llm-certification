@@ -1,1 +1,1 @@
-Sure! Please paste the detailed security assessment report here, and I’ll turn it into a quick, easy‑to‑understand summary.
+The scan ran fine, checking seven security settings. Four worked, but three were weak: a default group lets any traffic in/out, your VPC isn’t logging traffic, and your stored data isn’t encrypted by default. The rest (instance settings, access controls) are okay. Review these areas to tighten security.

@@ -1,1 +1,1 @@
-I’m ready to help explain the report, but it looks like the details didn’t come through. Could you paste the assessment findings or a summary of the key issues? That’ll let me give you a clear, short explanation.
+Your security scan finished without errors. All 7 checks were successful: logs are on, endpoints are private, cluster version is supported, tags are present, and audit logging is enabled. The only issue is that Kubernetes secrets in your cluster are not encrypted, so they could be read by anyone who gains access. Encrypting secrets would fix this.

@@ -1,1 +1,6 @@
-I’m ready to explain the assessment, but I’ll need the actual report details first. Could you share the report text or key findings? That way I can give you a clear, 75‑word summary for a non‑technical audience.
+Your security scan ran without any problems. All three checks for your database (RDS) passed:  
+– It isn’t exposed to the public internet.  
+– All data is encrypted.  
+– Automatic minor‑version upgrades are on.  
+
+No vulnerabilities (CVE) were found, so your database configuration is secure.

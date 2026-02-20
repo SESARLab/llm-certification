@@ -1,1 +1,7 @@
-The probe found four out of seven checks passed. It’s good that API‑server audit logs are on, the cluster version is supported, and all clusters have audit logging. However, the “musa‑dev” cluster is reachable from the public internet, its Kubernetes secrets aren’t encrypted, and it lacks required tags. These gaps let attackers access or steal sensitive data, expose the cluster to external attacks, and make tracking or compliance auditing harder. Fixing them strengthens security and reduces risk.
+The scan found 4 of 7 checks passed, but 3 key problems remain:
+
+* The “musa‑dev” cluster is publicly reachable, letting anyone on the Internet try to access it.
+* Sensitive data (Kubernetes secrets) aren’t encrypted, so if someone breaks in, they can read passwords or keys.
+* The cluster lacks required tags, making it hard to track ownership, cost, or compliance.
+
+These gaps could let attackers exploit the cluster, expose data, and make it hard to meet regulations.

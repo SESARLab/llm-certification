@@ -1,1 +1,19 @@
-It looks like the detailed security assessment report didn’t come through. Could you please paste or upload the report so I can give you a clear, concise explanation of its findings?
+**Security Assessment Summary – “MooncloudCisTest” CloudTrail**
+
+| # | Control | Result | What it means |
+|---|---------|--------|---------------|
+| 1 | Multi‑Region & global event trail | **Pass** | The trail records all events (read & write) in all regions – a good basic security practice. |
+| 2 | SSE‑KMS encryption | **Pass** | All log files are encrypted with AWS KMS – protects the logs from tampering or unauthorized reading. |
+| 3 | Log file validation | **Fail** | The trail has **no** log file validation turned on. Without this, you can’t detect if logs were altered or deleted. |
+| 4 | S3 bucket access logging | **Fail** | The trail’s S3 bucket doesn’t log its own access to a separate bucket, so you can’t see who read or wrote to the log bucket. |
+
+### Overall
+- **2 out of 4** controls are compliant.  
+- No known CVEs were found in the system.
+
+### What to Do Next
+1. **Enable log file validation** – this adds a checksum to each log file, letting you verify that logs haven’t been changed.  
+2. **Set up S3 access logging** – point the CloudTrail bucket’s access logs to a separate bucket to audit who’s reading the logs.  
+3. Once those two are fixed, the trail will meet all CIS benchmark checks.
+
+**Bottom line:** The probe worked, but there are two key gaps that could let attackers hide or tamper with CloudTrail logs. Fixing them will make your audit trail stronger and more trustworthy.

@@ -1,1 +1,16 @@
-I’d be happy to walk you through it! Could you please share the detailed report (or the key findings from it) so I can give you a clear, simple explanation?
+**What the report says – in plain English**
+
+| What we looked at | What the scan found | Why it matters |
+|-------------------|--------------------|----------------|
+| **Encryption of file systems** | One file system (`fs-11112222333344445`) is **not encrypted**. | Unencrypted data can be read by anyone who gets access to the disk.  That’s a serious security risk, especially if the data is sensitive or regulated. |
+| **Other checks** | No other checks failed.  The scan itself ran without error. | The overall probe was executed successfully (“The probe executed successfully!”), so the test was reliable. |
+| **Known CVEs** | None were identified. | No specific vulnerability identifiers were found. |
+
+**What you should do**
+
+1. **Enable encryption** on the flagged file system.  
+   *If it’s an EFS‑managed file system on AWS, enable the EFS encryption option.*  
+2. Verify that any data stored there is protected and that the encryption key is properly managed (e.g., using AWS KMS).  
+3. Re‑run the assessment to confirm the issue is fixed.
+
+In short: the assessment ran fine but uncovered a single security hole—one file system that’s not encrypted. Fixing that will bring the environment into compliance with your encryption policy.

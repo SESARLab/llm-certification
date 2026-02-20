@@ -1,1 +1,36 @@
-It looks like the assessment details didn’t come through. If you can paste the report (or the key findings) here, I’ll turn it into a clear, lay‑person summary.
+**Quick‑look summary**
+
+| Item | What it means |
+|------|---------------|
+| **Probe ran fine** | The test finished without errors – “The probe executed successfully!” |
+| **Overall result** | “0/1 succeeded” – the only test ran, and it did not pass. |
+| **Key‑rotation check (CIS KMS.4)** | 7 encryption keys were examined. 5 of them rotate automatically (good). 2 of them don’t rotate (bad). |
+
+---
+
+### What does this mean?
+
+- **CIS KMS.4** is a security rule that says “every key in your Key Management Service (KMS) should automatically rotate at a set interval.”  
+- In this assessment, the tool looked at all 7 keys you have in your KMS.
+- It found that **keyId6** and **keyId7** are **not** configured to rotate.  
+
+### Why is that a problem?
+
+- If a key is never rotated, an attacker who compromises that key could keep using it indefinitely.  
+- Rotation limits the amount of data that could be compromised if a key leaks.
+
+### What should you do next?
+
+1. **Enable automatic rotation** for keyId6 and keyId7.  
+   *In most cloud providers you can simply toggle “auto‑rotate” in the key settings.*  
+2. **Verify** that the change is reflected by running the probe again.  
+3. Keep an eye on any new keys you create to ensure they start with rotation enabled.
+
+### Bonus: CVEs
+
+- The report had an empty CVE list, so no known software vulnerabilities were found in this assessment.
+
+---
+
+**Bottom line:**  
+The scan ran fine but uncovered two keys that don’t rotate. Turn on rotation for those keys to meet best‑practice security standards.

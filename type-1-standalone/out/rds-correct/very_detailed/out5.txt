@@ -1,3 +1,1 @@
-Your AWS database is in good shape.  
-The probe found that the RDS instance is not exposed to the internet, its data is encrypted, and automatic security‑patch upgrades are enabled.  
-In short, the database is protected against external access, keeps your information confidential, and stays up‑to‑date with the latest fixes—so your applications remain safe.
+Your security scan ran without any issues and found no problems. All of your Amazon RDS database(s) are set up safely: they’re not exposed to the internet, the data is encrypted, and software updates will happen automatically. In short, the assessed settings protect your data from unauthorized access, keep it encrypted, and ensure the database stays up‑to‑date—so you’re covered on those fronts.

@@ -1,2 +1,1 @@
-**Report Summary (≤75 words)**  
-The security scan ran correctly and found one problem: an Amazon EFS file system (**fs‑11112222333344445**) is **not encrypted**. Because its data isn’t protected at rest, anyone who gains access to the file system—or to the cloud account—could read, modify, or delete its contents. Encrypting the file system is essential to keep your data safe from leaks or unauthorized use.
+The security check ran fine but found a problem: one Amazon EFS file system (fs‑11112222333344445) is not encrypted. This means data stored there could be read or tampered with by anyone who gets access to the storage. Encrypting it protects your information and helps meet security and compliance standards. The probe recommends adding encryption to secure the data.

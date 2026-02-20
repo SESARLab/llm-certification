@@ -1,1 +1,1 @@
-I’m ready to explain the findings, but I need the details of the assessment report first. Please paste or summarize the key points so I can give you a clear, 75‑word overview.
+The scan ran fine and found no software bugs, but it did spot a configuration issue. Out of three tests, two passed: your database is encrypted and automatically gets minor version upgrades. However, one RDS instance (database‑1) is publicly reachable, which could let anyone on the internet connect to it. You should restrict its network access or move it to a private subnet.

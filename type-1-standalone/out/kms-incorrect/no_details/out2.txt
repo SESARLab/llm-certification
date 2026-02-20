@@ -1,1 +1,40 @@
-It looks like the detailed security assessment report didn’t come through. Could you please paste the report (or the key findings) so I can help you turn it into a simple, easy‑to‑understand explanation?
+**What the report says in plain English**
+
+| Item | What it means |
+|------|----------------|
+| **“The probe executed successfully!”** | The security tool ran without any technical problems – it was able to talk to your KMS (Key Management Service) and gather the information it needed. |
+| **Summary: 0/1 succeeded** | The assessment tried one “check” (enabling key rotation) and that single check **did not** pass. |
+| **CIS KMS.4 – “Key rotation”** | The rule says *all* KMS keys should have automatic rotation enabled. The tool looked at 7 keys in total. |
+| **Result: 2 out of 7 keys found with rotation disabled** | Five of the keys are good – they’ll rotate automatically. Two keys won’t rotate, which is a security risk because they stay in the same state for longer than recommended. |
+| **Compliant Keys** | `keyId1`, `keyId2`, `keyId3`, `keyId4`, `keyId5` – these are fine. |
+| **Non‑Compliant Keys** | `keyId6`, `keyId7` – these need attention. |
+| **No CVEs found** | The scan didn’t spot any known vulnerabilities in the software you’re running. |
+
+---
+
+### Why is this important?
+
+* **Key rotation** keeps your encryption keys fresh and limits the damage if a key ever gets exposed.  
+* If a key never rotates, an attacker who obtains that key can decrypt data for an extended period.  
+* AWS automatically rotates keys that are marked “enabled,” but if you’ve disabled it for any reason, it stays static.
+
+---
+
+### What to do next
+
+1. **Enable rotation for the two non‑compliant keys**  
+   * Go to the AWS KMS console, select `keyId6` and `keyId7`, and click “Enable automatic rotation.”  
+   * If you’re using Terraform or CloudFormation, update the `enable_key_rotation` attribute to `true`.
+
+2. **Verify**  
+   * Re‑run the probe or the specific KMS rotation check to confirm that all 7 keys now report “rotation enabled.”  
+   * The assessment should then show *0/1 succeeded* → *1/1 succeeded*.
+
+3. **Automate the check**  
+   * Add the CIS KMS.4 rule to your CI/CD pipeline or security monitoring so future changes to KMS keys trigger a compliance alert.
+
+---
+
+### Bottom line
+
+The security scan ran fine and found a single compliance issue: two of your KMS keys aren’t rotating automatically. Turning on rotation for those keys will bring your environment into compliance and reduce the risk of key‑related attacks. No other security problems were detected.

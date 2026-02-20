@@ -1,1 +1,2 @@
-I’d need the details of the assessment to explain it. Please paste the report text or key findings, and I’ll summarize it in plain language.
+**Quick take‑away:**  
+Your AWS account has passed every security check. All users follow the password rules (14‑plus chars, no reuse), have MFA on, and use fresh access keys. No root key is present, and root MFA is on. The required support role exists, server certificates are valid, and the “External Access Analyzer” is running. In short, your IAM settings are secure and compliant.

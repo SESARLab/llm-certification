@@ -1,1 +1,32 @@
-It looks like the assessment details didn’t come through. Could you please paste the report text or share the key findings (e.g., vulnerabilities, risk ratings, recommended fixes)? Once I have that, I can give you a concise, lay‑person friendly summary.
+**What the report says – in plain words**
+
+| What we looked at | Result | What it means |
+|-------------------|--------|---------------|
+| **Overall probe** | ✔️ The probe ran without crashing | The assessment tool worked fine. |
+| **Amazon Inspector checks** | 0 / 4 passed | All four specific checks failed. |
+
+### Why those four checks matter
+
+Amazon Inspector is a security‑assessment service that automatically scans:
+
+1. **EC2 instances** (your virtual servers)  
+2. **ECR images** (containers you store)  
+3. **Lambda functions – code scanning** (examines the actual code)  
+4. **Lambda functions – standard scanning** (looks at the runtime environment)
+
+Because each of those checks returned *“not enabled”*, none of your resources are currently being automatically inspected for known security weaknesses.
+
+### What you can do
+
+| Step | What to do | Why it helps |
+|------|------------|--------------|
+| 1 | Turn on **Amazon Inspector** for EC2. | Detects missing patches, misconfigurations, and potential exploits on your servers. |
+| 2 | Enable **ECR image scanning**. | Finds vulnerable libraries or insecure images before you deploy them. |
+| 3 | Enable **Lambda code scanning**. | Finds bugs or risky code patterns in your serverless functions. |
+| 4 | Enable **Lambda standard scanning**. | Checks the runtime environment for missing patches or insecure settings. |
+
+Once these are enabled, re‑run the probe – you should see the four checks pass and a higher overall score.
+
+### Bottom line
+
+The assessment tool ran correctly, but your environment lacks the automated security scans that Amazon Inspector provides. Enabling those scans will give you early warnings about vulnerabilities and help keep your workloads safe.

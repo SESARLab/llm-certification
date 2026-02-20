@@ -1,5 +1,4 @@
-The scan found three small but important gaps.  
-1. Your default security group allows any traffic in or out, so attackers could reach your servers.  
-2. No VPC flow logs mean you can’t see who’s accessing your network.  
-3. EBS volumes aren’t encrypted, so stored data could be exposed.  
-Fixing these reduces the chance of a breach and protects your data.
+The scan found four of seven checks passed, but three critical misconfigurations remain.  
+1) Your default security group lets any traffic in and out, exposing instances to the internet.  
+2) No VPC flow logs means you can’t audit network traffic, making it hard to spot malicious activity.  
+3) EBS volumes are not encrypted, so stored data could be read if stolen. Fixing these reduces data loss, intrusion, and compliance risks.

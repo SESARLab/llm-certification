@@ -1,1 +1,1 @@
-I’d love to help explain the findings. Could you paste the detailed assessment report here? Once I see the specific issues the probe found, I’ll craft a short, easy‑to‑understand summary (≤75 words).
+Your security check ran fine. It examined how your encryption keys are set up. Out of seven keys, two were found not automatically rotated—a safety measure that keeps keys fresh. Those two (keyId6, keyId7) need fixing to meet best‑practice standards. The other five keys are fine. Update the rotation settings to close the gap.

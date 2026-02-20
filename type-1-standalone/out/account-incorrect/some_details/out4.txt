@@ -1,1 +1,1 @@
-Could you please paste the detailed security assessment report so I can give you a concise, non‑technical summary?
+The security check ran correctly, but it found one problem: your system has no backup contact set up for security matters. That means if the main security team can’t be reached, there’s no alternate person to handle incidents. No known vulnerabilities (CVE) were detected, but add an alternate contact to improve your security posture.

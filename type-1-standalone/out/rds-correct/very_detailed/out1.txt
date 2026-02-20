@@ -1,1 +1,2 @@
-Your database is fully secure. It’s not open to the public, its data is encrypted, and it updates automatically to keep it current. All three security checks passed, meaning no obvious risks of unauthorized access or outdated software in your AWS environment. No vulnerabilities were found.
+Your cloud database is set up correctly.  
+All checks passed: it isn’t exposed to the internet, its data is encrypted, and it automatically receives security patches. No vulnerabilities were found. This means your data stays protected, is hard to steal, and stays up‑to‑date without manual intervention. Your environment is safe for day‑to‑day use.

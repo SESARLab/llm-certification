@@ -1,2 +1,15 @@
-I’d love to break the report down for you, but I need the actual findings first.  
-Could you paste the key sections or share the main points of the assessment? Once I have that, I can give you a clear, lay‑person explanation of what was found and what it means.
+**Quick‑look Summary**
+
+| What we checked | Result | What it means |
+|-----------------|--------|---------------|
+| **RDS instance is not public** | ✅ All good | No one on the internet can reach the database directly. |
+| **Database is encrypted** | ✅ All good | All data at rest is protected by encryption. |
+| **Auto‑minor‑version upgrades enabled** | ✅ All good | The database will automatically get small, non‑breaking updates, keeping it up‑to‑date without manual intervention. |
+
+- **Overall score:** 3 of 3 checks passed – the probe ran fine (`integer_result: 0` and “The probe executed successfully!”).  
+- **No CVEs found** – the audit didn’t uncover any known vulnerabilities.  
+- **Target:** The single RDS instance named **`database‑1`** satisfied every requirement.
+
+**Takeaway**
+
+Your RDS database is set up securely according to the CIS AWS Foundations Benchmarks for the three key controls we tested. Keep monitoring, but nothing urgent needs fixing right now.

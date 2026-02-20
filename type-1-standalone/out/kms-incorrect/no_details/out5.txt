@@ -1,1 +1,18 @@
-I’d love to help simplify the assessment for you—but I’ll need the actual report text first. Could you paste the findings (or a summary of them) here? Once I have the details, I can turn the technical jargon into a clear, easy‑to‑understand explanation.
+**What the report is telling us – in plain language**
+
+| What you’re looking at | What it means |
+|------------------------|---------------|
+| **Probe ran without crashing** | The tool you used to check your security (the “probe”) finished without errors – that’s the “The probe executed successfully!” line. |
+| **Summary: “0/1 succeeded”** | One check was run (the CIS KMS.4 test).  It didn’t pass – that’s why the summary shows 0 successes out of 1 test. |
+| **CIS KMS.4 – “Key Management – Rotation”** | This rule says every key used in your Key Management Service (KMS) should have automatic rotation turned on.  If it’s off, the key can stay in use forever, which is a risk. |
+| **Result: “2 out of 7 keys found with rotation disabled”** | Out of the 7 keys you have, 5 are following the rule (they rotate).  2 are not. |
+| **Compliant keys** | `keyId1`, `keyId2`, `keyId3`, `keyId4`, `keyId5` – these are safe because they rotate. |
+| **Non‑compliant keys** | `keyId6` and `keyId7` – these are the ones that need your attention. |
+| **No CVEs** | The assessment didn’t flag any known Common Vulnerabilities and Exposures (CVE) for your environment. |
+
+### Bottom line
+
+- The security check ran fine, but it found a problem: **two of your seven KMS keys (`keyId6` and `keyId7`) have key rotation disabled**.  
+- To improve security, enable rotation on those two keys so they can’t be used indefinitely.  
+
+Once you fix those two keys, the CIS KMS.4 test should pass. If you need help turning rotation on, let me know!

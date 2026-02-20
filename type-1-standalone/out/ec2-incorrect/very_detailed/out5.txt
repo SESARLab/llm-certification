@@ -1,6 +1,1 @@
-The scan found three problems that could expose your AWS resources.  
-1️⃣ A default security group still allows inbound/outbound traffic, so anyone could reach your servers.  
-2️⃣ Your VPC has no flow‑log monitoring, so you won’t see who’s accessing the network or spot suspicious activity.  
-3️⃣ EBS volumes aren’t automatically encrypted, leaving stored data vulnerable if someone gains file‑level access.  
-
-Fixing these will tighten security and protect your data.
+Your AWS setup has a few security gaps. One default group still lets any traffic in, so attackers could reach your servers. The VPC isn’t logging traffic, so suspicious activity could go unnoticed. Your data on EBS isn’t encrypted, meaning if someone accesses it, they could read it. These weaknesses could let attackers infiltrate, monitor, or steal data from your cloud environment. Instance metadata is not protected, so a compromised machine could read data.

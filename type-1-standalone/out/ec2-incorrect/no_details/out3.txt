@@ -1,2 +1,27 @@
-I’m ready to help!  
-Could you please paste the full security assessment report (or key excerpts) that you’d like me to simplify? Once I have the details, I’ll break it down into an easy‑to‑understand explanation.
+**What the assessment found – in plain English**
+
+| Control | Did it pass? | What it checks | What we saw | Why it matters |
+|---------|--------------|----------------|-------------|----------------|
+| **CIS EC2.2 – Default security groups** | ❌ | Looks at the default “open‑to‑world” security group that is created when you first launch an EC2 instance. | The default group (sg‑0c063b93959ff3eb5) still has inbound and outbound rules that let traffic through. | If a default group is open, anyone on the internet can talk to any instance that’s attached to it. That’s a huge risk. |
+| **CIS EC2.6 – VPC flow logs** | ❌ | Checks that every Virtual Private Cloud (VPC) is sending traffic logs to CloudWatch or S3. | One VPC (vpc‑0fb33f847f5cb2033) has no flow logs enabled. | Flow logs let you see what traffic is going in and out of your network – useful for troubleshooting and for detecting malicious activity. |
+| **CIS EC2.7 – EBS default encryption** | ❌ | Ensures that Amazon Elastic Block Store (EBS) volumes are encrypted by default. | Encryption is **not** turned on for new volumes. | Unencrypted volumes can be copied or accessed if an attacker gets a hold of the data. |
+| **CIS EC2.8 – IMDSv2** | ✅ | Makes sure all instances use the newer Instance Metadata Service v2 (protects against SSRF attacks). | All instances are compliant. | Good – protects the instance from certain types of web‑server attacks. |
+| **CIS EC2.21 – Network ACLs (ports 22/3389)** | ✅ | Checks that inbound rules on Network ACLs don’t allow SSH (22) or RDP (3389) from anywhere on the internet. | The ACL (acl‑0cf7d0c72e88044a7) blocks those ports. | Good – hardens the network against remote‑login attacks. |
+| **CIS EC2.53 – SGs (remote‑admin ports)** | ✅ | Checks that security groups don’t allow SSH/RDP from the whole internet. | The security group sg‑0c063b93959ff3eb5 is compliant. | Good – you’re not exposing remote‑login ports to the world. |
+| **CIS EC2.54 – SGs (IPv6 remote‑admin ports)** | ✅ | Same as EC2.53, but for IPv6 traffic. | The group is compliant. | Good – you’re safe from IPv6‑based remote‑login attacks. |
+
+**Bottom line**
+
+- **4 controls passed** – you’re already protecting your network against many common attack vectors (remote‑login, metadata leaks, IPv6 exposure).  
+- **3 controls failed** – the biggest risks are:
+  1. **Open default security group** – anyone can reach your instances.  
+  2. **No flow logs** – you can’t see what traffic is going in/out of your VPC.  
+  3. **EBS not encrypted** – your disk data isn’t protected at rest.
+
+**Next steps**
+
+1. **Close the default security group** – delete it or replace its rules so it only allows traffic you explicitly allow.  
+2. **Enable VPC flow logs** for every VPC (you can send them to CloudWatch Logs or an S3 bucket).  
+3. **Turn on default EBS encryption** – set the account‑level default to “enabled” so every new volume is automatically encrypted.
+
+After you address those three issues, you’ll have a much tighter, compliant environment. Let me know if you’d like help writing the Terraform/CLI commands to fix them!

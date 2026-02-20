@@ -1,1 +1,1 @@
-Sure thing! Please paste the detailed security assessment report here, and I’ll turn it into a quick, easy‑to‑understand summary (under 75 words).
+Your security scan finished without any issues. The single database server, **database‑1**, is private, encrypted, and automatically updates minor versions. All three checks passed and no vulnerabilities were found.

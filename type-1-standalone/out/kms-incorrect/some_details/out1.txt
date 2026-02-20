@@ -1,1 +1,1 @@
-I’m ready to help explain the assessment, but I need the report details first. Could you paste the main findings or a brief summary of the configuration errors?
+Your security probe ran fine. It checked the keys that protect your data. Out of 7 keys, 2 don’t automatically rotate, meaning they stay the same and could be more vulnerable if someone gets them. The other 5 keys are set up correctly. No known vulnerabilities (CVE) were found, so the main issue is to enable rotation on the two keys.

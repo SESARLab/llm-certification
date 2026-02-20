@@ -1,1 +1,3 @@
-The scan ran fine but found that AWS Inspector is turned off for all your resources. Without Inspector, hidden bugs, malware, or misconfigurations can go unnoticed, letting attackers gain access or steal data. Enabling Inspector would automatically spot threats in EC2 servers, container images, and Lambda code, helping keep your applications safe.
+The security scan found **no automated vulnerability checks** are running in your AWS environment. All four checks (EC2, ECR, and Lambda code/standard scans) are disabled.  
+
+Without these scans, malware, insecure code, or exposed secrets can go unnoticed, increasing the risk of data breaches, service outages, or exploitation by attackers. Enabling the scans will help catch and fix these weaknesses before they can be abused.

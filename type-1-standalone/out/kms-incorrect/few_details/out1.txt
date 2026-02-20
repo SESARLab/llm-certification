@@ -1,1 +1,1 @@
-I’m ready to help, but I need the details of the security assessment first. Please paste the report text (or key findings), and I’ll give you a clear, 75‑word summary.
+Your security scan ran, but only half of the tests passed. We found that 7 encryption keys should rotate automatically, yet 2 (keyId6 and keyId7) aren’t set to do so. The remaining 5 keys are okay. No known vulnerabilities (CVEs) were discovered. The scan finished successfully, but you should enable rotation for those two keys to keep data safe.

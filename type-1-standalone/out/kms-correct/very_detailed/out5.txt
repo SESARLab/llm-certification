@@ -1,3 +1,1 @@
-**What the report says:**  
-The security scan ran fine and found that every encryption key (7 keys) in your AWS account is set to rotate automatically.  
-**Implication:** With key rotation on, your data stays protected against long‑term key compromise. No configuration mistakes were found, so your applications remain secure against this specific risk. No immediate action is needed.
+Your AWS encryption keys all have automatic rotation enabled, so the system regularly changes them to keep data secure. The probe examined all 7 keys and found no problems, meaning there’s no immediate risk of key theft or misuse. In short, your data protection is strong and no action is needed right now.

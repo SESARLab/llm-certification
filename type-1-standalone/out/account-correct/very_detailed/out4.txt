@@ -1,3 +1,1 @@
-Your cloud security check ran fine and found no problems.  
-The probe finished successfully, and the test that looks for an AWS security contact passed.  
-This means you’ve supplied the required contact details for the security team, so any potential security incident can be reported and handled quickly. No further action is needed.
+The security scan finished successfully and found no problems. Your AWS account has the required security contact details, so alerts will reach the right people quickly. There were no known vulnerabilities (CVE) reported. In short, the configuration is clean and ready to keep your applications safe.

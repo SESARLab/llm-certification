@@ -1,1 +1,5 @@
-Sure! Please share the detailed security assessment report, and I’ll distill it into a concise, easy‑to‑understand summary for you.
+The scan ran fine and looked at three security checks.  
+- Two checks passed: all databases are encrypted and automatically get minor updates.  
+- One check failed: one of your two database servers is open to the internet, which is risky.  
+
+Fix the exposed server to keep your data safe.

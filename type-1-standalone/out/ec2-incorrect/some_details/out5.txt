@@ -1,1 +1,6 @@
-I’d need the actual findings from the assessment to give you a concise summary. Could you paste or describe the key points of the report?
+The security scan ran fine (4 out of 7 checks passed).  
+• One default security group is too open – it allows incoming and outgoing traffic.  
+• Your VPC isn’t logging network traffic, so you can’t see who’s connecting.  
+• Your EBS (disk) storage isn’t encrypted, so data isn’t protected.  
+
+All other checks (port restrictions, IMDSv2, ACLs) are fine. Fix the three problems to improve security.

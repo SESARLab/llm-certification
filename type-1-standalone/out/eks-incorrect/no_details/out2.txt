@@ -1,1 +1,24 @@
-I’d be happy to walk you through the findings! Could you paste the detailed security assessment report here so I can translate it into a clear, lay‑person summary?
+**What the assessment says at a glance**
+
+| # | What was checked | Result | Why it matters | What to do next |
+|---|-----------------|--------|----------------|-----------------|
+| 1 | **API‑server audit logging** | **Pass** | All events from the API server are recorded. | Keep it enabled and review the logs regularly. |
+| 2 | **Cluster version support** | **Pass** | The cluster runs Kubernetes 1.31, which is still supported. | No action needed. |
+| 3 | **Audit logging is enabled everywhere** | **Pass** | Every cluster has audit logging turned on. | Continue monitoring. |
+| 4 | **Public cluster endpoints** | **Fail** | The cluster endpoint can be reached from the internet. | Restrict the endpoint to a private network or a VPC endpoint. |
+| 5 | **Encryption of Kubernetes secrets** | **Fail** | Secrets are stored unencrypted on disk. | Enable the KMS‑based encryption configuration. |
+| 6 | **Required tagging** | **Fail** | The cluster is missing mandatory tags (e.g., `tag1`). | Add the missing tags so the cluster can be identified and billed correctly. |
+| 7 | **Identity‑provider (IdP) config tags** | **Pass** | All IdP configurations have the required tags. | Keep tags in sync. |
+
+**Overall summary**
+
+* 4 of the 7 checks passed – the probe ran without any technical errors (hence the “The probe executed successfully!” message).
+* 3 checks failed – these are areas that could expose the cluster to risk or make management harder.
+
+**Next steps in plain English**
+
+1. **Lock down the public endpoint** – either move the cluster into a private subnet or enable an AWS PrivateLink/VPC endpoint so only internal traffic can reach it.  
+2. **Turn on secret encryption** – use an AWS KMS key or an external key management service to encrypt all Kubernetes secrets at rest.  
+3. **Add missing tags** – apply the required tags (e.g., `tag1`) to the cluster so you can track ownership, cost, and compliance.  
+
+Once those items are fixed, the assessment will show 7/7 passed, giving you a stronger, compliant EKS environment.

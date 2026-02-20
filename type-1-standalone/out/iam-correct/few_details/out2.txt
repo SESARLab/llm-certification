@@ -1,2 +1,1 @@
-I need the details of the assessment to give an accurate summary.  
-Please paste the report text, and I’ll turn it into a concise, non‑technical explanation (≤ 75 words).
+Your AWS account is in great shape—every security check passed. All users have no unnecessary permissions, keep keys rotated every 90 days, use MFA, and have strong passwords. The root account has hardware MFA, no access keys, and a support role is in place. No risky certificates or policies are attached, and an external access analyzer is enabled. In short, your IAM setup meets all recommended best practices.
