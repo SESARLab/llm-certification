@@ -32,11 +32,15 @@ for extradata_f in extradata_files:
         final_res_total={
             "fklg":{
                 "passed":0,
-                "failed":0
+                "failed":0,
+                "avg":0.0,
+                "std_dev_avg":0.0
             },
             "dale_chall":{
                 "passed":0,
-                "failed":0
+                "failed":0,
+                "avg":0.0,
+                "std_dev_avg":0.0
             },
             "passed":0,
             "failed":0
@@ -94,6 +98,14 @@ for extradata_f in extradata_files:
                     final_res_total["dale_chall"]["avg"]=final_res_total["dale_chall"]["avg"]+dale_chall/REPETITIONS if "avg" in final_res_total["dale_chall"] else dale_chall/REPETITIONS
 
                     f_res.write(json.dumps(final_res, indent=4))
+
+        for i in range(len(files)-1):  # excluding generation_report.json
+            with open(out_folder_path+"/"+extradata_f_name+"/"+pf_name+"/out"+str(i+1)+".txt","r") as f:
+                out=f.read()
+                fklg_out=textstat.flesch_kincaid_grade(out)
+                dale_chall=textstat.dale_chall_readability_score(out)
+                final_res_total["fklg"]["std_dev_avg"]+=abs(fklg_out-final_res_total["fklg"]["avg"])/REPETITIONS
+                final_res_total["dale_chall"]["std_dev_avg"]+=abs(dale_chall-final_res_total["dale_chall"]["avg"])/REPETITIONS
 
         with open(analyzed_folder_path+"/"+extradata_f_name+"/"+pf_name+"/summary.json","w") as f_final:
             f_final.write(json.dumps(final_res_total, indent=4))
