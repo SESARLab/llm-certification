@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+  labels:
+    app: security-probe
+    security: hardened
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_BIND_SERVICE
+  containers:
+  - name: security-probe
+    image: busybox:latest
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      capabilities:
+        drop:
+          - ALL
+        add:
+          - NET_BIND_SERVICE
+      seccompProfile:
+        type: RuntimeDefault
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        echo "Security probe running with minimal privileges";
+        sleep 3600
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    volumeMounts:
+      - name: tmp
+        mountPath: /tmp
+      - name: var-log
+        mountPath: /var/log
+        readOnly: true
+    livenessProbe:
+      exec:
+        command:
+          - /bin/sh
+          - -c
+          - ps aux | grep -v grep | grep security-probe
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      timeoutSeconds: 5
+      failureThreshold: 3
+    readinessProbe:
+      exec:
+        command:
+          - /bin/sh
+          - -c
+          - test -f /tmp/ready
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 3
+  volumes:
+    - name: tmp
+      emptyDir:
+        medium: Memory
+        sizeLimit: 10Mi
+    - name: var-log
+      hostPath:
+        path: /var/log
+        type: Directory
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  automountServiceAccountToken: false
+  restartPolicy: Never
+  dnsPolicy: ClusterFirst
+  nodeSelector:
+    security: hardened
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      operator: Exists
+      effect: NoSchedule
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: security
+                operator: In
+                values: [hardened]

@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  automountServiceAccountToken: false
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+  containers:
+  - name: security-probe
+    image: your-security-probe-image:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      capabilities:
+        drop:
+          - ALL
+    env:
+    - name: PROBE_TIMEOUT
+      value: "30"
+    - name: PROBE_INTERVAL
+      value: "60"
+    - name: PROBE_TARGET
+      value: "localhost"
+    - name: PROBE_PORT
+      value: "443"
+    - name: PROBE_PROTOCOL
+      value: "https"
+    - name: PROBE_VERBOSE
+      value: "true"
+    - name: PROBE_OUTPUT_FORMAT
+      value: "json"
+    volumeMounts:
+    - name: credentials
+      mountPath: /etc/credentials
+      readOnly: true
+    - name: config
+      mountPath: /etc/config
+      readOnly: true
+  volumes:
+  - name: credentials
+    secret:
+      secretName: security-probe-credentials
+      defaultMode: 256
+  - name: config
+    configMap:
+      name: security-probe-config
+      defaultMode: 256
+  restartPolicy: Never

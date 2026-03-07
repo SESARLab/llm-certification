@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_RAW
+  containers:
+  - name: security-probe
+    image: busybox:latest
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        echo "Running security probe with configured parameters";
+        # Your security probe command here
+        sleep 3600
+    env:
+      - name: PROBE_TIMEOUT
+        value: "30"
+      - name: PROBE_TARGET
+        value: "localhost"
+      - name: PROBE_PORT
+        value: "443"
+      - name: PROBE_PROTOCOL
+        value: "https"
+    envFrom:
+      - secretRef:
+          name: probe-credentials
+    volumeMounts:
+      - name: probe-config
+        mountPath: /etc/probe/config
+        readOnly: true
+      - name: probe-secrets
+        mountPath: /etc/probe/secrets
+        readOnly: true
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      capabilities:
+        drop:
+          - ALL
+        add:
+          - NET_RAW
+  volumes:
+    - name: probe-config
+      configMap:
+        name: probe-config
+    - name: probe-secrets
+      secret:
+        secretName: probe-credentials
+        items:
+          - key: credentials
+            path: credentials
+  restartPolicy: Never
+  automountServiceAccountToken: false

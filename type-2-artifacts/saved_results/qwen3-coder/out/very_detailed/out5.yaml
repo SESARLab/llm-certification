@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+  containers:
+  - name: security-probe
+    image: your-security-probe-image:latest
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      capabilities:
+        drop:
+          - ALL
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+    env:
+    - name: PROBE_TIMEOUT
+      value: "30"
+    - name: PROBE_TARGET
+      value: "localhost"
+    - name: PROBE_PORT
+      value: "443"
+    - name: PROBE_PROTOCOL
+      value: "https"
+    - name: LOG_LEVEL
+      value: "info"
+    - name: MAX_RETRIES
+      value: "3"
+    - name: PROBE_INTERVAL
+      value: "60"
+    - name: ENABLE_SSL_VERIFY
+      value: "true"
+    - name: PROBE_TIMEOUT
+      value: "30"
+    - name: PROBE_THREADS
+      value: "5"
+    volumeMounts:
+    - name: credentials
+      mountPath: /etc/credentials
+      readOnly: true
+    - name: config
+      mountPath: /etc/config
+      readOnly: true
+    - name: probe-results
+      mountPath: /var/lib/probe-results
+      readOnly: false
+  volumes:
+  - name: credentials
+    secret:
+      secretName: security-probe-credentials
+      defaultMode: 256
+  - name: config
+    configMap:
+      name: security-probe-config
+      defaultMode: 256
+  - name: probe-results
+    emptyDir:
+      medium: Memory
+  restartPolicy: Never
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: registry-credentials

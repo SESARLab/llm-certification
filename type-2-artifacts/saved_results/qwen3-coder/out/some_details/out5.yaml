@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+  labels:
+    app: security-probe
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_RAW
+  containers:
+  - name: security-probe
+    image: my-security-probe:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      capabilities:
+        drop:
+          - ALL
+        add:
+          - NET_RAW
+    env:
+    - name: PROBE_TIMEOUT
+      value: "30"
+    - name: PROBE_PORT
+      value: "443"
+    - name: PROBE_PROTOCOL
+      value: "https"
+    - name: PROBE_VERBOSE
+      value: "true"
+    - name: PROBE_RETRY_COUNT
+      value: "3"
+    volumeMounts:
+    - name: credentials
+      mountPath: /etc/credentials
+      readOnly: true
+    - name: config
+      mountPath: /etc/config
+      readOnly: true
+  volumes:
+  - name: credentials
+    secret:
+      secretName: probe-credentials
+      defaultMode: 0400
+  - name: config
+    configMap:
+      name: probe-config
+      defaultMode: 0400
+  restartPolicy: Never

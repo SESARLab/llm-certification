@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+    tier: security
+spec:
+  containers:
+  - name: probe-container
+    image: busybox:1.35
+    command: ['sh', '-c']
+    args:
+    - |
+      echo "Running security probe..."
+      # Security checks
+      whoami
+      id
+      ls -la /etc
+      cat /proc/self/cgroups
+      echo "Security probe completed"
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+      seccompProfile:
+        type: RuntimeDefault
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+  restartPolicy: Never
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    fsGroup: 2000

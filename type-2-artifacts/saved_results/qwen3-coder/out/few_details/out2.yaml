@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+  labels:
+    app: security-probe
+    security: hardened
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+    supplementalGroups: [4000]
+    sysctls:
+    - name: net.ipv4.ip_unprivileged_port_start
+      value: "0"
+    - name: kernel.randomize_va_space
+      value: "2"
+  containers:
+  - name: security-probe
+    image: busybox:latest
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh", "-c"]
+    args:
+    - |
+      echo "Starting security probe..."
+      # Add your security probe commands here
+      sleep 3600
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 3000
+      capabilities:
+        drop:
+        - ALL
+        add:
+        - NET_BIND_SERVICE
+      seccompProfile:
+        type: RuntimeDefault
+      appArmorProfile: runtime/default
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    volumeMounts:
+    - name: tmp
+      mountPath: /tmp
+    - name: var-log
+      mountPath: /var/log
+      readOnly: true
+    - name: config
+      mountPath: /etc/security-probe
+      readOnly: true
+  volumes:
+  - name: tmp
+    emptyDir:
+      medium: Memory
+      sizeLimit: 10Mi
+  - name: var-log
+    hostPath:
+      path: /var/log
+      type: Directory
+  - name: config
+    configMap:
+      name: security-probe-config
+  restartPolicy: Never
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  dnsPolicy: ClusterFirst
+  nodeSelector:
+    kubernetes.io/os: linux
+  tolerations:
+  - key: node-role.kubernetes.io/control-plane
+    operator: Exists
+    effect: NoSchedule
+  - key: node-role.kubernetes.io/master
+    operator: Exists
+    effect: NoSchedule

@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+  labels:
+    app: security-probe
+    security: hardened
+spec:
+  automountServiceAccountToken: false
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_BIND_SERVICE
+  containers:
+  - name: security-probe
+    image: busybox:latest
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        echo "Running security probe...";
+        sleep 3600;
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+      runAsGroup: 2001
+      capabilities:
+        drop:
+          - ALL
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    volumeMounts:
+      - name: tmp
+        mountPath: /tmp
+      - name: var-log
+        mountPath: /var/log
+        readOnly: true
+  volumes:
+    - name: tmp
+      emptyDir:
+        medium: Memory
+        sizeLimit: 10Mi
+    - name: var-log
+      hostPath:
+        path: /var/log
+        type: Directory
+  tolerations:
+    - effect: NoSchedule
+      operator: Exists
+  nodeSelector:
+    kubernetes.io/os: linux
+  priorityClassName: system-node-critical
+  restartPolicy: Never

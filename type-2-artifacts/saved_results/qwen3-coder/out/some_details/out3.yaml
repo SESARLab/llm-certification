@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+  labels:
+    app: security-probe
+spec:
+  automountServiceAccountToken: false
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 2000
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+  containers:
+  - name: security-probe
+    image: alpine:latest
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        apk add --no-cache curl && \
+        curl -s -u "$USERNAME:$PASSWORD" "$TARGET_URL"
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
+    env:
+      - name: TARGET_URL
+        value: "https://example.com/api"
+      - name: USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: probe-credentials
+            key: username
+      - name: PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: probe-credentials
+            key: password
+    volumeMounts:
+      - name: probe-config
+        mountPath: /etc/probe/config
+        readOnly: true
+      - name: probe-secrets
+        mountPath: /etc/probe/secrets
+        readOnly: true
+  volumes:
+    - name: probe-config
+      configMap:
+        name: probe-config
+    - name: probe-secrets
+      secret:
+        secretName: probe-credentials
+  restartPolicy: Never

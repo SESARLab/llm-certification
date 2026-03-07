@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+    tier: security
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    fsGroup: 2000
+    supplementalGroups: [3000]
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_BIND_SERVICE
+  containers:
+  - name: probe-container
+    image: quay.io/security/probe:latest
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      capabilities:
+        drop:
+          - ALL
+    ports:
+    - containerPort: 8080
+      name: probe-port
+      protocol: TCP
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    volumeMounts:
+    - name: probe-config
+      mountPath: /etc/probe
+      readOnly: true
+    - name: probe-logs
+      mountPath: /var/log/probe
+    env:
+    - name: PROBE_MODE
+      value: "active"
+    - name: LOG_LEVEL
+      value: "info"
+    - name: HEALTH_CHECK_PORT
+      value: "8080"
+  volumes:
+  - name: probe-config
+    configMap:
+      name: probe-config
+  - name: probe-logs
+    emptyDir: {}
+  restartPolicy: Never
+  hostNetwork: false
+  dnsPolicy: ClusterFirst

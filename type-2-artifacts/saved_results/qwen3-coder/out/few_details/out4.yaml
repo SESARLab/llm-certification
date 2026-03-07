@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+  labels:
+    app: security-probe
+    security: hardened
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    sysctls:
+    - name: net.ipv4.ip_unprivileged_port_start
+      value: "0"
+    - name: kernel.randomize_va_space
+      value: "2"
+  containers:
+  - name: security-probe
+    image: ubuntu:20.04
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      capabilities:
+        drop:
+        - ALL
+        add:
+        - NET_BIND_SERVICE
+      seccompProfile:
+        type: RuntimeDefault
+      appArmorProfile: runtime/default
+    command: ["/bin/sh", "-c"]
+    args:
+    - |
+      apt-get update && apt-get install -y nmap curl openssl && \
+      echo "Security probe completed" && \
+      tail -f /dev/null
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    volumeMounts:
+    - name: probe-config
+      mountPath: /etc/probe
+      readOnly: true
+    - name: probe-data
+      mountPath: /var/lib/probe
+      readOnly: false
+  volumes:
+  - name: probe-config
+    configMap:
+      name: security-probe-config
+      defaultMode: 0444
+  - name: probe-data
+    emptyDir: {}
+  restartPolicy: Never
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  dnsPolicy: ClusterFirst
+  nodeSelector:
+    security: hardened
+  tolerations:
+  - key: "security"
+    operator: "Equal"
+    value: "hardened"
+    effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: security
+            operator: In
+            values: [hardened]
+  enableServiceLinks: false
+  automountServiceAccountToken: false

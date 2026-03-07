@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  automountServiceAccountToken: false
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+  containers:
+  - name: security-probe
+    image: busybox:latest
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        echo "Running security probe with configured parameters"
+        # Probe execution would go here
+        sleep 3600
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 3000
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+    env:
+      - name: PROBE_TIMEOUT
+        value: "30"
+      - name: PROBE_TARGET
+        value: "localhost"
+      - name: PROBE_PORT
+        value: "443"
+      - name: PROBE_PROTOCOL
+        value: "https"
+    envFrom:
+      - secretRef:
+          name: probe-credentials
+    volumeMounts:
+      - name: config-volume
+        mountPath: /etc/probe/config
+        readOnly: true
+      - name: probe-results
+        mountPath: /var/probe/results
+        readOnly: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+  volumes:
+    - name: config-volume
+      configMap:
+        name: probe-config
+        items:
+          - key: probe.conf
+            path: probe.conf
+    - name: probe-results
+      emptyDir: {}
+  imagePullSecrets:
+    - name: registry-credentials
+  restartPolicy: Never

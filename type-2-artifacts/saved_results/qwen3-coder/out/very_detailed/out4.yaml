@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+  containers:
+  - name: security-probe
+    image: security/probe:latest
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      capabilities:
+        drop:
+          - ALL
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+    env:
+      - name: TARGET_HOST
+        value: "target.example.com"
+      - name: PROBE_TIMEOUT
+        value: "30"
+      - name: LOG_LEVEL
+        value: "INFO"
+      - name: PROBE_TYPE
+        value: "network"
+    envFrom:
+      - secretRef:
+          name: probe-credentials
+    volumeMounts:
+      - name: config-volume
+        mountPath: /etc/probe/config
+        readOnly: true
+      - name: probe-results
+        mountPath: /var/lib/probe/results
+        readOnly: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        echo "Starting security probe..."
+        /usr/local/bin/probe-runner --config /etc/probe/config/probe.yaml
+        echo "Probe completed"
+  volumes:
+    - name: config-volume
+      configMap:
+        name: probe-config
+        items:
+          - key: probe.yaml
+            path: probe.yaml
+    - name: probe-results
+      emptyDir: {}
+  imagePullSecrets:
+    - name: registry-credentials
+  restartPolicy: Never

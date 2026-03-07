@@ -44,3 +44,8 @@ A concise overview of the important files and directories:
     CSV results are written to `eval_out/summary.csv`.
 
 Notes: to change the model queried modify the field MODEL in `settings.py`, note that the model must be installed on the Ollama instance first.
+
+## Results
+
+The repository contains the `codellama:70b-instruct-q5_K_M` execution results, more results can be found in the `saved_results/<model>` folder.
+At the model we additionally provide `qwen3-coder:30b-a3b-q4_K_M` results for comparison.

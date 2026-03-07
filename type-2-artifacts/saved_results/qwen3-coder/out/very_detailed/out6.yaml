@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+  containers:
+  - name: security-probe
+    image: security/probe:latest
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+    env:
+    - name: PROBE_TARGET
+      value: "https://target.example.com"
+    - name: PROBE_TIMEOUT
+      value: "30"
+    - name: PROBE_INTERVAL
+      value: "60"
+    - name: PROBE_VERBOSE
+      value: "true"
+    - name: PROBE_SSL_VERIFY
+      value: "true"
+    volumeMounts:
+    - name: credentials
+      mountPath: /etc/credentials
+      readOnly: true
+    - name: config
+      mountPath: /etc/config
+      readOnly: true
+    - name: probe-results
+      mountPath: /results
+      readOnly: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+  volumes:
+  - name: credentials
+    secret:
+      secretName: probe-credentials
+      defaultMode: 0400
+  - name: config
+    configMap:
+      name: probe-config
+      defaultMode: 0444
+  - name: probe-results
+    emptyDir:
+      medium: Memory
+  restartPolicy: Never
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  dnsPolicy: ClusterFirst
+  automountServiceAccountToken: false

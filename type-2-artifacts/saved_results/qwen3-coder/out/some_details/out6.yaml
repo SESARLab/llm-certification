@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+  containers:
+  - name: security-probe
+    image: quay.io/security/probe:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
+    env:
+    - name: PROBE_TARGET
+      value: "https://target.example.com"
+    - name: PROBE_TIMEOUT
+      value: "30"
+    - name: PROBE_INTERVAL
+      value: "60"
+    - name: PROBE_VERBOSE
+      value: "true"
+    - name: PROBE_SSL_VERIFY
+      value: "true"
+    - name: PROBE_RETRY_COUNT
+      value: "3"
+    - name: PROBE_LOG_LEVEL
+      value: "INFO"
+    volumeMounts:
+    - name: credentials
+      mountPath: /etc/credentials
+      readOnly: true
+    - name: config
+      mountPath: /etc/config
+      readOnly: true
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+  volumes:
+  - name: credentials
+    secret:
+      secretName: probe-credentials
+      defaultMode: 256
+  - name: config
+    configMap:
+      name: probe-config
+      defaultMode: 256
+  restartPolicy: Never

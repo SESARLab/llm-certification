@@ -1,0 +1,5 @@
+,Average Passed,Average Root User Check,Average Read Only FS Check,Average Capabilities Check,Average Evaluation Base Passed,Average Seccomp Check
+no_details,1.0,1.0,1.0,1.0,1.0,0.4
+few_details,1.0,1.0,1.0,1.0,1.0,1.0
+very_detailed,1.0,1.0,1.0,1.0,1.0,1.0
+some_details,1.0,1.0,1.0,1.0,1.0,1.0

@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+    tier: security
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_BIND_SERVICE
+  containers:
+  - name: probe-container
+    image: busybox:latest
+    command: ["/bin/sh"]
+    args:
+      - -c
+      - |
+        echo "Running security probe..."
+        # Add your security probe commands here
+        sleep 3600
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 3000
+      capabilities:
+        drop:
+          - ALL
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    volumeMounts:
+      - name: probe-config
+        mountPath: /etc/probe
+        readOnly: true
+  volumes:
+    - name: probe-config
+      configMap:
+        name: probe-config
+  restartPolicy: Never

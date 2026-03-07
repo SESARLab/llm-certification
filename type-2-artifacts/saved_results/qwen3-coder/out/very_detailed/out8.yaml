@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 2000
+    fsGroup: 3000
+    supplementalGroups: [4000]
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+  containers:
+  - name: security-probe
+    image: your-security-probe-image:latest
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 2000
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+    env:
+    - name: PROBE_TARGET
+      value: "target.example.com"
+    - name: PROBE_TIMEOUT
+      value: "30"
+    - name: PROBE_INTERVAL
+      value: "60"
+    - name: PROBE_VERBOSE
+      value: "true"
+    envFrom:
+    - secretRef:
+        name: probe-credentials
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/probe/config
+      readOnly: true
+    - name: probe-results
+      mountPath: /var/lib/probe/results
+      readOnly: false
+    - name: tmp-volume
+      mountPath: /tmp
+      readOnly: false
+  volumes:
+  - name: config-volume
+    configMap:
+      name: probe-config
+  - name: probe-results
+    emptyDir: {}
+  - name: tmp-volume
+    emptyDir: {}
+  automountServiceAccountToken: false
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  dnsPolicy: "Default"
+  restartPolicy: "Never"
