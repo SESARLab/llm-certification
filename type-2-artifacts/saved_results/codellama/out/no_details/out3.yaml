@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe
+      image: my-security-probe-image
+      command: ["/bin/sh", "-c"]

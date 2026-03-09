@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe
+      image: <IMAGE_NAME> # Replace with your image name and tag
+      ports:
+        - containerPort: 8080 # Change as needed for the probe port
+      env:
+        - name: TARGET_URL
+          valueFrom:
+            secretKeyRef:
+              name: <SECRET_NAME>   # Replace with your target credentials secret name
+              key: url              # Replace with the key in the secret that holds the URL
+        - name: OTHER_ENV_VARIABLES # Add other environment variables if needed
+          valueFrom:
+            secretKeyRef:
+              name: <SECRET_NAME>   # Replace with your target credentials secret name
+              key: <OTHER_KEY>      # Replace with the key in the secret that holds the other env variable
+      volumeMounts:
+        - name: secrets-volume     # Mount the secrets to provide credentials for probe access
+          mountPath: "/secrets"    # Use a secure location and modify as needed
+  volumes:
+    - name: secrets-volume
+      secret:
+        secretName: <SECRET_NAME>  # Replace with your target credentials secret name
+  securityContext:
+    runAsNonRoot: true             # Run the probe as a non-root user for enhanced security
+    readOnlyRootFilesystem: true   # Mount the filesystem as read-only to prevent accidental modifications

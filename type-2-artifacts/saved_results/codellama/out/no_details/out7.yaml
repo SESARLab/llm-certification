@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+  labels:
+    app: security-probe
+  annotations:
+    runat: once
+spec:
+  containers:
+    - name: security-probe
+      image: alpine:3.10
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          apk update && \
+          apk add openssl && \
+          openssl s_client -connect 192.168.1.5:443 > /app/output.txt && \
+          sleep 60m
+      securityContext:
+        runAsUser: 100
+        runAsGroup: 100
+      volumeMounts:
+        - name: config-files
+          mountPath: /app/config
+          readOnly: true
+  volumes:
+    - name: config-files
+      configMap:
+        name: security-probe-config
+  restartPolicy: Never
+  nodeSelector:
+    cloud.google.com/gke-nodepool: dev

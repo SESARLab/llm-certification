@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+spec:
+  containers:
+    - name: security-probe
+      image: my-security-probe-image
+      env:
+        - name: VARIABLE_A
+          value: "value a"
+        - name: VARIABLE_B
+          value: "value b"
+      volumeMounts:
+        - mountPath: "/var/run/secrets/"
+          name: secrets-volume
+  volumes:
+    - name: secrets-volume
+      secret:
+        secretName: my-secret

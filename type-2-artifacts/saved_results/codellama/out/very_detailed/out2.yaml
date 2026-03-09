@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: probe
+      image: <image_name>:<tag>
+      args: [] # Specify any needed command line arguments for the probe
+      env:
+        - name: TARGET_URL
+          valueFrom:
+            secretKeyRef:
+              key: target-url
+              name: security-probe-secrets
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: security-probe-secrets
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: security-probe-secrets
+      volumeMounts:
+        - mountPath: /tmp/security-probe-secrets
+          name: probe-secrets
+  volumes:
+    - name: probe-secrets
+      secret:
+        secretName: security-probe-secrets

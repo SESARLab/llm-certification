@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe
+      image: <image_name>:<tag>
+      env:
+        # Specify the environment variables used to tune the probe here.
+        - name: <env_var_1>
+          value: <value_1>
+        - name: <env_var_2>
+          value: <value_2>
+      volumeMounts:
+        # Mount secrets volume containing credentials to connect to the target.
+        - name: secret-volume
+          mountPath: /path/to/secrets
+  volumes:
+    - name: secret-volume
+      secret:
+        secretName: <secret_name>
+  securityContext:
+    # Set container user and group for least privileged access.
+    runAsUser: <user_id>
+    runAsGroup: <group_id>
+  nodeSelector:
+    kubernetes.io/hostname: <node_with_minimal_resources>

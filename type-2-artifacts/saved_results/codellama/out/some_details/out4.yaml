@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: probe
+      image: <your_image>
+      env:
+        # Add environment variables here to tune the probe as needed
+        - name: ENV_VAR1
+          value: "Value of ENV VAR1"
+        - name: ENV_VAR2
+          value: "Value of ENV VAR2"
+      volumeMounts:
+        # Mount secrets to provide credentials to connect to the target
+        - name: secret-volume
+          mountPath: /secret
+  volumes:
+    - name: secret-volume
+      secret:
+        secretName: your-secret

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe-container
+      image: <image_name>:<tag>
+      command: ["./security-probe"]
+      args: ["--option1=value1", "--option2=value2"]
+      resources:
+        requests:
+          cpu: 0.5
+          memory: 512Mi
+        limits:
+          cpu: 1
+          memory: 768Mi
+      securityContext:
+        capabilities:
+          drop: [ALL]
+        readOnlyRootFilesystem: true
+        runAsUser: <user_id>
+        runAsGroup: <group_id>

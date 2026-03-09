@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+spec:
+  serviceAccountName: security-probe-serviceaccount
+  automountServiceAccountToken: false # disables automatic mounting of the API token
+  containers:
+    - name: security-probe
+      image: <image_name>
+      command: ["/bin/security-probe"]
+      args: ["--some", "args"]
+      volumeMounts:
+        - name: secrets
+          mountPath: /path/to/secrets # path to mount the secrets
+          readOnly: true # only allows reading of secrets
+      env:
+        - name: SOME_ENV_VARIABLE
+          valueFrom:
+            secretKeyRef:
+              name: <secret-name>
+              key: <env-var-key>
+  volumes:
+    - name: secrets
+      secret:
+        secretName: <secret-name> # name of the secret to be mounted

@@ -47,5 +47,7 @@ Notes: to change the model queried modify the field MODEL in `settings.py`, note
 
 ## Results
 
-The repository contains the `codellama:70b-instruct-q5_K_M` execution results, more results can be found in the `saved_results/<model>` folder.
-At the model we additionally provide `qwen3-coder:30b-a3b-q4_K_M` results for comparison.
+The repository contains the `codellama:70b-instruct-q5_K_M` execution results, all results can be found in the `saved_results/<model>` folder.
+At the moment we provide:
+- `codellama:70b-instruct-q5_K_M`: just a copy of the main folder execution results
+- `qwen3-coder:30b-a3b-q4_K_M`: qwen3-coder results for comparison.

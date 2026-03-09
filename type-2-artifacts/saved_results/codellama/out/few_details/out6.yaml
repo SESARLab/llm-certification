@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe
+spec:
+  containers:
+    - name: security-probe
+      image: <security-probe-image> # Replace with the actual image
+      command: ["<command-to-run>", "args"] # Specify the command to run for the probe
+      args: [<list-of-arguments>] # Provide any arguments required by the probe
+  hostPID: true
+  hostIPC: true
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+  securityContext:
+    privileged: true
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: true # Run with a read-only root filesystem
+    runAsUser: 0 # Run as root user for maximum access
+    runAsGroup: 0 # Run as root group for maximum access
+    supplementalGroups:
+      - 13 # Add the SYS group to the Pod for additional privileges
+  volumes:
+    - name: host-root
+      hostPath:
+        path: / # Mount the host's root filesystem in the Pod
+  automountServiceAccountToken: false # Disable automounting of service account token

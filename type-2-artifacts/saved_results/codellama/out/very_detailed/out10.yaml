@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+spec:
+  containers:
+    - name: security-probe
+      image: <image>
+      command: ["security_probe"]
+      env:
+        - name: TARGET
+          value: "example.com"
+      volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          readOnly: true
+          name: default-token-<token>
+        - mountPath: <path_to_secret>
+          name: my-secret
+  volumes:
+    - name: default-token-<token>
+      secret:
+        secretName: default-token-<token>
+    - name: my-secret
+      secret:
+        secretName: my-secret

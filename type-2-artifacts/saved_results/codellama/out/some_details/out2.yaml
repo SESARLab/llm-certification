@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-probe-pod
+spec:
+  volumes:
+    - name: secrets
+      secret:
+        secretName: probe-secrets # Replace with actual secret name
+  containers:
+    - name: security-probe
+      image: secure/probe-image # Replace with actual image name
+      env:
+        - name: TARGET_URL
+          value: "https://target.example.com" # Replace with actual target URL
+        - name: PROBE_TIMEOUT
+          value: "30s" # Replace with actual probe timeout value
+      volumeMounts:
+        - mountPath: /var/secrets
+          name: secrets
+  securityContext:
+    runAsNonRoot: true
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
